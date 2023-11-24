@@ -8,6 +8,8 @@
 !/.gitignore
 !/composer.json
 !/readme.md
+!/app/code/**/*
+/app/code/Amasty/
 !/app/design/frontend/Cabinetsbay/**/*
 !/app/etc/config.php
 /update/

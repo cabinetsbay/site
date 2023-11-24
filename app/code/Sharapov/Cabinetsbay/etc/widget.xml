@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Sharapov\Cabinetsbay\Block\Widget\AffirmPrequalifyNowPopup"
+            id="sharapov_cabinetsbay_affirmprequalifynopopup">
+        <label>Affirm PrequalifyNow Popup</label>
+        <description></description>
+        <parameters>
+            <parameter name="promo_id" sort_order="10" visible="true" xsi:type="text">
+                <label>Affirm Promo Id (optional)</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

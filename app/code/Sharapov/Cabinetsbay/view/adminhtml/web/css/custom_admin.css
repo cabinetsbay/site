@@ -1,0 +1,5 @@
+#buttonscategory_form_cb_specs .action-show-hide,
+#buttonscategory_form_cb_assembly .action-show-hide,
+#buttonscategory_form_cb_styles .action-show-hide {
+  display: block !important;
+}
