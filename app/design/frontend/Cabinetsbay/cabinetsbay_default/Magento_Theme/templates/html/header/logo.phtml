@@ -1,0 +1,19 @@
+<?php
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 07/10/2019
+ * Time: 18:19
+ */
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt(); ?>
+<a class="logo" href="<?=$block->getUrl('')?>" title="<?=/* @escapeNotVerified */
+$storeName?>">
+    <img src="<?=/* @escapeNotVerified */
+    $block->getLogoSrc()?>"
+         title="<?=$block->escapeHtmlAttr($block->getLogoAlt())?>"
+         alt="<?=$block->escapeHtmlAttr($block->getLogoAlt())?>"
+      <?=$block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : ''?>
+      <?=$block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : ''?>
+    />
+</a>

@@ -1,0 +1,146 @@
+<?php
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 30.10.2019
+ * Time: 23:28
+ */
+/**
+ * @var $block \Magento\Catalog\Block\Category\View
+ * @var $secondLevelCategory \Magento\Catalog\Block\Category\View
+ */
+
+$secondLevelCategory = $block->getSecondLevelCategoryName();
+if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
+    <h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $block->getRootCategoryName();?></sub></h1>
+    <ul class="category-menu">
+        <li data-role="title"><a href="#overview">Product Overview</a></li>
+        <li data-role="title"><a href="#specifications">Specifications</a></li>
+        <li data-role="title"><a href="#cabinet-assembly">Cabinet Assembly</a></li>
+        <li data-role="title"><a href="#matching-styles">Matching Styles</a></li>
+    </ul>
+    <div id="overview" class="category-tab" data-role="content">
+        <label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
+        <div class="content">
+        <h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $block->getRootCategoryName();?></sub></h1>
+        <div class="category-info">
+            <div class="category-tab-left">
+                <?php $carouselImages = $block->getCategoryImagesForCarousel(); ?>
+
+                <div style="display: none;">
+                    <?php var_dump($_SERVER['REMOTE_ADDR']); ?>
+                </div>
+
+                <?php if(is_array($carouselImages) and count($carouselImages) > 0) : ?>
+                    <ul id="category-gallery" class="gallery list-unstyled cS-hidden">
+                        <?php foreach ($carouselImages as $carouselImage) : ?>
+                            <li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
+                                ->getBaseUrl() . $carouselImage; ?>" data-src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl() . $carouselImage; ?>">
+                                <img src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
+                                    ->getBaseUrl() . $carouselImage; ?>" />
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <script>
+                        require(['jquery'],
+                            function ($) {
+                                $(document).ready(function() {
+                                    let totalWidth = 0;
+                                    $('.owl-thumb-item').each(function(index) {
+                                        totalWidth += parseInt($(this).width(), 10);
+                                    });
+                                    $('.owl-thumbs').css('width', (totalWidth + 20)+'px');
+                                });
+                            });
+                    </script>
+                <?php else : ?>
+                <?php
+                /** @var \Magento\Catalog\Helper\Output $_helper */
+                $_helper    = $this->helper('Magento\Catalog\Helper\Output');
+                //$_category  = $block->getCurrentCategory();
+                $_imgHtml   = '';
+                try {
+                    if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
+                        $_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>';
+                        $_imgHtml = $_helper->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
+                        /* @escapeNotVerified */ echo $_imgHtml;
+                    }
+                } catch (\Magento\Framework\Exception\LocalizedException $e) {
+
+                }
+                endif;
+                ?>
+            </div>
+            <div class="category-tab-right">
+                <?php if ($_description = $secondLevelCategory->getDescription()): ?>
+                    <div class="category-description">
+                        <?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($secondLevelCategory, $_description, 'description') ?>
+                    </div>
+                <?php endif; ?>
+                <div class="category-subdescription">
+                    <div class="table-view">
+                        <a href="/sample-doors.html">Order Sample</a>
+                        <a href="/kitchen-design-assistance.html">Free Design</a>
+                    </div>
+                    <a class="scrollTo" href="#layer-product-list">Shop Cabinets Below <i></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="specifications" class="category-tab category-tab-specifications" data-role="content">
+        <label>Specifications <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
+        <div class="content">
+            <?= /* @escapeNotVerified */ $this->getSpecifications(); ?>
+        </div>
+    </div>
+    <div id="cabinet-assembly" class="category-tab" data-role="content">
+        <label>Cabinet Assembly <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
+        <div class="content">
+            <?= /* @escapeNotVerified */ $this->getCabinetAssembly(); ?>
+        </div>
+    </div>
+    <div id="matching-styles" class="category-tab" data-role="content">
+        <label>Matching Styles <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
+        <div class="content">
+            <?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
+            $categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
+            <?= /* @escapeNotVerified */ $this->getMatchingStyles(); ?>
+            <?php $matchingProducts = $this->getMatchingProducts(); ?>
+            <?php if(count($matchingProducts) > 0) :
+              print '<div class="c-products-grid">';
+              print '<ul>';
+              foreach ($matchingProducts as $matchingProduct) {
+                /** @var \Magento\Catalog\Model\Category\Interceptor $matchingProduct */
+                print '<li>';
+                print '<a href="' . $categoryHelper_sub->getCategoryUrl($matchingProduct) . '">';
+                print '<div>' . $matchingProduct->getName() . '</div>';
+                if($matchingProduct->getData('cb_kitchen_set') != '') {
+                  print '<div class="size-price"><b>' . $matchingProduct->getData('cb_kitchen_set') . '</b>' . $matchingProduct->getData('cb_kitchen_price') . '</div>';
+                }
+                try {
+                  print '<img src="' . $matchingProduct->getImageUrl() . '" border="0" />';
+                } catch (\Magento\Framework\Exception\LocalizedException $e) {
+
+                }
+                print '</a>';
+                print '<div><a href="' . $categoryHelper_sub->getCategoryUrl($matchingProduct)
+                  . '">Shop cabinets</a><a href="'.$matchingProduct->getData('cb_door_sample_link').'">Order sample</a></div>';
+                print '</li>';
+              }
+              print '</ul>';
+              print '</div>';
+            endif; ?>
+        </div>
+    </div>
+<?php elseif($block->getCategoryDeepLevel() == 2) : ?>
+    <h1 class="page-title"><?php print $block->getCurrentCategory()->getName(); ?></h1>
+<?php else : ?>
+
+<?php endif; ?>
+<?php if ($block->isContentMode() || $block->isMixedMode()): ?>
+    <div class="category-cms">
+        <?= $block->getCmsBlockHtml() ?>
+    </div>
+<?php endif; ?>

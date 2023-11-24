@@ -1,0 +1,22 @@
+<?php
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 30/09/2019
+ * Time: 21:11
+ */
+?>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDDHKRG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="header info">
+  <?=$block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-header-top-left')->toHtml();?>
+  <div class="my-account-block">
+    <a href="/customer/account">My Account</a>
+  </div>
+  <?php echo $this->getChildHtml('topLinks'); ?>
+  <div class="phone-block">
+    <?=strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-header-top-phone')
+                    ->toHtml(), '<a>');?>
+  </div>
+  <?php echo $this->getChildHtml('topSearch'); ?>
+</div>

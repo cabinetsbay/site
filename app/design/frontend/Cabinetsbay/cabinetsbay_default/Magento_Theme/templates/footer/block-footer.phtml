@@ -1,0 +1,70 @@
+<?php
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 07/10/2019
+ * Time: 00:28
+ */
+?>
+<div class="footer customlinks">
+  <div class="customlinks-col-1">
+    <span class="submenu-toggle" data-role="trigger" tabindex="0"></span>
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-1')
+                    ->toHtml(), '<a><p><ul><li><strong><br>');
+    ?></div>
+  <div class="customlinks-col-2">
+    <span class="submenu-toggle" data-role="trigger" tabindex="0"></span>
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-2')
+                    ->toHtml(), '<a><p><ul><li><strong><br>');
+    ?></div>
+  <div class="customlinks-col-3">
+    <span class="submenu-toggle" data-role="trigger" tabindex="0"></span>
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-3')
+                    ->toHtml(), '<a><p><ul><li><strong><br>');
+    ?></div>
+  <div class="customlinks-col-4">
+    <span class="submenu-toggle" data-role="trigger" tabindex="0"></span>
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-4')
+                    ->toHtml(), '<a><p><ul><li><strong><br>');
+    ?></div>
+</div>
+<div class="footer signs">
+    <?=strip_tags($block
+        ->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('footer-icons')
+        ->toHtml(), '<a><img><br><div>');
+    ?>
+</div>
+<div class="footer social">
+  <div class="social-col-1">
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-social')
+                    ->toHtml(), '<a><p><strong><br><img>');
+    ?>
+  </div>
+  <div class="social-col-2">
+    <?=strip_tags($block
+                    ->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('block-footer-we-accept')
+                    ->toHtml(), '<a><p><strong><br><img><span>');
+    ?>
+  </div>
+</div>
+<a id="backTop" href="#maincontent">Top</a>

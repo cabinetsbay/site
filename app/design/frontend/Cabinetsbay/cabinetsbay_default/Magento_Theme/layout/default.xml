@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 30/09/2019
+ * Time: 21:11
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceBlock name="register-link" remove="true" / -->
+        <referenceBlock name="header" remove="true" />
+        <referenceBlock name="advanced-search-link" remove="true" />
+        <referenceBlock name="skip_to_content" remove="true" />
+        <referenceBlock name="navigation.sections" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="report.bugs" remove="true" />
+        <referenceContainer name="catalog.leftnav" remove="true" />
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <referenceBlock name="view.addto.wishlist" remove="true" />
+        <referenceBlock name="category.product.addto.compare" remove="true"/>
+        <referenceBlock name="product.info.mailto" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+
+        <referenceContainer name="after.body.start">
+            <block name="custom">
+                <arguments>
+                    <argument name="text" xsi:type="string"><![CDATA[<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDDHKRG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>]]></argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header.container">
+            <block class="Magento\Framework\View\Element\Template" name="block_header" as="block_header"
+                   template="Magento_Theme::header/block-header.phtml" before="-" />
+            <block class="Sharapov\Cabinetsbay\Block\ExploreMenu" name="block_header_menu" as="block_header_menu"
+                   template="Magento_Theme::header/block-header-menu.phtml" />
+
+        </referenceContainer>
+
+        <!--referenceContainer name="header.panel">
+
+        </referenceContainer-->
+
+        <!--referenceBlock name="top.links">
+            <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link"
+                   template="account/link/authorization.phtml"/>
+        </referenceBlock-->
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="block_footer" as="block_footer"
+                   template="Magento_Theme::footer/block-footer.phtml"  before="-" />
+        </referenceContainer>
+
+        <move element="form.subscribe" destination="footer-container" before="-"/>
+        <move element="top.search" destination="block_header" />
+        <move element="top.links" destination="block_header" />
+        <move element="logo" destination="block_header_menu" />
+        <move element="minicart" destination="block_header_menu" />
+    </body>
+</page>
+
+

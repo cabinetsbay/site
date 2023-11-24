@@ -1,0 +1,69 @@
+<?php
+/**
+ * @copyright Sharapov A. <alexander@sharapov.biz>
+ * @link      http://www.sharapov.biz/
+ * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
+ * Date: 30/09/2019
+ * Time: 21:11
+ */
+/** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
+/** @var \Magento\Catalog\Model\Category $subcategory */
+/** @var \Magento\Catalog\Helper\Output $_outputhelper */
+$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
+$_outputhelper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<div class="header links">
+    <div id="mobile-navigation" data-collapsible="true" role="tab" aria-selected="false" aria-expanded="false" class="">
+      <div class="mobile-navigation-opener" data-role="mobile-menu-toggle" tabindex="0">
+        <span class="toggle-icon"><span class="toggle-icon-inner"></span></span>
+      </div>
+      <div class="mobile-navigation-popup" data-role="mobile-navigation-popup">
+        <div class="mobile-menu-links" data-role="mobile-menu-links">
+          <ul role="tablist">
+            <li class="parent _hasSubmenu _closed" data-collapsible="true" role="tab" aria-selected="false"
+                aria-expanded="false">
+              <div class="link-wrapper">
+                <a href="#" title="Shop Cabinets">Explore Cabinets</a>
+                <span class="submenu-toggle" data-role="trigger" tabindex="0"></span>
+              </div>
+              <?php if(!is_null($block->getExploreCategories())) : ?>
+              <ul class="submenu" data-role="content">
+                  <?php foreach ($block->getExploreCategories() as $subcategory) : ?>
+                      <li><a href="<?=$categoryHelper_sub->getCategoryUrl($subcategory)?>"><?=$subcategory->getName();?></a></li>
+                  <?php endforeach; ?>
+              </ul>
+              <?php endif; ?>
+            </li>
+            <li><a href="/kitchen-design-assistance.html">Free design</a></li>
+            <li><a href="/get-a-price-quote.html">Get a quote</a></li>
+            <li><a href="/sample-doors.html">Door samples</a></li>
+            <li><a href="/frequently-asked-questions.html">Support</a></li>
+          </ul>
+        </div>
+        <div class="bottom-links">
+          <a href="tel:<?=preg_replace('/\D+/', '', strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-header-top-phone')->toHtml()));?>" class="call-us menu-item link-as-button"><span class="icon"><i class="fal fa-phone"></i></span> <span class="text"><?=strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-header-top-phone')->toHtml());?></span></a>
+          <a href="/customer/account" class="login link-as-button">My Account</a>
+        </div>
+      </div>
+    </div>
+  <?php echo $this->getChildHtml('logo'); ?>
+  <ul class="submenu">
+    <li><a href="#">Explore Cabinets</a>
+        <div class="explore-menu">
+            <div class="explore-menu-items">
+                <?php $imgs = ''; ?>
+                <?php $b = 0; foreach ($block->getExploreCategories() as $i => $subcategory) : ?>
+                    <?php $imgs.= '<img id="img'.$i.'" src="'.$subcategory->getImageUrl().'" style="'.(($b > 0) ? 'display: none;':'').'" />'; ?>
+                    <a class="<?=(($b==0)?'act':'');?>" id="show<?php print 'img'.$i;?>" data-showimg="<?php print 'img'.$i;?>" href="<?=$categoryHelper_sub->getCategoryUrl($subcategory)?>"><?=$subcategory->getName();?><span></span></a>
+                <?php $b++; endforeach; ?>
+            </div>
+            <div id="explore-menu-images" class="explore-menu-images">
+                <?php print $imgs; ?>
+            </div>
+        </div>
+    </li>
+    <li><a href="/kitchen-design-assistance.html">Free Design</a></li>
+    <li><a href="/get-a-price-quote.html">Get a Quote</a></li>
+    <li><a href="/sample-doors.html">Samples</a></li>
+  </ul>
+  <?php echo $this->getChildHtml('minicart'); ?>
+</div>

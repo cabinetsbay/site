@@ -1,0 +1,7 @@
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+    <title>Cabinetsbay theme</title>
+    <parent>Magento/blank</parent>
+    <media>
+        <preview_image>media/preview_image_5d7a34a2e16bd.jpg</preview_image>
+    </media>
+</theme>
