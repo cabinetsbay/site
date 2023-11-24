@@ -8,6 +8,7 @@
 !/.gitignore
 !/composer.json
 !/readme.md
+!/app/design/frontend/Cabinetsbay/**/*
 /update/
 /vendor/aws/aws-crt-php
 /vendor/magento/framework/Test
