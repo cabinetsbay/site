@@ -1,1 +1,1 @@
-[cabinetsbay.com](https://cabinetsbay.com) (Magento 2).
+[cabinetsbay.com](https://cabinetsbay.com) (Magento 2.4.4).
