@@ -424,7 +424,6 @@ return [
         'WeltPixel_SearchAutoComplete' => 1,
         'WeltPixel_Sitemap' => 1,
         'WeltPixel_SmartProductTabs' => 1,
-        'WeltPixel_SpeedOptimization' => 1,
         'WeltPixel_ThankYouPage' => 1,
         'WeltPixel_TitleRewrite' => 1
     ]
