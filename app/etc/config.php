@@ -401,7 +401,6 @@ return [
         'Df_Wishlist' => 1,
         'Df_Xml' => 1,
         'Df_Zf' => 1,
-        'KiwiCommerce_CronScheduler' => 0,
         'Mageplaza_Core' => 1,
         'Mageplaza_BackendReindex' => 1,
         'Mageplaza_DeleteOrders' => 1,
