@@ -21,6 +21,7 @@
         "amasty/base": "*",
         "amasty/feed": "2.6.22",
         "amasty/module-magento-custom-form": "1.17.3",
+        "amasty/module-seo-toolkit-subscription-package-premium": "*",
         "amasty/shippingtablerates": "1.10.5",
         "mage2pro/core": "*",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
