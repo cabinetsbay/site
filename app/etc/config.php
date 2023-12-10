@@ -329,7 +329,6 @@ return [
         'Amasty_Base' => 1,
         'Amasty_CommonTests' => 1,
         'Amasty_CronScheduleList' => 1,
-        'Amasty_CustomFormsLite' => 1,
         'Amasty_Customform' => 1,
         'Amasty_Feed' => 1,
         'Amasty_Geoip' => 1,
