@@ -132,11 +132,15 @@ class AdminSessionInfo extends \Magento\Framework\Model\AbstractModel
         $lifetime = $this->securityConfig->getAdminSessionLifetime();
         $currentTime = $this->dateTime->gmtTimestamp();
         $lastUpdatedTime = $this->getUpdatedAt();
-        if (!is_numeric($lastUpdatedTime)) {
-            $lastUpdatedTime = strtotime($lastUpdatedTime);
-        }
-
-        return $lastUpdatedTime <= ($currentTime - $lifetime) ? true : false;
+		# 2023-12-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) «strtotime() expects parameter 1 to be string, null given
+		# in vendor/magento/module-security/Model/AdminSessionInfo.php:136»: https://github.com/cabinetsbay/site/issues/27
+		# 2) "How did I fix «strtotime() expects parameter 1 to be string, null given
+		# in vendor/magento/module-security/Model/AdminSessionInfo.php:136»?": https://mage2.pro/t/6387
+		if (!is_numeric($lastUpdatedTime)) {
+			$lastUpdatedTime = $lastUpdatedTime === null ? 0 : strtotime($lastUpdatedTime);
+		}
+		return $lastUpdatedTime <= ($currentTime - $lifetime);
     }
 
     /**
