@@ -432,7 +432,6 @@ return [
         'WeltPixel_OwlCarouselSlider' => 1,
         'WeltPixel_ProductLabels' => 1,
         'WeltPixel_QuickCart' => 1,
-        'WeltPixel_Quickview' => 0,
         'WeltPixel_ReviewsWidget' => 1,
         'WeltPixel_SearchAutoComplete' => 1,
         'WeltPixel_Sitemap' => 1,
