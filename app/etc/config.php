@@ -327,7 +327,6 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Amasty_AdminActionsLog' => 1,
         'Amasty_Base' => 1,
-        'Amasty_CommonTests' => 1,
         'Amasty_CronScheduleList' => 1,
         'Amasty_Customform' => 1,
         'Amasty_Feed' => 1,
