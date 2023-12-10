@@ -19,6 +19,7 @@
     "require": {
         "amasty/adminactionslog": "2.0.9",
         "amasty/base": "*",
+        "amasty/feed": "2.6.22",
         "amasty/shippingtablerates": "1.10.5",
         "mage2pro/core": "*",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
