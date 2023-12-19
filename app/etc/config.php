@@ -427,7 +427,6 @@ return [
         'WeltPixel_LazyLoading' => 1,
         'WeltPixel_MobileDetect' => 1,
         'WeltPixel_Multistore' => 1,
-        'WeltPixel_NavigationLinks' => 0,
         'WeltPixel_Newsletter' => 1,
         'WeltPixel_OwlCarouselSlider' => 1,
         'WeltPixel_ProductLabels' => 1,
