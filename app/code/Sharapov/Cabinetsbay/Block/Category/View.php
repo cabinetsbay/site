@@ -78,29 +78,27 @@ class View extends \Magento\Catalog\Block\Category\View {
 	return null;
   }
 
-  function getCategoryImagesForCarousel() {
-	if($this->getSecondLevelCategoryName()) {
-	  $imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
-		. $this->getSecondLevelCategoryName()->getId();
-	  if(is_dir($imageDir)) {
-		$dh = opendir($imageDir);
-		while(false !== ($filename = readdir($dh))) {
-		  $files[] = 'wysiwyg/catalog-carousel-images/'
-			. $this->getSecondLevelCategoryName()->getId() . '/'
-			. $filename;
+	function getCategoryImagesForCarousel() {
+		if($this->getSecondLevelCategoryName()) {
+			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
+			. $this->getSecondLevelCategoryName()->getId();
+			if(is_dir($imageDir)) {
+				$dh = opendir($imageDir);
+				while(false !== ($filename = readdir($dh))) {
+					$files[] = 'wysiwyg/catalog-carousel-images/'
+					. $this->getSecondLevelCategoryName()->getId() . '/'
+					. $filename;
+				}
+				$images = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
+				unset($files);
+				if(!empty($images)) {
+					natsort($images);
+					return $images;
+				}
+			}
 		}
-		$images = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
-		unset($files);
-		if(!empty($images)) {
-		  natsort($images);
-
-		  return $images;
-		}
-	  }
+		return null;
 	}
-
-	return null;
-  }
 
   /**
    * @return string
