@@ -54,13 +54,11 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @return C|null
 	 */
 	function parent() {$r = null; /** @var C|null $r */
-		if ($this->getCurrentCategory()) {
-			if ($this->getCurrentCategory()->getParentCategories()) {
-				foreach ($this->getCurrentCategory()->getParentCategories() as $parent) {
-					if ($parent->getLevel() == 3) {
-						$r = df_category($parent->getId());
-						break;
-					}
+		if (($c = $this->getCurrentCategory()) && ($pp = $c->getParentCategories())) {
+			foreach ($pp as $p) {
+				if ($p->getLevel() == 3) {
+					$r = df_category($p->getId());
+					break;
 				}
 			}
 		}
