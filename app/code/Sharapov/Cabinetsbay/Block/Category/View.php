@@ -78,6 +78,10 @@ class View extends \Magento\Catalog\Block\Category\View {
 	return null;
   }
 
+	/**
+	 * 2024-01-02
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml:27
+	 */
 	function getCategoryImagesForCarousel() {
 		if($this->getSecondLevelCategoryName()) {
 			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
