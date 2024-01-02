@@ -32,7 +32,7 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 					<?php var_dump($_SERVER['REMOTE_ADDR']); ?>
 				</div>
 
-				<?php if (is_array($carouselImages) and count($carouselImages) > 0) : ?>
+				<?php if (is_array($carouselImages) and count($carouselImages) > 0) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($carouselImages as $carouselImage) : ?>
 							<li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
@@ -54,8 +54,7 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 								});
 							});
 					</script>
-				<?php else : ?>
-				<?php
+				<?php } else {
 				/** @var \Magento\Catalog\Helper\Output $_helper */
 				$_helper    = $this->helper('Magento\Catalog\Helper\Output');
 				//$_category  = $block->getCurrentCategory();
@@ -69,7 +68,7 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 				} catch (\Magento\Framework\Exception\LocalizedException $e) {
 
 				}
-				endif;
+				}
 				?>
 			</div>
 			<div class="category-tab-right">
