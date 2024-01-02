@@ -71,11 +71,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @return array(string => string)
 	 */
 	function getCategoryImagesForCarousel():array {$r = []; /** @var array(string => string)  $r */
-		if ($this->parent()) {
-			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
-			. $this->parent()->getId();
-			if (is_dir($imageDir)) {
-				$dh = opendir($imageDir);
+		if ($p = $this->parent()) {
+			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/' . $p->getId())) {
+				$dh = opendir($d);
 				while (false !== ($filename = readdir($dh))) {
 					$files[] = 'wysiwyg/catalog-carousel-images/'
 					. $this->parent()->getId() . '/'
