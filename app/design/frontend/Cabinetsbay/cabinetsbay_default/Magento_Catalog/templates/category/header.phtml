@@ -32,7 +32,7 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 					<?php var_dump($_SERVER['REMOTE_ADDR']); ?>
 				</div>
 
-				<?php if (is_array($carouselImages) and count($carouselImages) > 0) { ?>
+				<?php if ($carouselImages) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($carouselImages as $carouselImage) : ?>
 							<li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
