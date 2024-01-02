@@ -20,11 +20,9 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php $carouselImages = $block->getCategoryImagesForCarousel(); ?>
-
 				<div style="display: none;">
 					<?php var_dump($_SERVER['REMOTE_ADDR']); ?>
 				</div>
-
 				<?php if ($carouselImages) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($carouselImages as $carouselImage) : ?>
