@@ -1,11 +1,5 @@
 <?php
-/**
- * @copyright Sharapov A. <alexander@sharapov.biz>
- * @link      http://www.sharapov.biz/
- * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
- * Date: 30.10.2019
- * Time: 23:28
- */
+use Magento\Catalog\Helper\Output as O;
 /**
  * @var $block \Magento\Catalog\Block\Category\View
  * @var $secondLevelCategory \Magento\Catalog\Block\Category\View
@@ -55,19 +49,16 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 							});
 					</script>
 				<?php } else {
-				/** @var \Magento\Catalog\Helper\Output $_helper */
-				$_helper    = $this->helper('Magento\Catalog\Helper\Output');
-				//$_category  = $block->getCurrentCategory();
-				$_imgHtml   = '';
-				try {
-					if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
-						$_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>';
-						$_imgHtml = $_helper->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
-						/* @escapeNotVerified */ echo $_imgHtml;
-					}
-				} catch (\Magento\Framework\Exception\LocalizedException $e) {
-
-				}
+					$_helper = $this->helper(O::class); /** @var O $_helper */
+					//$_category  = $block->getCurrentCategory();
+					$_imgHtml   = '';
+					try {
+						if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
+							$_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>';
+							$_imgHtml = $_helper->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
+							/* @escapeNotVerified */ echo $_imgHtml;
+						}
+					} catch (\Magento\Framework\Exception\LocalizedException $e) {}
 				}
 				?>
 			</div>
