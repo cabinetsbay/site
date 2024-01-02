@@ -1,16 +1,7 @@
 <?php
-/**
- * @copyright Sharapov A. <alexander@sharapov.biz>
- * @link      http://www.sharapov.biz/
- * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
- * Date: 28.10.2019
- * Time: 23:42
- */
-
 namespace Sharapov\Cabinetsbay\Block\Category;
-
+use Magento\Catalog\Model\Category as C;
 use Magento\Framework\App\Filesystem\DirectoryList;
-
 class View extends \Magento\Catalog\Block\Category\View {
   function getCategoryProducts() {
 	$objectManager_sub = $objectManager
@@ -58,8 +49,11 @@ class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-01-02
 	 * @used-by self::getCategoryImagesForCarousel()
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
+	 * @return C|null
 	 */
-	function getSecondLevelCategoryName() {
+	function parent() {
 		if ($this->getCurrentCategory()) {
 			if ($this->getCurrentCategory()->getParentCategories()) {
 				foreach ($this->getCurrentCategory()->getParentCategories() as $parent) {
@@ -80,14 +74,14 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml:27
 	 */
 	function getCategoryImagesForCarousel() {
-		if ($this->getSecondLevelCategoryName()) {
+		if ($this->parent()) {
 			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
-			. $this->getSecondLevelCategoryName()->getId();
+			. $this->parent()->getId();
 			if (is_dir($imageDir)) {
 				$dh = opendir($imageDir);
 				while (false !== ($filename = readdir($dh))) {
 					$files[] = 'wysiwyg/catalog-carousel-images/'
-					. $this->getSecondLevelCategoryName()->getId() . '/'
+					. $this->parent()->getId() . '/'
 					. $filename;
 				}
 				$images = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
@@ -109,7 +103,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->getSecondLevelCategoryName()->getData('cb_specs')
+		  (string)$this->parent()->getData('cb_specs')
 	  );
   }
 
@@ -121,7 +115,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->getSecondLevelCategoryName()->getData('cb_assembly')
+		  (string)$this->parent()->getData('cb_assembly')
 	  );
   }
 
@@ -133,7 +127,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->getSecondLevelCategoryName()->getData('cb_styles')
+		  (string)$this->parent()->getData('cb_styles')
 	  );
   }
 
@@ -142,7 +136,7 @@ class View extends \Magento\Catalog\Block\Category\View {
    */
   function getMatchingProducts(): array
   {
-	$ids = $this->getSecondLevelCategoryName()->getData('cb_matching_products');
+	$ids = $this->parent()->getData('cb_matching_products');
 
 	$ids = ($ids) ? explode(",", $ids) : [];
 	$matchingCategories = [];

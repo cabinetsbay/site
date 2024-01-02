@@ -212,7 +212,7 @@ if ($block->getCategoryDeepLevel() == 2) :
 <?php if ($block->getCategoryDeepLevel() >= 3) : ?>
 
     <?php
-    $sndLevelCategories = $block->getSecondLevelCategoryName();
+    $sndLevelCategories = $block->parent();
     if($sndLevelCategories) {
         $subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
     } else {
