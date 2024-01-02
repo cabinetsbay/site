@@ -18,13 +18,13 @@ if($b->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
-						<?php foreach ($ii as $i) : ?>
-							<li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
-								->getBaseUrl() . $i; ?>" data-src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl() . $i; ?>">
-								<img src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
-									->getBaseUrl() . $i; ?>" />
+						<?php foreach ($ii as $i => $alt) {
+							$u = df_media_path2url($i);
+						?>
+							<li data-thumb="<?= $u ?>" data-src="<?= $u ?>">
+								<img src="<?= $u ?>" />
 							</li>
-						<?php endforeach; ?>
+						<?php } ?>
 					</ul>
 					<script>
 						require(['jquery', 'domReady!'], function($) {

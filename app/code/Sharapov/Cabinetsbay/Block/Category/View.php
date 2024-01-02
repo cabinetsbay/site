@@ -79,6 +79,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 					$ff[] = 'wysiwyg/catalog-carousel-images/' . $p->getId() . '/' . $f;
 				}
 				$r = df_sort(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)));
+				$r = array_combine($r, $r);
 			}
 		}
 		return $r;
