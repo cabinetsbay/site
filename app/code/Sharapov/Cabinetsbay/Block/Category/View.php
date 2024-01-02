@@ -83,19 +83,19 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml:27
 	 */
 	function getCategoryImagesForCarousel() {
-		if($this->getSecondLevelCategoryName()) {
+		if ($this->getSecondLevelCategoryName()) {
 			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
 			. $this->getSecondLevelCategoryName()->getId();
-			if(is_dir($imageDir)) {
+			if (is_dir($imageDir)) {
 				$dh = opendir($imageDir);
-				while(false !== ($filename = readdir($dh))) {
+				while (false !== ($filename = readdir($dh))) {
 					$files[] = 'wysiwyg/catalog-carousel-images/'
 					. $this->getSecondLevelCategoryName()->getId() . '/'
 					. $filename;
 				}
 				$images = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
 				unset($files);
-				if(!empty($images)) {
+				if (!empty($images)) {
 					natsort($images);
 					return $images;
 				}
