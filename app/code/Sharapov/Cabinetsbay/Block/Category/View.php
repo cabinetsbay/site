@@ -71,15 +71,16 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @return array(string => string)
 	 */
 	function images():array {$r = []; /** @var array(string => string)  $r */
+		$path = 'wysiwyg/catalog-carousel-images/'; /** @var string $path */
 		if ($p = $this->parent()) {
-			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/' . $p->getId())) {
+			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/' . $path . $p->getId())) {
 				$dh = opendir($d);
 				$ff = [];
 				while (false !== ($f = readdir($dh))) {
 					$ff[] = 'wysiwyg/catalog-carousel-images/' . $p->getId() . '/' . $f;
 				}
-				$r = df_sort(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)));
-				$r = array_combine($r, $r);
+				$r = df_sort(df_trim_text_left(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)), $path));
+				$r = array_combine($r, df_mvar_n($r));
 			}
 		}
 		return $r;
