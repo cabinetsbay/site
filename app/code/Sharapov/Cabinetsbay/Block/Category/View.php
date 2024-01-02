@@ -64,7 +64,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 			if ($this->getCurrentCategory()->getParentCategories()) {
 				foreach ($this->getCurrentCategory()->getParentCategories() as $parent) {
 					if ($parent->getLevel() == 3) {
-						$objectManager_sub = $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+						$objectManager_sub = \Magento\Framework\App\ObjectManager::getInstance();
 						$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
 						// returns the level 2 category id;
 						return $category->load($parent->getId());
