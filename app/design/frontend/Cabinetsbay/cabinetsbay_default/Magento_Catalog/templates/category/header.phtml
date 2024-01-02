@@ -16,7 +16,7 @@ if($b->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 		<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
-				<?php if ($ii = $b->getCategoryImagesForCarousel()) { ?>
+				<?php if ($ii = $b->images()) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($ii as $i) : ?>
 							<li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
