@@ -1,12 +1,9 @@
 <?php
-/**
- * @var $block \Magento\Catalog\Block\Category\View
- * @var $secondLevelCategory \Magento\Catalog\Block\Category\View
- */
-
-$secondLevelCategory = $block->getSecondLevelCategoryName();
-if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
-	<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $block->getRootCategoryName();?></sub></h1>
+use Magento\Catalog\Block\Category\View;
+/** @var View $block */ $b = $block; /** @var View $b */
+$secondLevelCategory = $b->getSecondLevelCategoryName(); /** @var View $secondLevelCategory */
+if($b->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
+	<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -16,13 +13,10 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $block->getRootCategoryName();?></sub></h1>
+		<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
-				<?php $ii = $block->getCategoryImagesForCarousel(); ?>
-				<div style="display: none;">
-					<?php var_dump($_SERVER['REMOTE_ADDR']); ?>
-				</div>
+				<?php $ii = $b->getCategoryImagesForCarousel(); ?>
 				<?php if ($ii) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($ii as $i) : ?>
@@ -123,13 +117,13 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 			endif; ?>
 		</div>
 	</div>
-<?php elseif($block->getCategoryDeepLevel() == 2) : ?>
-	<h1 class="page-title"><?php print $block->getCurrentCategory()->getName(); ?></h1>
+<?php elseif($b->getCategoryDeepLevel() == 2) : ?>
+	<h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1>
 <?php else : ?>
 
 <?php endif; ?>
-<?php if ($block->isContentMode() || $block->isMixedMode()): ?>
+<?php if ($b->isContentMode() || $b->isMixedMode()): ?>
 	<div class="category-cms">
-		<?= $block->getCmsBlockHtml() ?>
+		<?= $b->getCmsBlockHtml() ?>
 	</div>
 <?php endif; ?>
