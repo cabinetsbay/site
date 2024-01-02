@@ -19,17 +19,17 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 		<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $block->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
-				<?php $carouselImages = $block->getCategoryImagesForCarousel(); ?>
+				<?php $ii = $block->getCategoryImagesForCarousel(); ?>
 				<div style="display: none;">
 					<?php var_dump($_SERVER['REMOTE_ADDR']); ?>
 				</div>
-				<?php if ($carouselImages) { ?>
+				<?php if ($ii) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
-						<?php foreach ($carouselImages as $carouselImage) : ?>
+						<?php foreach ($ii as $i) : ?>
 							<li data-thumb="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
-								->getBaseUrl() . $carouselImage; ?>" data-src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl() . $carouselImage; ?>">
+								->getBaseUrl() . $i; ?>" data-src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl() . $i; ?>">
 								<img src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')
-									->getBaseUrl() . $carouselImage; ?>" />
+									->getBaseUrl() . $i; ?>" />
 							</li>
 						<?php endforeach; ?>
 					</ul>
