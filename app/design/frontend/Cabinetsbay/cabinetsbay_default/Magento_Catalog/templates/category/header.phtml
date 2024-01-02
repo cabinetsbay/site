@@ -19,12 +19,10 @@ if($b->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 				<?php if ($ii = $b->images()) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
 						<?php foreach ($ii as $i => $alt) {
-							$u = df_media_path2url($i);
-						?>
-							<li data-thumb="<?= $u ?>" data-src="<?= $u ?>">
-								<img src="<?= $u ?>" />
-							</li>
-						<?php } ?>
+							echo df_tag('li', ['data-src' => $u = df_media_path2url($i), 'data-thumb' => $u], df_tag('img', [
+								'alt' => $alt,'src' => $u
+							]));
+						} ?>
 					</ul>
 					<script>
 						require(['jquery', 'domReady!'], function($) {
