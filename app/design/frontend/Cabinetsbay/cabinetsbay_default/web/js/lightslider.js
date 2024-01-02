@@ -358,7 +358,20 @@
                         }
                         var thumb = $children.eq(i * settings.slideMove).attr('data-thumb');
                         if (settings.gallery === true) {
-                            pagers += '<li style="width:100%;' + property + ':' + thumbWidth + 'px;' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" /></a></li>';
+							// 2024-01-02 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+							// "Provide an ability to specify the `ALT` HTML attribute's value for category images":
+							// https://github.com/cabinetsbay/site/issues/97
+							let $li = $('<li>').attr({
+								style:
+									'width:100%;'
+									+ property + ':' + thumbWidth + 'px;'
+									+ gutter + ':' + settings.thumbMargin + 'px'
+							});
+							let $a = $('<a>').attr('href', '#');
+							let title = $children.eq(i * settings.slideMove).children('img').attr('title');
+							$a.append($('<img>').attr({alt: title, src: thumb, title: title}));
+							$li.append($a);
+                            pagers += $li[0].outerHTML;
                         } else {
                             pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
                         }

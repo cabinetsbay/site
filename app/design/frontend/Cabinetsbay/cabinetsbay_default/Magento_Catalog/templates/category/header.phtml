@@ -18,9 +18,11 @@ if($b->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
 					<ul id="category-gallery" class="gallery list-unstyled cS-hidden">
-						<?php foreach ($ii as $i => $alt) {
-							echo df_tag('li', ['data-src' => $u = df_media_path2url($i), 'data-thumb' => $u], df_tag('img', [
-								'alt' => $alt,'src' => $u
+						<?php foreach ($ii as $i => $title) {
+							echo df_tag('li', [
+								'data-src' => $u = df_media_path2url($i), 'data-thumb' => $u
+							], df_tag('img', [
+								'alt' => $title,'src' => $u, 'title' => $title
 							]));
 						} ?>
 					</ul>
