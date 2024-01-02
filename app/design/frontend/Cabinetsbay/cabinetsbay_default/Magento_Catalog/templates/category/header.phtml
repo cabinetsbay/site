@@ -36,16 +36,13 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 						<?php endforeach; ?>
 					</ul>
 					<script>
-						require(['jquery'],
-							function ($) {
-								$(document).ready(function() {
-									let totalWidth = 0;
-									$('.owl-thumb-item').each(function(index) {
-										totalWidth += parseInt($(this).width(), 10);
-									});
-									$('.owl-thumbs').css('width', (totalWidth + 20)+'px');
-								});
+						require(['jquery', 'domReady!'], function($) {
+							let totalWidth = 0;
+							$('.owl-thumb-item').each(function() {
+								totalWidth += parseInt($(this).width(), 10);
 							});
+							$('.owl-thumbs').css('width', (totalWidth + 20)+'px');
+						});
 					</script>
 				<?php }
 				else {
