@@ -55,28 +55,25 @@ class View extends \Magento\Catalog\Block\Category\View {
 	return '';
   }
 
-  function getSecondLevelCategoryName() {
-	if($this->getCurrentCategory()) {
-	  if($this->getCurrentCategory()->getParentCategories()) {
-		foreach(
-		  $this->getCurrentCategory()->getParentCategories() as
-		  $parent
-		) {
-		  if($parent->getLevel() == 3) {
-			$objectManager_sub = $objectManager
-			  = \Magento\Framework\App\ObjectManager::getInstance();
-			$category
-			  = $objectManager_sub->get('Magento\Catalog\Model\Category');
-
-			// returns the level 2 category id;
-			return $category->load($parent->getId());
-		  }
+	/**
+	 * 2024-01-02
+	 * @used-by self::getCategoryImagesForCarousel()
+	 */
+	function getSecondLevelCategoryName() {
+		if ($this->getCurrentCategory()) {
+			if ($this->getCurrentCategory()->getParentCategories()) {
+				foreach ($this->getCurrentCategory()->getParentCategories() as $parent) {
+					if ($parent->getLevel() == 3) {
+						$objectManager_sub = $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+						$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
+						// returns the level 2 category id;
+						return $category->load($parent->getId());
+					}
+				}
+			}
 		}
-	  }
+		return null;
 	}
-
-	return null;
-  }
 
 	/**
 	 * 2024-01-02
