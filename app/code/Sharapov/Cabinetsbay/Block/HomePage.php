@@ -23,7 +23,7 @@ class HomePage extends \Magento\Framework\View\Element\Template
      * @param \Magento\Checkout\Model\Session                  $checkoutSession
      * @param array                                            $data
      */
-    public function __construct(
+    function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         array $data = []
@@ -35,7 +35,7 @@ class HomePage extends \Magento\Framework\View\Element\Template
     /**
      * @return array
      */
-    public function getPopularProducts(): array
+    function getPopularProducts(): array
     {
         $ids = $this->scopeConfig->getValue(self::XML_CONFIG_POPULAR_PRODUCTS,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE);

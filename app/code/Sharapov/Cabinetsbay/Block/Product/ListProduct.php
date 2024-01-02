@@ -32,7 +32,7 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
    * @param Data $urlHelper
    * @param array $data
    */
-  public function __construct(
+  function __construct(
     Context $context,
     PostHelper $postDataHelper,
     Resolver $layerResolver,
@@ -54,15 +54,15 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
     }
   }
 
-  public function getCurrentCategory() {
+  function getCurrentCategory() {
     return $this->getLayer()->getCurrentCategory();
   }
 
-  public function getCategoryDeepLevel() {
+  function getCategoryDeepLevel() {
     return $this->getCurrentCategory()->getLevel();
   }
 
-  public function isMobile() {
+  function isMobile() {
     return $this->_mobileDetector->isMobile() || $this->_mobileDetector->isTablet();
   }
 
@@ -70,7 +70,7 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
    * Retrieve current view mode
    * @return string
    */
-  public function getMode() {
+  function getMode() {
     if($this->isMobile()) {
 
       // Force grid view on mobile

@@ -11,7 +11,7 @@ namespace Sharapov\Cabinetsbay\Block;
 
 class ExploreMenu extends \Magento\Framework\View\Element\Template
 {
-    public function getExploreCategories() {
+    function getExploreCategories() {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $subCategory = $objectManager->create('Magento\Catalog\Model\Category')->load(2);
 

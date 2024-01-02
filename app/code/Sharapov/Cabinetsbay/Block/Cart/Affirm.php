@@ -10,7 +10,7 @@
 namespace Sharapov\Cabinetsbay\Block\Cart;
 
 class Affirm extends \Magento\Catalog\Block\Category\View {
-  public function getGrandTotal() {
+  function getGrandTotal() {
     $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
     $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
     return $cart->getQuote()->getGrandTotal();

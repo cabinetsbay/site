@@ -24,7 +24,7 @@ class UpgradeData implements UpgradeDataInterface {
    *
    * @param EavSetupFactory $eavSetupFactory
    */
-  public function __construct(EavSetupFactory $eavSetupFactory) {
+  function __construct(EavSetupFactory $eavSetupFactory) {
     $this->eavSetupFactory = $eavSetupFactory;
   }
 
@@ -32,7 +32,7 @@ class UpgradeData implements UpgradeDataInterface {
    * {@inheritdoc}
    * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
-  public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
+  function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
     $setup->startSetup();
 
     /** @var EavSetup $eavSetup */

@@ -32,12 +32,12 @@ class InstallData implements InstallDataInterface {
    * @param EavSetupFactory $eavSetupFactory
    * @pram \Magento\Framework\Module\Manager $moduleManager
    */
-  public function __construct(EavSetupFactory $eavSetupFactory, \Magento\Framework\Module\Manager $moduleManager) {
+  function __construct(EavSetupFactory $eavSetupFactory, \Magento\Framework\Module\Manager $moduleManager) {
     $this->eavSetupFactory = $eavSetupFactory;
     $this->moduleManager = $moduleManager;
   }
 
-  public function install(
+  function install(
     ModuleDataSetupInterface $setup,
     ModuleContextInterface $context
   ) {

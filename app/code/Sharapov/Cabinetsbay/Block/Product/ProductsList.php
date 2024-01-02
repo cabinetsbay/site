@@ -47,7 +47,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList {
    * @param \Magento\Framework\Url\EncoderInterface|null $urlEncoder
    * @SuppressWarnings(PHPMD.ExcessiveParameterList)
    */
-  public function __construct(
+  function __construct(
     \Magento\Catalog\Block\Product\Context $context,
     CollectionFactory $productCollectionFactory,
     Visibility $catalogProductVisibility,
@@ -70,7 +70,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList {
    * Retrieve current view mode
    * @return string
    */
-  public function getMode() {
+  function getMode() {
     if($this->isMobile()) {
 
       // Force grid view on mobile
@@ -80,7 +80,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList {
     return 'list';
   }
 
-  public function isMobile() {
+  function isMobile() {
     return $this->_mobileDetector->isMobile() || $this->_mobileDetector->isTablet();
   }
 }

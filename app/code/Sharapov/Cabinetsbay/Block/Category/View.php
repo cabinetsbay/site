@@ -12,7 +12,7 @@ namespace Sharapov\Cabinetsbay\Block\Category;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
 class View extends \Magento\Catalog\Block\Category\View {
-  public function getCategoryProducts() {
+  function getCategoryProducts() {
     $objectManager_sub = $objectManager
       = \Magento\Framework\App\ObjectManager::getInstance();
     $category = $objectManager_sub->get('Magento\Catalog\Model\Category');
@@ -25,19 +25,19 @@ class View extends \Magento\Catalog\Block\Category\View {
       ->setOrder('position', 'ASC');
   }
 
-  public function getCategoryDeepLevel() {
+  function getCategoryDeepLevel() {
     return $this->getCurrentCategory()->getLevel();
   }
 
-  public function isRTA() {
+  function isRTA() {
     return ($this->getCurrentCategory()->getId() == 3411);
   }
 
-  public function isPA() {
+  function isPA() {
     return ($this->getCurrentCategory()->getId() == 4036);
   }
 
-  public function getRootCategoryName() {
+  function getRootCategoryName() {
     if($this->getCurrentCategory()) {
       if($this->getCurrentCategory()->getParentCategories()) {
         foreach(
@@ -55,7 +55,7 @@ class View extends \Magento\Catalog\Block\Category\View {
     return '';
   }
 
-  public function getSecondLevelCategoryName() {
+  function getSecondLevelCategoryName() {
     if($this->getCurrentCategory()) {
       if($this->getCurrentCategory()->getParentCategories()) {
         foreach(
@@ -78,7 +78,7 @@ class View extends \Magento\Catalog\Block\Category\View {
     return null;
   }
 
-  public function getCategoryImagesForCarousel() {
+  function getCategoryImagesForCarousel() {
     if($this->getSecondLevelCategoryName()) {
       $imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
         . $this->getSecondLevelCategoryName()->getId();
@@ -105,7 +105,7 @@ class View extends \Magento\Catalog\Block\Category\View {
   /**
    * @return string
    */
-  public function getSpecifications() {
+  function getSpecifications() {
     return \Magento\Framework\App\ObjectManager::getInstance()
       ->get('Magento\Cms\Model\Template\FilterProvider')
       ->getPageFilter()
@@ -117,7 +117,7 @@ class View extends \Magento\Catalog\Block\Category\View {
   /**
    * @return string
    */
-  public function getCabinetAssembly() {
+  function getCabinetAssembly() {
     return \Magento\Framework\App\ObjectManager::getInstance()
       ->get('Magento\Cms\Model\Template\FilterProvider')
       ->getPageFilter()
@@ -129,7 +129,7 @@ class View extends \Magento\Catalog\Block\Category\View {
   /**
    * @return string
    */
-  public function getMatchingStyles() {
+  function getMatchingStyles() {
     return \Magento\Framework\App\ObjectManager::getInstance()
       ->get('Magento\Cms\Model\Template\FilterProvider')
       ->getPageFilter()
@@ -141,7 +141,7 @@ class View extends \Magento\Catalog\Block\Category\View {
   /**
    * @return array
    */
-  public function getMatchingProducts(): array
+  function getMatchingProducts(): array
   {
     $ids = $this->getSecondLevelCategoryName()->getData('cb_matching_products');
 
