@@ -53,20 +53,18 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 * @return C|null
 	 */
-	function parent() {
+	function parent() {$r = null; /** @var C|null $r */
 		if ($this->getCurrentCategory()) {
 			if ($this->getCurrentCategory()->getParentCategories()) {
 				foreach ($this->getCurrentCategory()->getParentCategories() as $parent) {
 					if ($parent->getLevel() == 3) {
-						$objectManager_sub = \Magento\Framework\App\ObjectManager::getInstance();
-						$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
-						// returns the level 2 category id;
-						return $category->load($parent->getId());
+						$r = df_category($parent->getId());
+						break;
 					}
 				}
 			}
 		}
-		return null;
+		return $r;
 	}
 
 	/**
