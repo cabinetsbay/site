@@ -1,5 +1,4 @@
 <?php
-use Magento\Catalog\Helper\Output as O;
 /**
  * @var $block \Magento\Catalog\Block\Category\View
  * @var $secondLevelCategory \Magento\Catalog\Block\Category\View
@@ -49,12 +48,11 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 							});
 					</script>
 				<?php } else {
-					$_helper = $this->helper(O::class); /** @var O $_helper */
 					$_imgHtml   = '';
 					try {
 						if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
 							$_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>';
-							$_imgHtml = $_helper->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
+							$_imgHtml = df_catalog_output()->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
 							/* @escapeNotVerified */ echo $_imgHtml;
 						}
 					} catch (\Magento\Framework\Exception\LocalizedException $e) {}
