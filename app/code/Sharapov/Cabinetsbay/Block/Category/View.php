@@ -68,8 +68,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-01-02
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml:27
+	 * @return array(string => string)
 	 */
-	function getCategoryImagesForCarousel() {
+	function getCategoryImagesForCarousel():array {$r = []; /** @var array(string => string)  $r */
 		if ($this->parent()) {
 			$imageDir = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/'
 			. $this->parent()->getId();
@@ -80,15 +81,14 @@ class View extends \Magento\Catalog\Block\Category\View {
 					. $this->parent()->getId() . '/'
 					. $filename;
 				}
-				$images = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
+				$r = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
 				unset($files);
-				if (!empty($images)) {
-					natsort($images);
-					return $images;
+				if (!empty($r)) {
+					natsort($r);
 				}
 			}
 		}
-		return null;
+		return $r;
 	}
 
   /**
