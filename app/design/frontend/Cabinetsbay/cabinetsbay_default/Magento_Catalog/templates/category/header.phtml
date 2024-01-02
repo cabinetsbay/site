@@ -47,13 +47,15 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 								});
 							});
 					</script>
-				<?php } else {
-					$_imgHtml   = '';
+				<?php }
+				else {
 					try {
 						if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
-							$_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>';
-							$_imgHtml = df_catalog_output()->categoryAttribute($secondLevelCategory, $_imgHtml, 'image');
-							/* @escapeNotVerified */ echo $_imgHtml;
+							echo df_catalog_output()->categoryAttribute(
+								$secondLevelCategory
+								,'<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>'
+								,'image'
+							);
 						}
 					} catch (\Magento\Framework\Exception\LocalizedException $e) {}
 				}
