@@ -74,16 +74,11 @@ class View extends \Magento\Catalog\Block\Category\View {
 		if ($p = $this->parent()) {
 			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/wysiwyg/catalog-carousel-images/' . $p->getId())) {
 				$dh = opendir($d);
-				while (false !== ($filename = readdir($dh))) {
-					$files[] = 'wysiwyg/catalog-carousel-images/'
-					. $this->parent()->getId() . '/'
-					. $filename;
+				$ff = [];
+				while (false !== ($f = readdir($dh))) {
+					$ff[] = 'wysiwyg/catalog-carousel-images/' . $p->getId() . '/' . $f;
 				}
-				$r = preg_grep('/\.jpg|\.png|\.gif$/i', $files);
-				unset($files);
-				if (!empty($r)) {
-					natsort($r);
-				}
+				$r = df_sort(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)));
 			}
 		}
 		return $r;
