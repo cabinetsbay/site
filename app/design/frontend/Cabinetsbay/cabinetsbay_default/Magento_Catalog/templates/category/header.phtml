@@ -50,7 +50,6 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 					</script>
 				<?php } else {
 					$_helper = $this->helper(O::class); /** @var O $_helper */
-					//$_category  = $block->getCurrentCategory();
 					$_imgHtml   = '';
 					try {
 						if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
