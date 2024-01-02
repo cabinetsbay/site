@@ -50,10 +50,15 @@ if($block->getCategoryDeepLevel() >= 3 and !is_null($secondLevelCategory)) : ?>
 				<?php }
 				else {
 					try {
-						if ($_imgUrl = $secondLevelCategory->getImageUrl()) {
+						if ($url = $secondLevelCategory->getImageUrl()) {
 							echo df_catalog_output()->categoryAttribute(
 								$secondLevelCategory
-								,'<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($secondLevelCategory->getName()) . '" title="' . $block->escapeHtml($secondLevelCategory->getName()) . '" class="image" /></div>'
+								,df_tag('div', 'category-image', df_tag('img', [
+									'alt' => $secondLevelCategory->getName()
+									,'class' => 'image'
+									,'src' => $url
+									,'title' => $secondLevelCategory->getName()
+								]))
 								,'image'
 							);
 						}
