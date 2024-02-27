@@ -12,5 +12,8 @@
         <referenceBlock name="product.info.review" remove="true"/>
         <referenceBlock name="reviews.tab" remove="true" />
         <referenceBlock name="product.review.form" remove="true" />
+        <referenceContainer name="page.top">
+            <block class="Sharapov\Cabinetsbay\Block\Breadcrumbs" name="breadcrumbs" as="breadcrumbs" />
+        </referenceContainer>
     </body>
 </page>

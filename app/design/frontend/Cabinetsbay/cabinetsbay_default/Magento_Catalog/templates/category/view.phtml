@@ -32,7 +32,7 @@ if ($block->getCategoryDeepLevel() == 2) :
                          ->toHtml(), '<p><h3>');
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
-    } else {
+    } elseif($block->isPA()) {
       // If Pre-Assembled products
       print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
       print '<div class="product-page-info">';
@@ -50,6 +50,23 @@ if ($block->getCategoryDeepLevel() == 2) :
                          ->toHtml(), '<p><h3>');
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
+    } else {
+        print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span></h2>';
+        print '<div class="product-page-info">';
+        print strip_tags($block
+            ->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('product-page-pa-info')
+            ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+        print '</div>';
+        print '<div class="product-page-how-to-shop">';
+        print strip_tags($block
+            ->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('product-page-pa-how-to-shop')
+            ->toHtml(), '<p><h3>');
+        print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
+        print '</div>';
     }
 
     $products = '';
@@ -182,7 +199,7 @@ if ($block->getCategoryDeepLevel() == 2) :
                          ->setBlockId('product-page-rta-info')
                          ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
       print '</div>';
-    } else { // If pre-assembled products
+    } elseif($block->isPA()) { // If pre-assembled products
       print '<div id="faq-purchase" class="product-page-faq">';
       print strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')
                          ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
@@ -206,6 +223,8 @@ if ($block->getCategoryDeepLevel() == 2) :
                          ->setBlockId('product-page-pa-info')
                          ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
       print '</div>';
+    } else {
+        // Not used if other categories
     }
     ?>
 <?php endif; /*if($block->getCategoryDeepLevel() == 2) :*/ ?>
