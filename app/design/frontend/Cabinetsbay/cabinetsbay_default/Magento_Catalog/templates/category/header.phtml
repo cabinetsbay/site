@@ -19,7 +19,8 @@ if (cb_category_is_l2($c)) {
 }
 else {
 	df_assert($l3 = $b->l3()); /** @var C $l3 */ ?>
-	<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+<!-- 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+"The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104 -->
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
