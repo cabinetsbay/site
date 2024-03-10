@@ -33,37 +33,40 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
    * @param array $data
    */
   function __construct(
-    Context $context,
-    PostHelper $postDataHelper,
-    Resolver $layerResolver,
-    CategoryRepositoryInterface $categoryRepository,
-    Data $urlHelper,
-    array $data = []
+	Context $context,
+	PostHelper $postDataHelper,
+	Resolver $layerResolver,
+	CategoryRepositoryInterface $categoryRepository,
+	Data $urlHelper,
+	array $data = []
   ) {
-    $this->_mobileDetector = new MobileDetect();
-    parent::__construct(
-      $context,
-      $postDataHelper,
-      $layerResolver,
-      $categoryRepository,
-      $urlHelper
-    );
-    // Workaround to show NOINDEX,FOLLOW for inner catalog pages
-    if(isset($_GET['p']) and is_numeric($_GET['p']) and $_GET['p'] > 1) {
-      $this->pageConfig->setRobots('NOINDEX,FOLLOW');
-    }
+	$this->_mobileDetector = new MobileDetect();
+	parent::__construct(
+	  $context,
+	  $postDataHelper,
+	  $layerResolver,
+	  $categoryRepository,
+	  $urlHelper
+	);
+	// Workaround to show NOINDEX,FOLLOW for inner catalog pages
+	if(isset($_GET['p']) and is_numeric($_GET['p']) and $_GET['p'] > 1) {
+	  $this->pageConfig->setRobots('NOINDEX,FOLLOW');
+	}
   }
 
   function getCurrentCategory() {
-    return $this->getLayer()->getCurrentCategory();
+	return $this->getLayer()->getCurrentCategory();
   }
 
-  function getCategoryDeepLevel() {
-    return $this->getCurrentCategory()->getLevel();
-  }
+	/**
+	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/product/list.phtml
+	 */
+	function getCategoryDeepLevel():int {return $this->getCurrentCategory()->getLevel();}
 
   function isMobile() {
-    return $this->_mobileDetector->isMobile() || $this->_mobileDetector->isTablet();
+	return $this->_mobileDetector->isMobile() || $this->_mobileDetector->isTablet();
   }
 
   /**
@@ -71,12 +74,12 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
    * @return string
    */
   function getMode() {
-    if($this->isMobile()) {
+	if($this->isMobile()) {
 
-      // Force grid view on mobile
-      return 'grid';
-    }
+	  // Force grid view on mobile
+	  return 'grid';
+	}
 
-    return parent::getMode();
+	return parent::getMode();
   }
 }
