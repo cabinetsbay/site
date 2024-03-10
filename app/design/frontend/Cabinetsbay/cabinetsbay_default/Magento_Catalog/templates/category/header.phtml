@@ -123,7 +123,6 @@ if ($parent && 3 <= $b->getCategoryDeepLevel()) : ?>
 <?php elseif($b->getCategoryDeepLevel() == 2) : ?>
 	<h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1>
 <?php else : ?>
-
 <?php endif; ?>
 <?php if ($b->isContentMode() || $b->isMixedMode()): ?>
 	<div class="category-cms">
