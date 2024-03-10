@@ -5,6 +5,7 @@
 use Magento\Catalog\Block\Category\View;
 /** @var View $block */ $b = $block; /** @var View $b */
 $parent = $b->parent(); /** @var View $parent */
+$level = $b->getCategoryDeepLevel();
 if ($parent && 3 <= $b->getCategoryDeepLevel()) { ?>
 	<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
