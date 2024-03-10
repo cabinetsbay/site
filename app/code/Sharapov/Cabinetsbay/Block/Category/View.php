@@ -19,7 +19,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * @see cb_category_is_top()
+	 * @see cb_category_is_l2()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
 	function level():int {return df_category_level($this->getCurrentCategory());}
