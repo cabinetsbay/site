@@ -7,10 +7,10 @@ use Magento\Catalog\Block\Category\View;
 $parent = $b->parent(); /** @var View $parent */
 $level = $b->level(); /** @var int $level */
 if (2 === $level) {
-	?><h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1><?php
+	?><h1 class="page-title"><?= $b->getCurrentCategory()->getName(); ?></h1><?php
 }
 elseif ($parent && 2 < $level) { ?>
-	<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
+	<h1 class="page-title"><?= $parent->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -20,7 +20,7 @@ elseif ($parent && 2 < $level) { ?>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
+		<h1 class="page-title"><?= $parent->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
