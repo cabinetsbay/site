@@ -4,9 +4,9 @@
 # https://github.com/cabinetsbay/site/issues/105
 use Magento\Catalog\Block\Category\View;
 /** @var View $block */ $b = $block; /** @var View $b */
-$secondLevelCategory = $b->parent(); /** @var View $secondLevelCategory */
-if (3 <= $b->getCategoryDeepLevel() && !is_null($secondLevelCategory)) : ?>
-	<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
+$parent = $b->parent(); /** @var View $parent */
+if (3 <= $b->getCategoryDeepLevel() && !is_null($parent)) : ?>
+	<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -16,7 +16,7 @@ if (3 <= $b->getCategoryDeepLevel() && !is_null($secondLevelCategory)) : ?>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?php print $secondLevelCategory->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
+		<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
@@ -42,14 +42,14 @@ if (3 <= $b->getCategoryDeepLevel() && !is_null($secondLevelCategory)) : ?>
 				<?php }
 				else {
 					try {
-						if ($url = $secondLevelCategory->getImageUrl()) {
+						if ($url = $parent->getImageUrl()) {
 							echo df_catalog_output()->categoryAttribute(
-								$secondLevelCategory
+								$parent
 								,df_tag('div', 'category-image', df_tag('img', [
-									'alt' => $secondLevelCategory->getName()
+									'alt' => $parent->getName()
 									,'class' => 'image'
 									,'src' => $url
-									,'title' => $secondLevelCategory->getName()
+									,'title' => $parent->getName()
 								]))
 								,'image'
 							);
@@ -59,9 +59,9 @@ if (3 <= $b->getCategoryDeepLevel() && !is_null($secondLevelCategory)) : ?>
 				?>
 			</div>
 			<div class="category-tab-right">
-				<?php if ($_description = $secondLevelCategory->getDescription()): ?>
+				<?php if ($_description = $parent->getDescription()): ?>
 					<div class="category-description">
-						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($secondLevelCategory, $_description, 'description') ?>
+						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($parent, $_description, 'description') ?>
 					</div>
 				<?php endif; ?>
 				<div class="category-subdescription">
