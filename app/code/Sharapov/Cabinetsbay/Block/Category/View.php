@@ -24,7 +24,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
-	function level():int {return (int)$this->getCurrentCategory()->getLevel();}
+	function level():int {return df_category_level($this->getCurrentCategory());}
 
   function isRTA() {
 	return ($this->getCurrentCategory()->getId() == 3411);
@@ -41,7 +41,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 		  $this->getCurrentCategory()->getParentCategories() as
 		  $parent
 		) {
-		  if($parent->getLevel() == 2) {
+		  if (2 === df_category_level($parent)) {
 			// returns the level 1 category id;
 			return $parent->getName();
 		  }
@@ -64,7 +64,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	function parent():?C {return !($c = $this->getCurrentCategory()) ? null : df_find(
 		$c->getParentCategories(), function(C $c):?C {return
 			/** 2024-03-10 @uses \Magento\Catalog\Model\Category::getLevel() can return a string (e.g., "3"). */
-			3 !== (int)$c->getLevel() ? null : df_category($c->getId())
+			3 !== df_category_level($c) ? null : df_category($c->getId())
 		;}
 	);}
 
