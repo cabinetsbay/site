@@ -18,8 +18,7 @@ if (cb_category_is_l2($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
 else {
-	df_assert($l3 = $b->l3()); /** @var C $l3 */
-	?>
+	df_assert($l3 = $b->l3()); /** @var C $l3 */ ?>
 	<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
