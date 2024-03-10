@@ -6,7 +6,10 @@ use Magento\Catalog\Block\Category\View;
 /** @var View $block */ $b = $block; /** @var View $b */
 $parent = $b->parent(); /** @var View $parent */
 $level = $b->level(); /** @var int $level */
-if ($parent && 2 < $level) { ?>
+if (2 === $level) {
+	?><h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1><?php
+}
+elseif ($parent && 2 < $level) { ?>
 	<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
@@ -121,9 +124,8 @@ if ($parent && 2 < $level) { ?>
 			endif; ?>
 		</div>
 	</div>
-<?php } elseif(2 === $level) { ?>
-	<h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1>
-<?php }
+<?php
+}
 if ($b->isContentMode() || $b->isMixedMode()) { ?>
 	<div class="category-cms">
 		<?= $b->getCmsBlockHtml() ?>
