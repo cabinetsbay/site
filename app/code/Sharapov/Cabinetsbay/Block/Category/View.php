@@ -60,10 +60,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 */
 	function parent():?C {return !($c = $this->getCurrentCategory()) ? null : df_find(
-		$c->getParentCategories(), function(C $c):?C {return
-			/** 2024-03-10 @uses \Magento\Catalog\Model\Category::getLevel() can return a string (e.g., "3"). */
-			3 !== df_category_level($c) ? null : df_category($c->getId())
-		;}
+		$c->getParentCategories(), function(C $c):?C {return 3 !== df_category_level($c) ? null : df_category($c->getId());}
 	);}
 
 	/**

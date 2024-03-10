@@ -6,7 +6,7 @@ use Magento\Catalog\Model\Category as C;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 /** @var int $level */
-if (2 === ($level = $b->level())) {
+if (2 === $level = $b->level()) {
 	?><h1 class="page-title"><?= $b->getCurrentCategory()->getName(); ?></h1><?php
 }
 elseif (2 < $level && ($p = $b->parent())) {  /** @var ?C $p */ ?>
