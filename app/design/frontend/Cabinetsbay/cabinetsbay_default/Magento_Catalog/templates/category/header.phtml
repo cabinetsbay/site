@@ -9,8 +9,8 @@ $c = $b->getCurrentCategory(); /** @var C $c */
 if (cb_category_is_l2($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
-elseif ($p = $b->l3()) {  /** @var ?C $p */ ?>
-	<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+elseif ($l3 = $b->l3()) {  /** @var ?C $l3 */ ?>
+	<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -20,7 +20,7 @@ elseif ($p = $b->l3()) {  /** @var ?C $p */ ?>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+		<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
@@ -46,14 +46,14 @@ elseif ($p = $b->l3()) {  /** @var ?C $p */ ?>
 				<?php }
 				else {
 					try {
-						if ($url = $p->getImageUrl()) {
+						if ($url = $l3->getImageUrl()) {
 							echo df_catalog_output()->categoryAttribute(
-								$p
+								$l3
 								,df_tag('div', 'category-image', df_tag('img', [
-									'alt' => $p->getName()
+									'alt' => $l3->getName()
 									,'class' => 'image'
 									,'src' => $url
-									,'title' => $p->getName()
+									,'title' => $l3->getName()
 								]))
 								,'image'
 							);
@@ -63,9 +63,9 @@ elseif ($p = $b->l3()) {  /** @var ?C $p */ ?>
 				?>
 			</div>
 			<div class="category-tab-right">
-				<?php if ($_description = $p->getDescription()): ?>
+				<?php if ($_description = $l3->getDescription()): ?>
 					<div class="category-description">
-						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($p, $_description, 'description') ?>
+						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($l3, $_description, 'description') ?>
 					</div>
 				<?php endif; ?>
 				<div class="category-subdescription">
