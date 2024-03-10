@@ -231,7 +231,7 @@ if ($block->level() == 2) :
 <?php if ($block->level() >= 3) : ?>
 
     <?php
-    $sndLevelCategories = $block->parent3();
+    $sndLevelCategories = $block->l3();
     if($sndLevelCategories) {
         $subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
     } else {

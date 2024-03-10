@@ -9,7 +9,7 @@ $c = $b->getCurrentCategory(); /** @var C $c */
 if (cb_category_is_l2($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
-elseif ($p = $b->parent3()) {  /** @var ?C $p */ ?>
+elseif ($p = $b->l3()) {  /** @var ?C $p */ ?>
 	<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
