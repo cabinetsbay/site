@@ -17,11 +17,11 @@ class View extends \Magento\Catalog\Block\Category\View {
   }
 
 	/**
+	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 */
-	function getCategoryDeepLevel() {
-		return $this->getCurrentCategory()->getLevel();
-	}
+	function getCategoryDeepLevel():int {return $this->getCurrentCategory()->getLevel();}
 
   function isRTA() {
 	return ($this->getCurrentCategory()->getId() == 3411);
