@@ -5,7 +5,7 @@
 use Magento\Catalog\Block\Category\View;
 /** @var View $block */ $b = $block; /** @var View $b */
 $parent = $b->parent(); /** @var View $parent */
-if ($parent && 3 <= $b->getCategoryDeepLevel()) : ?>
+if ($parent && 3 <= $b->getCategoryDeepLevel()) { ?>
 	<h1 class="page-title"><?php print $parent->getName(); ?><sub><?php print $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
@@ -120,11 +120,10 @@ if ($parent && 3 <= $b->getCategoryDeepLevel()) : ?>
 			endif; ?>
 		</div>
 	</div>
-<?php elseif($b->getCategoryDeepLevel() == 2) : ?>
+<?php } elseif($b->getCategoryDeepLevel() == 2) { ?>
 	<h1 class="page-title"><?php print $b->getCurrentCategory()->getName(); ?></h1>
-<?php else : ?>
-<?php endif; ?>
-<?php if ($b->isContentMode() || $b->isMixedMode()): ?>
+<?php }
+if ($b->isContentMode() || $b->isMixedMode()): ?>
 	<div class="category-cms">
 		<?= $b->getCmsBlockHtml() ?>
 	</div>
