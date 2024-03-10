@@ -18,9 +18,18 @@ if (cb_category_is_l2($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
 else {
-	df_assert($l3 = $b->l3()); /** @var C $l3 */ ?>
-<!-- 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-"The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104 -->
+	df_assert($l3 = $b->l3()); /** @var C $l3 */
+	# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	# "On frontend category pages of levels 3 and below, the name of a higher level category is mistakenly used for the H1 tag":
+	# https://github.com/cabinetsbay/site/issues/107
+	/** @var string $title */
+	$title = df_tag('h1', 'page-title', implode([$c->getName(), df_tag('sub', [], $c->getParentCategory()->getName())]));
+	# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	# 1) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
+	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
+	# 3) It is visible on narrow screens only.
+	echo $title;
+	?>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -30,10 +39,11 @@ else {
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-<!-- 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-"On frontend category pages of levels 3 and below, the name of a higher level category is mistakenly used for the H1 tag":
-https://github.com/cabinetsbay/site/issues/107 -->
-		<h1 class="page-title"><?= $c->getName(); ?><sub><?= $c->getParentCategory()->getName() ?></sub></h1>
+		<?php
+			# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# It is visible on wide screens only.
+			echo $title;
+		?>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
