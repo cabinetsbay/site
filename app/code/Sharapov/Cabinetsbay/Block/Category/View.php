@@ -59,7 +59,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function parent() {$r = null; /** @var C|null $r */
 		if (($c = $this->getCurrentCategory()) && ($pp = $c->getParentCategories())) {
-			foreach ($pp as $p) {
+			foreach ($pp as $p) {/** @var C $p */
 				if ($p->getLevel() == 3) {
 					$r = df_category($p->getId());
 					break;
