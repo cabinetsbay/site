@@ -16,9 +16,12 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->setOrder('position', 'ASC');
   }
 
-  function getCategoryDeepLevel() {
-	return $this->getCurrentCategory()->getLevel();
-  }
+	/**
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
+	 */
+	function getCategoryDeepLevel() {
+		return $this->getCurrentCategory()->getLevel();
+	}
 
   function isRTA() {
 	return ($this->getCurrentCategory()->getId() == 3411);
