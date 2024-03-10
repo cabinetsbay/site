@@ -4,13 +4,13 @@
 # https://github.com/cabinetsbay/site/issues/105
 use Magento\Catalog\Block\Category\View;
 /** @var View $block */ $b = $block; /** @var View $b */
-$parent = $b->parent(); /** @var View $parent */
+$p = $b->parent(); /** @var View $p */
 $level = $b->level(); /** @var int $level */
 if (2 === $level) {
 	?><h1 class="page-title"><?= $b->getCurrentCategory()->getName(); ?></h1><?php
 }
-elseif ($parent && 2 < $level) { ?>
-	<h1 class="page-title"><?= $parent->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+elseif ($p && 2 < $level) { ?>
+	<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
 		<li data-role="title"><a href="#specifications">Specifications</a></li>
@@ -20,7 +20,7 @@ elseif ($parent && 2 < $level) { ?>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?= $parent->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+		<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
@@ -46,14 +46,14 @@ elseif ($parent && 2 < $level) { ?>
 				<?php }
 				else {
 					try {
-						if ($url = $parent->getImageUrl()) {
+						if ($url = $p->getImageUrl()) {
 							echo df_catalog_output()->categoryAttribute(
-								$parent
+								$p
 								,df_tag('div', 'category-image', df_tag('img', [
-									'alt' => $parent->getName()
+									'alt' => $p->getName()
 									,'class' => 'image'
 									,'src' => $url
-									,'title' => $parent->getName()
+									,'title' => $p->getName()
 								]))
 								,'image'
 							);
@@ -63,9 +63,9 @@ elseif ($parent && 2 < $level) { ?>
 				?>
 			</div>
 			<div class="category-tab-right">
-				<?php if ($_description = $parent->getDescription()): ?>
+				<?php if ($_description = $p->getDescription()): ?>
 					<div class="category-description">
-						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($parent, $_description, 'description') ?>
+						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($p, $_description, 'description') ?>
 					</div>
 				<?php endif; ?>
 				<div class="category-subdescription">
