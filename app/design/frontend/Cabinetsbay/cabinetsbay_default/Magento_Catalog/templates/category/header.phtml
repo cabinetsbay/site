@@ -5,8 +5,8 @@
 use Magento\Catalog\Block\Category\View as B;
 use Magento\Catalog\Model\Category as C;
 /** @var B $block */ $b = $block; /** @var B $b */
-$level = $b->level(); /** @var int $level */
-if (2 === $level) {
+/** @var int $level */
+if (2 === ($level = $b->level())) {
 	?><h1 class="page-title"><?= $b->getCurrentCategory()->getName(); ?></h1><?php
 }
 elseif (2 < $level && ($p = $b->parent())) {  /** @var ?C $p */ ?>
