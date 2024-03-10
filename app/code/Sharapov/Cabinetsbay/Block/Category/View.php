@@ -52,23 +52,16 @@ class View extends \Magento\Catalog\Block\Category\View {
 
 	/**
 	 * 2024-01-02
+	 * 2024-03-10
+	 * 1) https://3v4l.org/3ssAP
+	 * 2) https://www.php.net/manual/migration71.new-features.php#migration71.new-features.nullable-types
 	 * @used-by self::images()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
-	 * @return C|null
 	 */
-	function parent() {$r = null; /** @var C|null $r */
-		if ($c = $this->getCurrentCategory()) {/** @var C $c */
-			$pp = $c->getParentCategories(); /** @var C[] $pp */
-			foreach ($pp as $p) {/** @var C $p */
-				if (3 === $p->getLevel()) {
-					$r = df_category($p->getId());
-					break;
-				}
-			}
-		}
-		return $r;
-	}
+	function parent():?C {return !($c = $this->getCurrentCategory()) ? null : df_find(
+		$c->getParentCategories(), function(C $c):?C {return 3 !== $c->getLevel()	? null : df_category($c->getId());}
+	);}
 
 	/**
 	 * 2024-01-02
