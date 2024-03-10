@@ -18,9 +18,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 
 	/**
 	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * 2) @uses \Magento\Catalog\Model\Category::getLevel() can return a string (e.g.: "3").
-	 * @see \Sharapov\Cabinetsbay\Block\Product\ListProduct::level()
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
