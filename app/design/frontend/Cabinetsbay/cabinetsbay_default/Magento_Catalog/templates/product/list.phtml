@@ -48,7 +48,7 @@ if ($block->level() >= 3) :
         <div class="products wrapper <?= /* @escapeNotVerified */
         $viewMode ?> products-<?= /* @escapeNotVerified */
         $viewMode ?>">
-          <?php if($block->getCurrentCategory()->getLevel() > 3) : ?>
+          <?php if (df_category_level($block->getCurrentCategory()) > 3) : ?>
             <h3><?=$block->getCurrentCategory()->getName(); ?></h3>
           <?php endif; ?>
             <ol class="products list items product-items">
