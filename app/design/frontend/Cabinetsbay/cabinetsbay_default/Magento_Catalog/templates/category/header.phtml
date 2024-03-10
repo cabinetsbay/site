@@ -6,10 +6,20 @@ use Magento\Catalog\Model\Category as C;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $c = $b->getCurrentCategory(); /** @var C $c */
+# 2024-03-10
+# 2.1) Level 0: «Root Catalog».
+# 2.2) Level 1: «Default Category».
+# 2.3) Level 2:
+# 		«Ready to Assemble Cabinets»
+# 		«Pre-Assembled Cabinets»
+# 		«Cabinet Organizers & Hardware»
+# 2.4) Level 3: «Steam White Shaker».
 if (cb_category_is_l2($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
-elseif ($l3 = $b->l3()) {  /** @var ?C $l3 */ ?>
+else {
+	df_assert($l3 = $b->l3()); /** @var C $l3 */
+	?>
 	<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>
