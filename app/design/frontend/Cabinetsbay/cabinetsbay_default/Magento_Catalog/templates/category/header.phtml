@@ -6,11 +6,10 @@ use Magento\Catalog\Model\Category as C;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $c = $b->getCurrentCategory(); /** @var C $c */
-/** @var int $level */
-if (2 === $level = $b->level()) {
+if (cb_category_is_top($c)) {
 	?><h1 class="page-title"><?= $c->getName(); ?></h1><?php
 }
-elseif (2 < $level && ($p = $b->parent())) {  /** @var ?C $p */ ?>
+elseif ($p = $b->parent3()) {  /** @var ?C $p */ ?>
 	<h1 class="page-title"><?= $p->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
 	<ul class="category-menu">
 		<li data-role="title"><a href="#overview">Product Overview</a></li>

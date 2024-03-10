@@ -19,7 +19,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
+	 * @see cb_category_is_top()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
 	function level():int {return df_category_level($this->getCurrentCategory());}
@@ -59,7 +59,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 */
-	function parent():?C {return !($c = $this->getCurrentCategory()) ? null : df_find(
+	function parent3():?C {return !($c = $this->getCurrentCategory()) ? null : df_find(
 		$c->getParentCategories(), function(C $c):?C {return 3 !== df_category_level($c) ? null : df_category($c->getId());}
 	);}
 
@@ -70,7 +70,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function images():array {$r = []; /** @var array(string => string)  $r */
 		$path = 'wysiwyg/catalog-carousel-images/'; /** @var string $path */
-		if ($p = $this->parent()) {
+		if ($p = $this->parent3()) {
 			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/' . $path . $p->getId())) {
 				$dh = opendir($d);
 				$ff = [];
@@ -92,7 +92,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->parent()->getData('cb_specs')
+		  (string)$this->parent3()->getData('cb_specs')
 	  );
   }
 
@@ -104,7 +104,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->parent()->getData('cb_assembly')
+		  (string)$this->parent3()->getData('cb_assembly')
 	  );
   }
 
@@ -116,7 +116,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  ->get('Magento\Cms\Model\Template\FilterProvider')
 	  ->getPageFilter()
 	  ->filter(
-		  (string)$this->parent()->getData('cb_styles')
+		  (string)$this->parent3()->getData('cb_styles')
 	  );
   }
 
@@ -125,7 +125,7 @@ class View extends \Magento\Catalog\Block\Category\View {
    */
   function getMatchingProducts(): array
   {
-	$ids = $this->parent()->getData('cb_matching_products');
+	$ids = $this->parent3()->getData('cb_matching_products');
 
 	$ids = ($ids) ? explode(",", $ids) : [];
 	$matchingCategories = [];
