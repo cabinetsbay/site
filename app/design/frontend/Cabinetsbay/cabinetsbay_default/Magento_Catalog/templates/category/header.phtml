@@ -30,7 +30,10 @@ else {
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-		<h1 class="page-title"><?= $l3->getName(); ?><sub><?= $b->getRootCategoryName();?></sub></h1>
+<!-- 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+"On frontend category pages of levels 3 and below, the name of a higher level category is mistakenly used for the H1 tag":
+https://github.com/cabinetsbay/site/issues/107 -->
+		<h1 class="page-title"><?= $c->getName(); ?><sub><?= $c->getParentCategory()->getName() ?></sub></h1>
 		<div class="category-info">
 			<div class="category-tab-left">
 				<?php if ($ii = $b->images()) { ?>
