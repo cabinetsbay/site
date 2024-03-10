@@ -63,7 +63,7 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/product/list.phtml
 	 */
-	function getCategoryDeepLevel():int {return $this->getCurrentCategory()->getLevel();}
+	function level():int {return $this->getCurrentCategory()->getLevel();}
 
   function isMobile() {
 	return $this->_mobileDetector->isMobile() || $this->_mobileDetector->isTablet();

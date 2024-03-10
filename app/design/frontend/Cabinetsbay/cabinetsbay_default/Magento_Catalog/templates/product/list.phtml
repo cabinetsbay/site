@@ -16,7 +16,7 @@ use Magento\Framework\App\Action\Action;
  */
 $_productCollection = $block->getLoadedProductCollection();
 // Show products list only on 3rd category level
-if ($block->getCategoryDeepLevel() >= 3) :
+if ($block->level() >= 3) :
     $_helper = $this->helper('Magento\Catalog\Helper\Output');
     if (! $_productCollection->count()): ?>
         <div class="message info empty">
@@ -224,4 +224,4 @@ if ($block->getCategoryDeepLevel() >= 3) :
             </script>
         <?php endif; ?>
     <?php endif; ?>
-<?php endif; /*if($block->getCategoryDeepLevel() == 3) :*/
+<?php endif; /*if($block->level() == 3) :*/

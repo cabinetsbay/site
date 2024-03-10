@@ -13,7 +13,7 @@ $categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
 /** @var \Magento\Catalog\Model\Category $subCategory */
 /** @var \Sharapov\Cabinetsbay\Block\Category\View $block */
 // Show product categories only on second level
-if ($block->getCategoryDeepLevel() == 2) :
+if ($block->level() == 2) :
     // If RTA products
     if($block->isRTA()) {
       print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
@@ -227,8 +227,8 @@ if ($block->getCategoryDeepLevel() == 2) :
         // Not used if other categories
     }
     ?>
-<?php endif; /*if($block->getCategoryDeepLevel() == 2) :*/ ?>
-<?php if ($block->getCategoryDeepLevel() >= 3) : ?>
+<?php endif; /*if($block->level() == 2) :*/ ?>
+<?php if ($block->level() >= 3) : ?>
 
     <?php
     $sndLevelCategories = $block->parent();
@@ -268,4 +268,4 @@ if ($block->getCategoryDeepLevel() == 2) :
             <?php endforeach; ?>
         </div>
     <?php endif; /* if(count($subCategories) > 0) : */ ?>
-<?php endif; /* if($block->getCategoryDeepLevel() == 3) : */
+<?php endif; /* if($block->level() == 3) : */

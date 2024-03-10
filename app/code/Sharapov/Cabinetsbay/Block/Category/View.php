@@ -22,7 +22,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
-	function getCategoryDeepLevel():int {return $this->getCurrentCategory()->getLevel();}
+	function level():int {return $this->getCurrentCategory()->getLevel();}
 
   function isRTA() {
 	return ($this->getCurrentCategory()->getId() == 3411);
