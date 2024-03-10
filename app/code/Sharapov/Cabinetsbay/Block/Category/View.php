@@ -55,18 +55,18 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * 2024-03-10
 	 * 1.1) https://3v4l.org/3ssAP
 	 * 1.2) https://www.php.net/manual/migration71.new-features.php#migration71.new-features.nullable-types
-	 * 2) "The result of `Magento\Catalog\Model\Category::getParentCategories()` always includes the caller":
-	 * https://mage2.pro/t/6429
-	 * 3) "`Magento\Catalog\Model\Category::getParentCategories()` never returns `Magento\Framework\DataObject[]`
-	 * despite of the method's declaration": https://mage2.pro/t/6430
+	 * 2.1) Level 0: «Root Catalog».
+	 * 2.2) Level 1: «Default Category».
+	 * 2.3) Level 2:
+	 * 		«Ready to Assemble Cabinets»
+	 * 		«Pre-Assembled Cabinets»
+	 * 		«Cabinet Organizers & Hardware»
+	 * 2.4) Level 3: «Steam White Shaker».
 	 * @used-by self::images()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 */
-	function l3():?C {return dfc($this, function() {return df_find(
-		$this->getCurrentCategory()->getParentCategories()
-		,function(C $c):?C {return !cb_category_is_l3($c) ? null : df_category($c->getId());}
-	);});}
+	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
 	/**
 	 * 2024-01-02
