@@ -63,7 +63,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
 	 */
-	function l3():C {return dfc($this, function() {return df_find(
+	function l3():?C {return dfc($this, function() {return df_find(
 		$this->getCurrentCategory()->getParentCategories()
 		,function(C $c):?C {return !cb_category_is_l3($c) ? null : df_category($c->getId());}
 	);});}
