@@ -214,9 +214,12 @@ elseif (3 <= $b->level()) {
 			<?php foreach ($subCategories as $subCategory) { ?>
 				<div style="width: calc(100%/<?=count($subCategories);?>);">
 					<div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?= $h->getCategoryUrl($subCategory);?>">
-							<span><?= $subCategory->getName() ?></span>
-						</span>
+						<span
+							class="action toggle"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							data-category-url="<?= $h->getCategoryUrl($subCategory);?>"
+						><span><?= $subCategory->getName() ?></span></span>
 						<ul class="dropdown">
 							<li>
 								<span class="item" onclick="window.location.href='<?= $h->getCategoryUrl($subCategory);?>'" data-category-url="<?= $h->getCategoryUrl($subCategory);?>">Show all <?= $subCategory->getName() ?></span>
