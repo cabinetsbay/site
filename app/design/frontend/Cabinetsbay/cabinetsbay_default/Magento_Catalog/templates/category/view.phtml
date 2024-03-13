@@ -145,11 +145,11 @@ if ($b->level() == 2) :
 			</div>
 		</div>
 	</div>
-	<?php if(!empty($products)) : ?>
+	<?php if(!empty($products)) { ?>
 	  <div class="c-products-grid"><ul id="products_list">
 		<?php print $products; ?>
 	  </ul></div>
-	<?php endif; ?>
+	<?php } ?>
 	<?php
 	// If RTA products
 	if($b->isRTA()) {
