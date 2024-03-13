@@ -10,259 +10,257 @@ use Sharapov\Cabinetsbay\Block\Category\View as B;
 $categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
 // Show product categories only on second level
 if ($b->level() == 2) :
-    // If RTA products
-    if($b->isRTA()) {
-      print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
-      print '<div class="product-page-info">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-rta-info')
-                         ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-      print '</div>';
-      print '<div class="product-page-how-to-shop">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-rta-how-to-shop')
-                         ->toHtml(), '<p><h3>');
-      print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
-      print '</div>';
-    }
-    elseif($b->isPA()) {
-      // If Pre-Assembled products
-      print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
-      print '<div class="product-page-info">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-pa-info')
-                         ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-      print '</div>';
-      print '<div class="product-page-how-to-shop">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-pa-how-to-shop')
-                         ->toHtml(), '<p><h3>');
-      print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
-      print '</div>';
-    }
-    else {
-        print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span></h2>';
-        print '<div class="product-page-info">';
-        print strip_tags($block
-            ->getLayout()
-            ->createBlock('Magento\Cms\Block\Block')
-            ->setBlockId('product-page-pa-info')
-            ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-        print '</div>';
-        print '<div class="product-page-how-to-shop">';
-        print strip_tags($block
-            ->getLayout()
-            ->createBlock('Magento\Cms\Block\Block')
-            ->setBlockId('product-page-pa-how-to-shop')
-            ->toHtml(), '<p><h3>');
-        print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
-        print '</div>';
-    }
-    $products = '';
-    $filterStyle = $filterConstruction = [
-        'all' => '<li data-style="all">All</li>'
-    ];
-    $productsCollection = $b->getCategoryProducts();
-    if (count($productsCollection) > 0) : ?>
-      <?php foreach ($productsCollection as $productCategory) {
-        // Fill styles
-        $filterStyle[$productCategory->getData('cb_kitchen_style')] =
-          '<li data-style="'.$productCategory->getData('cb_kitchen_style').'">'.$productCategory->getData('cb_kitchen_style').'</li>';
+	// If RTA products
+	if($b->isRTA()) {
+	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
+	  print '<div class="product-page-info">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-rta-info')
+						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+	  print '</div>';
+	  print '<div class="product-page-how-to-shop">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-rta-how-to-shop')
+						 ->toHtml(), '<p><h3>');
+	  print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
+	  print '</div>';
+	}
+	elseif($b->isPA()) {
+	  // If Pre-Assembled products
+	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
+	  print '<div class="product-page-info">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-pa-info')
+						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+	  print '</div>';
+	  print '<div class="product-page-how-to-shop">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-pa-how-to-shop')
+						 ->toHtml(), '<p><h3>');
+	  print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
+	  print '</div>';
+	}
+	else {
+		print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span></h2>';
+		print '<div class="product-page-info">';
+		print strip_tags($block
+			->getLayout()
+			->createBlock('Magento\Cms\Block\Block')
+			->setBlockId('product-page-pa-info')
+			->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+		print '</div>';
+		print '<div class="product-page-how-to-shop">';
+		print strip_tags($block
+			->getLayout()
+			->createBlock('Magento\Cms\Block\Block')
+			->setBlockId('product-page-pa-how-to-shop')
+			->toHtml(), '<p><h3>');
+		print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
+		print '</div>';
+	}
+	$products = '';
+	$filterStyle = $filterConstruction = ['all' => '<li data-style="all">All</li>'];
+	$productsCollection = $b->getCategoryProducts();
+	if (count($productsCollection) > 0) : ?>
+	  <?php foreach ($productsCollection as $productCategory) {
+		// Fill styles
+		$filterStyle[$productCategory->getData('cb_kitchen_style')] =
+		  '<li data-style="'.$productCategory->getData('cb_kitchen_style').'">'.$productCategory->getData('cb_kitchen_style').'</li>';
 
-        $filterConstruction[$productCategory->getData('cb_kitchen_type')] =
-          '<li data-style="'.$productCategory->getData('cb_kitchen_type').'">'.$productCategory->getData('cb_kitchen_type').'</li>';
+		$filterConstruction[$productCategory->getData('cb_kitchen_type')] =
+		  '<li data-style="'.$productCategory->getData('cb_kitchen_type').'">'.$productCategory->getData('cb_kitchen_type').'</li>';
 
-        /** @var \Magento\Catalog\Model\Category\Interceptor $productCategory */
-        $products.= '<li data-sorterprice="'.preg_replace('/[^0-9.]+/', '', $productCategory->getData('cb_kitchen_price')).'" data-sortercolor="'.$productCategory->getData('cb_kitchen_color').'" data-sorterstyle="'.$productCategory->getData('cb_kitchen_style').'" data-sorterconstruction="'.$productCategory->getData('cb_kitchen_type').'">';
-        $products.= '<a href="'
-                      . $categoryHelper_sub->getCategoryUrl($productCategory)
-                      . '">';
-        $products.= '<div>' . $productCategory->getName() . '</div>';
-                    if($productCategory->getData('cb_kitchen_set') != '') {
-                      $products.= '<div class="size-price"><b>' . $productCategory->getData('cb_kitchen_set') . '</b>'
-                      . $productCategory->getData('cb_kitchen_price') . '</div>';
-                    }
-                    try {
-                      $products.= '<img src="' . $productCategory->getImageUrl() . '" border="0" />';
-                    } catch (\Magento\Framework\Exception\LocalizedException $e) {
+		/** @var \Magento\Catalog\Model\Category\Interceptor $productCategory */
+		$products.= '<li data-sorterprice="'.preg_replace('/[^0-9.]+/', '', $productCategory->getData('cb_kitchen_price')).'" data-sortercolor="'.$productCategory->getData('cb_kitchen_color').'" data-sorterstyle="'.$productCategory->getData('cb_kitchen_style').'" data-sorterconstruction="'.$productCategory->getData('cb_kitchen_type').'">';
+		$products.= '<a href="'
+					  . $categoryHelper_sub->getCategoryUrl($productCategory)
+					  . '">';
+		$products.= '<div>' . $productCategory->getName() . '</div>';
+					if($productCategory->getData('cb_kitchen_set') != '') {
+					  $products.= '<div class="size-price"><b>' . $productCategory->getData('cb_kitchen_set') . '</b>'
+					  . $productCategory->getData('cb_kitchen_price') . '</div>';
+					}
+					try {
+					  $products.= '<img src="' . $productCategory->getImageUrl() . '" border="0" />';
+					} catch (\Magento\Framework\Exception\LocalizedException $e) {
 
-                    }
-        $products.= '</a>';
-        $products.= '<div><a href="'
-                      . $categoryHelper_sub->getCategoryUrl($productCategory)
-                      . '">Shop cabinets</a><a href="'.$productCategory->getData('cb_door_sample_link').'">Order sample</a></div>';
-        $products.= '</li>';
-                  }
-    ?>
+					}
+		$products.= '</a>';
+		$products.= '<div><a href="'
+					  . $categoryHelper_sub->getCategoryUrl($productCategory)
+					  . '">Shop cabinets</a><a href="'.$productCategory->getData('cb_door_sample_link').'">Order sample</a></div>';
+		$products.= '</li>';
+				  }
+	?>
 
-    <?php endif; /*if(count($popularProductsCollection) > 0)*/ ?>
+	<?php endif; /*if(count($popularProductsCollection) > 0)*/ ?>
 
 
-    <div class="category-filterblock short-first">
-        <div>
-            <label>Filter</label>
-        </div>
-        <div>
-            <div id="dropdown-price" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                <span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <span>Price</span>
-                </span>
-                <ul class="dropdown">
-                    <li data-sortby="asc">Low-High</li>
-                    <li data-sortby="desc">High-Low</li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <div id="dropdown-color" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                <span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <span>Color</span>
-                </span>
-                <ul class="dropdown">
-                    <li data-sortby="lighter">Lighter</li>
-                    <li data-sortby="darker">Darker</li>
-                </ul>
-            </div>
-        </div>
-      <?php /*
-        <div>
-            <div id="dropdown-order" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                <span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <span>Type</span>
-                </span>
-                <ul class="dropdown">
-                    <li><span class="item">Asc order</span></li>
-                    <li><span class="item">Desc order</span></li>
-                </ul>
-            </div>
-        </div>*/ ?>
-        <div>
-            <div id="dropdown-style" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                <span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <span>Style (All)</span>
-                </span>
-                <ul class="dropdown">
-                    <?php print implode("", $filterStyle); ?>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <div id="dropdown-construction" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                <span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
-                    <span>Cabinet Construction (All)</span>
-                </span>
-                <ul class="dropdown">
-                    <?php print implode("", $filterConstruction); ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <?php if(!empty($products)) : ?>
-      <div class="c-products-grid"><ul id="products_list">
-        <?php print $products; ?>
-      </ul></div>
-    <?php endif; ?>
-    <?php
-    // If RTA products
-    if($b->isRTA()) {
-      print '<div id="faq-purchase" class="product-page-faq">';
-      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-faq-rta-welcome')->toHtml(), '<p><h3>');
-      print '</div>';
-      print '<div class="product-page-faq">';
-      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-faq-rta-body')->toHtml(), '<p><h4><strong>');
-      print '</div>';
-      print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-rta-how-to-shop')
-                         ->toHtml(), '<p><h3>');
-      print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
-      print '</div>';
-      print '<div class="product-page-info mobile-view">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-rta-info')
-                         ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-      print '</div>';
-    } elseif($b->isPA()) { // If pre-assembled products
-      print '<div id="faq-purchase" class="product-page-faq">';
-      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
-      print '</div>';
-      print '<div class="product-page-faq">';
-      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-faq-pa-body')->toHtml(), '<p><h4><strong>');
-      print '</div>';
-      print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-pa-how-to-shop')
-                         ->toHtml(), '<p><h3>');
-      print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
-      print '</div>';
-      print '<div class="product-page-info mobile-view">';
-      print strip_tags($block
-                         ->getLayout()
-                         ->createBlock('Magento\Cms\Block\Block')
-                         ->setBlockId('product-page-pa-info')
-                         ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-      print '</div>';
-    } else {
-        // Not used if other categories
-    }
-    ?>
+	<div class="category-filterblock short-first">
+		<div>
+			<label>Filter</label>
+		</div>
+		<div>
+			<div id="dropdown-price" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+				<span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+					<span>Price</span>
+				</span>
+				<ul class="dropdown">
+					<li data-sortby="asc">Low-High</li>
+					<li data-sortby="desc">High-Low</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<div id="dropdown-color" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+				<span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+					<span>Color</span>
+				</span>
+				<ul class="dropdown">
+					<li data-sortby="lighter">Lighter</li>
+					<li data-sortby="darker">Darker</li>
+				</ul>
+			</div>
+		</div>
+	  <?php /*
+		<div>
+			<div id="dropdown-order" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+				<span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+					<span>Type</span>
+				</span>
+				<ul class="dropdown">
+					<li><span class="item">Asc order</span></li>
+					<li><span class="item">Desc order</span></li>
+				</ul>
+			</div>
+		</div>*/ ?>
+		<div>
+			<div id="dropdown-style" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+				<span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+					<span>Style (All)</span>
+				</span>
+				<ul class="dropdown">
+					<?php print implode("", $filterStyle); ?>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<div id="dropdown-construction" class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+				<span class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+					<span>Cabinet Construction (All)</span>
+				</span>
+				<ul class="dropdown">
+					<?php print implode("", $filterConstruction); ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<?php if(!empty($products)) : ?>
+	  <div class="c-products-grid"><ul id="products_list">
+		<?php print $products; ?>
+	  </ul></div>
+	<?php endif; ?>
+	<?php
+	// If RTA products
+	if($b->isRTA()) {
+	  print '<div id="faq-purchase" class="product-page-faq">';
+	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-faq-rta-welcome')->toHtml(), '<p><h3>');
+	  print '</div>';
+	  print '<div class="product-page-faq">';
+	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-faq-rta-body')->toHtml(), '<p><h4><strong>');
+	  print '</div>';
+	  print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-rta-how-to-shop')
+						 ->toHtml(), '<p><h3>');
+	  print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
+	  print '</div>';
+	  print '<div class="product-page-info mobile-view">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-rta-info')
+						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+	  print '</div>';
+	} elseif($b->isPA()) { // If pre-assembled products
+	  print '<div id="faq-purchase" class="product-page-faq">';
+	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
+	  print '</div>';
+	  print '<div class="product-page-faq">';
+	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-faq-pa-body')->toHtml(), '<p><h4><strong>');
+	  print '</div>';
+	  print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-pa-how-to-shop')
+						 ->toHtml(), '<p><h3>');
+	  print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
+	  print '</div>';
+	  print '<div class="product-page-info mobile-view">';
+	  print strip_tags($block
+						 ->getLayout()
+						 ->createBlock('Magento\Cms\Block\Block')
+						 ->setBlockId('product-page-pa-info')
+						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+	  print '</div>';
+	} else {
+		// Not used if other categories
+	}
+	?>
 <?php endif; /*if($b->level() == 2) :*/ ?>
 <?php if ($b->level() >= 3) : ?>
 
-    <?php
-    $sndLevelCategories = $b->l3();
-    if($sndLevelCategories) {
-        $subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
-    } else {
-        $subCategories = [];
-    }
-    $_helper = $this->helper('Magento\Catalog\Helper\Output');
-    if (count($subCategories) > 0) : ?>
-        <div class="category-filterblock">
-            <?php foreach ($subCategories as $subCategory) : ?>
-                <div style="width: calc(100%/<?=count($subCategories);?>);">
-                    <div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-                        <span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">
-                            <span><?php print $subCategory->getName() ?></span>
-                        </span>
-                        <ul class="dropdown">
-                            <li>
-                                <span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">Show all <?php print $subCategory->getName() ?></span>
-                            </li>
-                            <?php if (count($subCategory->getChildrenCategories())
-                            > 0
-                            ) : ?>
-                              <?php foreach (
-                                  $subCategory->getChildrenCategories() as
-                                  $subCategory2
-                              ) : ?>
-                                  <li>
-                                      <span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>"><?php print $subCategory2->getName() ?></span>
-                                  </li>
-                              <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; /* if(count($subCategories) > 0) : */ ?>
+	<?php
+	$sndLevelCategories = $b->l3();
+	if($sndLevelCategories) {
+		$subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
+	} else {
+		$subCategories = [];
+	}
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	if (count($subCategories) > 0) : ?>
+		<div class="category-filterblock">
+			<?php foreach ($subCategories as $subCategory) : ?>
+				<div style="width: calc(100%/<?=count($subCategories);?>);">
+					<div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
+						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">
+							<span><?php print $subCategory->getName() ?></span>
+						</span>
+						<ul class="dropdown">
+							<li>
+								<span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">Show all <?php print $subCategory->getName() ?></span>
+							</li>
+							<?php if (count($subCategory->getChildrenCategories())
+							> 0
+							) : ?>
+							  <?php foreach (
+								  $subCategory->getChildrenCategories() as
+								  $subCategory2
+							  ) : ?>
+								  <li>
+									  <span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>"><?php print $subCategory2->getName() ?></span>
+								  </li>
+							  <?php endforeach; ?>
+							<?php endif; ?>
+						</ul>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; /* if(count($subCategories) > 0) : */ ?>
 <?php endif; /* if($b->level() == 3) : */
