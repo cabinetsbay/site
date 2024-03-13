@@ -69,8 +69,8 @@ if ($b->level() == 2) :
 	$products = '';
 	$filterStyle = $filterConstruction = ['all' => '<li data-style="all">All</li>'];
 	$productsCollection = $b->getCategoryProducts();
-	if (count($productsCollection) > 0) : ?>
-	  <?php foreach ($productsCollection as $productCategory) {
+	if (count($productsCollection) > 0) {
+		foreach ($productsCollection as $productCategory) {
 		// Fill styles
 		$filterStyle[$productCategory->getData('cb_kitchen_style')] =
 		  '<li data-style="'.$productCategory->getData('cb_kitchen_style').'">'.$productCategory->getData('cb_kitchen_style').'</li>';
@@ -99,11 +99,7 @@ if ($b->level() == 2) :
 					  . '">Shop cabinets</a><a href="'.$productCategory->getData('cb_door_sample_link').'">Order sample</a></div>';
 		$products.= '</li>';
 				  }
-	?>
-
-	<?php endif; /*if(count($popularProductsCollection) > 0)*/ ?>
-
-
+	} ?>
 	<div class="category-filterblock short-first">
 		<div>
 			<label>Filter</label>
