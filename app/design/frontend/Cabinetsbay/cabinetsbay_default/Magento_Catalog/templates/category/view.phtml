@@ -130,7 +130,7 @@ if ($b->level() == 2) :
 					<span>Style (All)</span>
 				</span>
 				<ul class="dropdown">
-					<?php print implode("", $filterStyle); ?>
+					<?= implode("", $filterStyle) ?>
 				</ul>
 			</div>
 		</div>
@@ -140,17 +140,16 @@ if ($b->level() == 2) :
 					<span>Cabinet Construction (All)</span>
 				</span>
 				<ul class="dropdown">
-					<?php print implode("", $filterConstruction); ?>
+					<?= implode("", $filterConstruction); ?>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<?php if(!empty($products)) { ?>
 	  <div class="c-products-grid"><ul id="products_list">
-		<?php print $products; ?>
+		<?= $products; ?>
 	  </ul></div>
-	<?php } ?>
-	<?php
+	<?php } 
 	// If RTA products
 	if($b->isRTA()) {
 	  print '<div id="faq-purchase" class="product-page-faq">';
@@ -220,12 +219,12 @@ if ($b->level() == 2) :
 			<?php foreach ($subCategories as $subCategory) : ?>
 				<div style="width: calc(100%/<?=count($subCategories);?>);">
 					<div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?php print $h->getCategoryUrl($subCategory);?>">
-							<span><?php print $subCategory->getName() ?></span>
+						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?= $h->getCategoryUrl($subCategory);?>">
+							<span><?= $subCategory->getName() ?></span>
 						</span>
 						<ul class="dropdown">
 							<li>
-								<span class="item" onclick="window.location.href='<?php print $h->getCategoryUrl($subCategory);?>'" data-category-url="<?php print $h->getCategoryUrl($subCategory);?>">Show all <?php print $subCategory->getName() ?></span>
+								<span class="item" onclick="window.location.href='<?= $h->getCategoryUrl($subCategory);?>'" data-category-url="<?= $h->getCategoryUrl($subCategory);?>">Show all <?= $subCategory->getName() ?></span>
 							</li>
 							<?php if (count($subCategory->getChildrenCategories())
 							> 0
@@ -235,7 +234,7 @@ if ($b->level() == 2) :
 								  $subCategory2
 							  ) : ?>
 								  <li>
-									  <span class="item" onclick="window.location.href='<?php print $h->getCategoryUrl($subCategory2);?>'" data-category-url="<?php print $h->getCategoryUrl($subCategory2);?>"><?php print $subCategory2->getName() ?></span>
+									  <span class="item" onclick="window.location.href='<?= $h->getCategoryUrl($subCategory2);?>'" data-category-url="<?= $h->getCategoryUrl($subCategory2);?>"><?= $subCategory2->getName() ?></span>
 								  </li>
 							  <?php endforeach; ?>
 							<?php endif; ?>
