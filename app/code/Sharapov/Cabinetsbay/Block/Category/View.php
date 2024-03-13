@@ -24,9 +24,21 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function level():int {return df_category_level($this->getCurrentCategory());}
 
-  function isRTA():bool {return ($this->getCurrentCategory()->getId() == 3411);}
+	/**
+	 * 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * 2) I use `(int)` because @uses \Magento\Framework\Model\AbstractModel::getId() return a string.
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
+	 */
+	function isRTA():bool {return 3411 === (int)$this->getCurrentCategory()->getId();}
 
-  function isPA():bool {return ($this->getCurrentCategory()->getId() == 4036);}
+	/**
+	 * 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * 2) I use `(int)` because @uses \Magento\Framework\Model\AbstractModel::getId() return a string.
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
+	 */
+	function isPA():bool {return 4036 === (int)$this->getCurrentCategory()->getId();}
 
   function getRootCategoryName() {
 	if($this->getCurrentCategory()) {
