@@ -7,7 +7,7 @@ use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $h = $this->helper(H::class); /** @var H $h */
 // Show product categories only on second level
-if ($b->level() == 2) {
+if (2 === $b->level()) {
 	// If RTA products
 	if($b->isRTA()) {
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
