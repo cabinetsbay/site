@@ -173,7 +173,8 @@ if ($b->level() == 2) :
 						 ->setBlockId('product-page-rta-info')
 						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
 	  print '</div>';
-	} elseif($b->isPA()) { // If pre-assembled products
+	}
+	elseif($b->isPA()) { // If pre-assembled products
 	  print '<div id="faq-purchase" class="product-page-faq">';
 	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
 						 ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
