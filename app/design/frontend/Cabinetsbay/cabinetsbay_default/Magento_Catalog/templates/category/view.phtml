@@ -200,9 +200,7 @@ if (2 === $b->level()) {
 	  print '</div>';
 	}
 }
-if ($b->level() >= 3) : ?>
-
-	<?php
+elseif (3 <= $b->level()) {
 	$sndLevelCategories = $b->l3();
 	if($sndLevelCategories) {
 		$subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
@@ -239,5 +237,5 @@ if ($b->level() >= 3) : ?>
 				</div>
 			<?php endforeach; ?>
 		</div>
-	<?php endif; /* if(count($subCategories) > 0) : */ ?>
-<?php endif; /* if($b->level() == 3) : */
+	<?php endif;
+}
