@@ -1,13 +1,18 @@
-/** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
-$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
+# 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml`":
+# https://github.com/cabinetsbay/site/issues/112
+use Sharapov\Cabinetsbay\Block\Category\View as B;
+/** @var B $block */ $b = $block; /** @var B $b */
 
 /** @var \Magento\Catalog\Model\Category $subCategory */
-/** @var \Sharapov\Cabinetsbay\Block\Category\View $block */
+
+/** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
+$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
 // Show product categories only on second level
-if ($block->level() == 2) :
+if ($b->level() == 2) :
     // If RTA products
-    if($block->isRTA()) {
-      print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
+    if($b->isRTA()) {
+      print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
       print '<div class="product-page-info">';
       print strip_tags($block
                          ->getLayout()
@@ -23,9 +28,9 @@ if ($block->level() == 2) :
                          ->toHtml(), '<p><h3>');
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
-    } elseif($block->isPA()) {
+    } elseif($b->isPA()) {
       // If Pre-Assembled products
-      print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
+      print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
       print '<div class="product-page-info">';
       print strip_tags($block
                          ->getLayout()
@@ -42,7 +47,7 @@ if ($block->level() == 2) :
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
     } else {
-        print '<h2 class="product-page-title"><span>'.$block->getCurrentCategory()->getName().'</span></h2>';
+        print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span></h2>';
         print '<div class="product-page-info">';
         print strip_tags($block
             ->getLayout()
@@ -64,7 +69,7 @@ if ($block->level() == 2) :
     $filterStyle = $filterConstruction = [
         'all' => '<li data-style="all">All</li>'
     ];
-    $productsCollection = $block->getCategoryProducts();
+    $productsCollection = $b->getCategoryProducts();
     if (count($productsCollection) > 0) : ?>
       <?php foreach ($productsCollection as $productCategory) {
         // Fill styles
@@ -166,13 +171,13 @@ if ($block->level() == 2) :
     <?php endif; ?>
     <?php
     // If RTA products
-    if($block->isRTA()) {
+    if($b->isRTA()) {
       print '<div id="faq-purchase" class="product-page-faq">';
-      print strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')
+      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
                          ->setBlockId('product-page-faq-rta-welcome')->toHtml(), '<p><h3>');
       print '</div>';
       print '<div class="product-page-faq">';
-      print strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')
+      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
                          ->setBlockId('product-page-faq-rta-body')->toHtml(), '<p><h4><strong>');
       print '</div>';
       print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
@@ -190,13 +195,13 @@ if ($block->level() == 2) :
                          ->setBlockId('product-page-rta-info')
                          ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
       print '</div>';
-    } elseif($block->isPA()) { // If pre-assembled products
+    } elseif($b->isPA()) { // If pre-assembled products
       print '<div id="faq-purchase" class="product-page-faq">';
-      print strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')
+      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
                          ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
       print '</div>';
       print '<div class="product-page-faq">';
-      print strip_tags($block->getLayout()->createBlock('Magento\Cms\Block\Block')
+      print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
                          ->setBlockId('product-page-faq-pa-body')->toHtml(), '<p><h4><strong>');
       print '</div>';
       print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
@@ -218,11 +223,11 @@ if ($block->level() == 2) :
         // Not used if other categories
     }
     ?>
-<?php endif; /*if($block->level() == 2) :*/ ?>
-<?php if ($block->level() >= 3) : ?>
+<?php endif; /*if($b->level() == 2) :*/ ?>
+<?php if ($b->level() >= 3) : ?>
 
     <?php
-    $sndLevelCategories = $block->l3();
+    $sndLevelCategories = $b->l3();
     if($sndLevelCategories) {
         $subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
     } else {
@@ -259,4 +264,4 @@ if ($block->level() == 2) :
             <?php endforeach; ?>
         </div>
     <?php endif; /* if(count($subCategories) > 0) : */ ?>
-<?php endif; /* if($block->level() == 3) : */
+<?php endif; /* if($b->level() == 3) : */
