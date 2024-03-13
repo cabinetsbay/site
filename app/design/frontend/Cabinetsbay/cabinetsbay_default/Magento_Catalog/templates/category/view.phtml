@@ -211,7 +211,7 @@ elseif (3 <= $b->level()) {
 	$_helper = $this->helper('Magento\Catalog\Helper\Output');
 	if (count($subCategories) > 0) { ?>
 		<div class="category-filterblock">
-			<?php foreach ($subCategories as $subCategory) : ?>
+			<?php foreach ($subCategories as $subCategory) { ?>
 				<div style="width: calc(100%/<?=count($subCategories);?>);">
 					<div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
 						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?= $h->getCategoryUrl($subCategory);?>">
@@ -236,7 +236,7 @@ elseif (3 <= $b->level()) {
 						</ul>
 					</div>
 				</div>
-			<?php endforeach; ?>
+			<?php } ?>
 		</div>
 	<?php
 	}
