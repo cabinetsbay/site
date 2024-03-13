@@ -145,11 +145,9 @@ if ($b->level() == 2) :
 			</div>
 		</div>
 	</div>
-	<?php if(!empty($products)) { ?>
-	  <div class="c-products-grid"><ul id="products_list">
-		<?= $products; ?>
-	  </ul></div>
-	<?php } 
+	<?php if (!empty($products)) {
+		?><div class="c-products-grid"><ul id="products_list"><?= $products ?></ul></div><?php
+	}
 	// If RTA products
 	if($b->isRTA()) {
 	  print '<div id="faq-purchase" class="product-page-faq">';
