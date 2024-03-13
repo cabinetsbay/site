@@ -2,13 +2,10 @@
 # 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml`":
 # https://github.com/cabinetsbay/site/issues/112
+use Magento\Catalog\Helper\Category as H;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
-
-/** @var \Magento\Catalog\Model\Category $subCategory */
-
-/** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
-$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category');
+$categoryHelper_sub = $this->helper(H::class); /** @var H $categoryHelper_sub */
 // Show product categories only on second level
 if ($b->level() == 2) :
 	// If RTA products
