@@ -24,13 +24,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function level():int {return df_category_level($this->getCurrentCategory());}
 
-  function isRTA() {
-	return ($this->getCurrentCategory()->getId() == 3411);
-  }
+  function isRTA():bool {return ($this->getCurrentCategory()->getId() == 3411);}
 
-  function isPA() {
-	return ($this->getCurrentCategory()->getId() == 4036);
-  }
+  function isPA():bool {return ($this->getCurrentCategory()->getId() == 4036);}
 
   function getRootCategoryName() {
 	if($this->getCurrentCategory()) {
