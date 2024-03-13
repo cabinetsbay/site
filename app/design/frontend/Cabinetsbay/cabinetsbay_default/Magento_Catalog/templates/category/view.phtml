@@ -9,7 +9,7 @@ $h = $this->helper(H::class); /** @var H $h */
 // Show product categories only on second level
 if (2 === $b->level()) {
 	// If RTA products
-	if($b->isRTA()) {
+	if ($b->isRTA()) {
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
 	  print '<div class="product-page-info">';
 	  print strip_tags($block
@@ -27,7 +27,7 @@ if (2 === $b->level()) {
 	  print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
 	  print '</div>';
 	}
-	elseif($b->isPA()) {
+	elseif ($b->isPA()) {
 	  // If Pre-Assembled products
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
 	  print '<div class="product-page-info">';
@@ -82,7 +82,7 @@ if (2 === $b->level()) {
 					  . $h->getCategoryUrl($productCategory)
 					  . '">';
 		$products.= '<div>' . $productCategory->getName() . '</div>';
-					if($productCategory->getData('cb_kitchen_set') != '') {
+					if ($productCategory->getData('cb_kitchen_set') != '') {
 					  $products.= '<div class="size-price"><b>' . $productCategory->getData('cb_kitchen_set') . '</b>'
 					  . $productCategory->getData('cb_kitchen_price') . '</div>';
 					}
@@ -149,7 +149,7 @@ if (2 === $b->level()) {
 		?><div class="c-products-grid"><ul id="products_list"><?= $products ?></ul></div><?php
 	}
 	// If RTA products
-	if($b->isRTA()) {
+	if ($b->isRTA()) {
 	  print '<div id="faq-purchase" class="product-page-faq">';
 	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
 						 ->setBlockId('product-page-faq-rta-welcome')->toHtml(), '<p><h3>');
@@ -174,7 +174,7 @@ if (2 === $b->level()) {
 						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
 	  print '</div>';
 	}
-	elseif($b->isPA()) { // If pre-assembled products
+	elseif ($b->isPA()) { // If pre-assembled products
 	  print '<div id="faq-purchase" class="product-page-faq">';
 	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
 						 ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
