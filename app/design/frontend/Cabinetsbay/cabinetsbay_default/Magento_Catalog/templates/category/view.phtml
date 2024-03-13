@@ -5,7 +5,7 @@
 use Magento\Catalog\Helper\Category as H;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
-$categoryHelper_sub = $this->helper(H::class); /** @var H $categoryHelper_sub */
+$h = $this->helper(H::class); /** @var H $h */
 // Show product categories only on second level
 if ($b->level() == 2) :
 	// If RTA products
@@ -79,7 +79,7 @@ if ($b->level() == 2) :
 		/** @var \Magento\Catalog\Model\Category\Interceptor $productCategory */
 		$products.= '<li data-sorterprice="'.preg_replace('/[^0-9.]+/', '', $productCategory->getData('cb_kitchen_price')).'" data-sortercolor="'.$productCategory->getData('cb_kitchen_color').'" data-sorterstyle="'.$productCategory->getData('cb_kitchen_style').'" data-sorterconstruction="'.$productCategory->getData('cb_kitchen_type').'">';
 		$products.= '<a href="'
-					  . $categoryHelper_sub->getCategoryUrl($productCategory)
+					  . $h->getCategoryUrl($productCategory)
 					  . '">';
 		$products.= '<div>' . $productCategory->getName() . '</div>';
 					if($productCategory->getData('cb_kitchen_set') != '') {
@@ -93,7 +93,7 @@ if ($b->level() == 2) :
 					}
 		$products.= '</a>';
 		$products.= '<div><a href="'
-					  . $categoryHelper_sub->getCategoryUrl($productCategory)
+					  . $h->getCategoryUrl($productCategory)
 					  . '">Shop cabinets</a><a href="'.$productCategory->getData('cb_door_sample_link').'">Order sample</a></div>';
 		$products.= '</li>';
 				  }
@@ -232,12 +232,12 @@ if ($b->level() == 2) :
 			<?php foreach ($subCategories as $subCategory) : ?>
 				<div style="width: calc(100%/<?=count($subCategories);?>);">
 					<div class="category-filter-dropdown" data-mage-init='{"dropdown":{}}'>
-						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">
+						<span class="action toggle" data-toggle="dropdown" aria-haspopup="true" data-category-url="<?php print $h->getCategoryUrl($subCategory);?>">
 							<span><?php print $subCategory->getName() ?></span>
 						</span>
 						<ul class="dropdown">
 							<li>
-								<span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory);?>">Show all <?php print $subCategory->getName() ?></span>
+								<span class="item" onclick="window.location.href='<?php print $h->getCategoryUrl($subCategory);?>'" data-category-url="<?php print $h->getCategoryUrl($subCategory);?>">Show all <?php print $subCategory->getName() ?></span>
 							</li>
 							<?php if (count($subCategory->getChildrenCategories())
 							> 0
@@ -247,7 +247,7 @@ if ($b->level() == 2) :
 								  $subCategory2
 							  ) : ?>
 								  <li>
-									  <span class="item" onclick="window.location.href='<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>'" data-category-url="<?php print $categoryHelper_sub->getCategoryUrl($subCategory2);?>"><?php print $subCategory2->getName() ?></span>
+									  <span class="item" onclick="window.location.href='<?php print $h->getCategoryUrl($subCategory2);?>'" data-category-url="<?php print $h->getCategoryUrl($subCategory2);?>"><?php print $subCategory2->getName() ?></span>
 								  </li>
 							  <?php endforeach; ?>
 							<?php endif; ?>
