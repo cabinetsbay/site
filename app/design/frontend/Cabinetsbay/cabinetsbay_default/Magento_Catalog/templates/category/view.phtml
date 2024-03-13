@@ -28,7 +28,8 @@ if ($b->level() == 2) :
                          ->toHtml(), '<p><h3>');
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
-    } elseif($b->isPA()) {
+    }
+    elseif($b->isPA()) {
       // If Pre-Assembled products
       print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
       print '<div class="product-page-info">';
@@ -46,7 +47,8 @@ if ($b->level() == 2) :
                          ->toHtml(), '<p><h3>');
       print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
       print '</div>';
-    } else {
+    }
+    else {
         print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span></h2>';
         print '<div class="product-page-info">';
         print strip_tags($block
@@ -64,7 +66,6 @@ if ($b->level() == 2) :
         print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
         print '</div>';
     }
-
     $products = '';
     $filterStyle = $filterConstruction = [
         'all' => '<li data-style="all">All</li>'
