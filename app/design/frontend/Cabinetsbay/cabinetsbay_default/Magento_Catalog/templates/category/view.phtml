@@ -3,6 +3,7 @@
 # "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml`":
 # https://github.com/cabinetsbay/site/issues/112
 use Magento\Catalog\Helper\Category as H;
+use Magento\Cms\Block\Block as CB;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $h = $this->helper(H::class); /** @var H $h */
@@ -11,21 +12,11 @@ if (2 === $b->level()) {
 	// If RTA products
 	if ($b->isRTA()) {
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
-	  print '<div class="product-page-info">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-rta-info')
-						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-	  print '</div>';
-	  print '<div class="product-page-how-to-shop">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-rta-how-to-shop')
-						 ->toHtml(), '<p><h3>');
-	  print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
-	  print '</div>';
+		echo df_tag('div', 'product-page-info', df_cms_block_content('product-page-rta-info'));
+		echo df_tag('div', 'product-page-how-to-shop', df_c(
+			df_cms_block_content('product-page-rta-how-to-shop')
+			,df_tag('a', ['class' => 'scrollTo', 'href' => '#how-to-shop'], 'Learn More...')
+		));
 	}
 	elseif ($b->isPA()) {
 	  // If Pre-Assembled products
