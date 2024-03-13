@@ -202,13 +202,14 @@ if (2 === $b->level()) {
 }
 elseif (3 <= $b->level()) {
 	$sndLevelCategories = $b->l3();
-	if($sndLevelCategories) {
+	if ($sndLevelCategories) {
 		$subCategories = $sndLevelCategories->getChildrenCategories()->addAttributeToFilter('include_in_menu', 1);
-	} else {
+	}
+	else {
 		$subCategories = [];
 	}
 	$_helper = $this->helper('Magento\Catalog\Helper\Output');
-	if (count($subCategories) > 0) : ?>
+	if (count($subCategories) > 0) { ?>
 		<div class="category-filterblock">
 			<?php foreach ($subCategories as $subCategory) : ?>
 				<div style="width: calc(100%/<?=count($subCategories);?>);">
@@ -237,5 +238,6 @@ elseif (3 <= $b->level()) {
 				</div>
 			<?php endforeach; ?>
 		</div>
-	<?php endif;
+	<?php
+	}
 }
