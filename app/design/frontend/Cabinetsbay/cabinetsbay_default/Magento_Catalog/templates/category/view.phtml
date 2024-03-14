@@ -9,24 +9,34 @@ $h = $this->helper(H::class); /** @var H $h */
 // Show product categories only on second level
 if (2 === $b->level()) {
 	if ($b->isRTA()) {
-	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
-		echo df_tag('div', 'product-page-info', df_cms_block_content('product-page-rta-info'));
-		echo df_tag('div', 'product-page-how-to-shop', df_c(
-			df_cms_block_content('product-page-rta-how-to-shop')
-			,df_tag('a', ['class' => 'scrollTo', 'href' => '#how-to-shop'], 'Learn More...')
-		));
+		?>
+			<h2 class="product-page-title">
+				<span><?= $b->getCurrentCategory()->getName() ?></span>
+				<sub>Frequently Asked Questions about RTA Cabinets
+					<a href="#faq-purchase" class="scrollTo">Learn More...</a>
+				</sub>
+			</h2>
+			<div class='product-page-info'><?= df_cms_block_content('product-page-rta-info') ?></div>
+			<div class='product-page-how-to-shop'>
+				<?= df_cms_block_content('product-page-rta-how-to-shop') ?>
+				<a class='scrollTo' href='#how-to-shop'>Learn More...</a>
+			</div>
+		<?php
 	}
 	elseif ($b->isPA()) {
-	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
-	  echo df_tag('div', 'product-page-info', df_cms_block_content('product-page-pa-info'));
-	  print '<div class="product-page-how-to-shop">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-pa-how-to-shop')
-						 ->toHtml(), '<p><h3>');
-	  print '<a href="#how-to-shop" class="scrollTo">Learn More...</a>';
-	  print '</div>';
+		?>
+			<h2 class="product-page-title">
+				<span><?= $b->getCurrentCategory()->getName() ?></span>
+				<sub>Frequently Asked Questions about Pre-Assembled Cabinets
+					<a href="#faq-purchase" class="scrollTo">Learn More...</a>
+				</sub>
+			</h2>
+			<div class='product-page-info'><?= df_cms_block_content('product-page-pa-info') ?></div>
+			<div class='product-page-how-to-shop'>
+				<?= df_cms_block_content('product-page-pa-how-to-shop') ?>
+				<a class='scrollTo' href='#how-to-shop'>Learn More...</a>
+			</div>
+		<?php
 	}
 	else {
 		print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span></h2>';
