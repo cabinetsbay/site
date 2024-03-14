@@ -3,18 +3,17 @@ namespace Sharapov\Cabinetsbay\Block\Category;
 use Magento\Catalog\Model\Category as C;
 use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
-  function getCategoryProducts() {
-	$objectManager_sub = $objectManager
-	  = \Magento\Framework\App\ObjectManager::getInstance();
-	$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
-
-	return $category
-	  ->getCollection()
-	  ->addAttributeToSelect('*')
-	  ->addAttributeToFilter('is_active', 1)
-	  ->addIdFilter($this->getCurrentCategory()->getChildren())
-	  ->setOrder('position', 'ASC');
-  }
+	function getCategoryProducts() {
+		$objectManager_sub = \Magento\Framework\App\ObjectManager::getInstance();
+		$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
+		return $category
+			->getCollection()
+			->addAttributeToSelect('*')
+			->addAttributeToFilter('is_active', 1)
+			->addIdFilter($this->getCurrentCategory()->getChildren())
+			->setOrder('position', 'ASC')
+		;
+	}
 
 	/**
 	 * 2024-03-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
