@@ -6,11 +6,11 @@ use Magento\Catalog\Helper\Category as H;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $h = df_category_h(); /** @var H $h */
-$output = function(string $t) use($b):void {echo df_block_output('CabinetsBay_Core', "catalog/category/$t", ['b' => $b]);};
+$echo = function(string $t) use($b):void {echo df_block_output('CabinetsBay_Core', "catalog/category/$t", ['b' => $b]);};
 if (2 === $b->level()) {
-	$output('l2/top');
-	$output('l2/l3');
-	$output('l2/bottom');
+	$echo('l2/top');
+	$echo('l2/l3');
+	$echo('l2/bottom');
 }
 elseif (3 <= $b->level()) {
 	$sndLevelCategories = $b->l3();
