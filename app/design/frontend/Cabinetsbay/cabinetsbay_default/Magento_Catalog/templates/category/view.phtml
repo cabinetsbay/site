@@ -19,11 +19,7 @@ if (2 === $b->level()) {
 	elseif ($b->isPA()) {
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
 	  print '<div class="product-page-info">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-pa-info')
-						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
+	  echo df_cms_block_content('product-page-pa-info');
 	  print '</div>';
 	  print '<div class="product-page-how-to-shop">';
 	  print strip_tags($block
