@@ -9,7 +9,6 @@ $h = df_category_h(); /** @var H $h */
 if (2 === $b->level()) {
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/faq', ['b' => $b]);
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/l3', ['b' => $b]);
-	// If RTA products
 	if ($b->isRTA()) {
 	  print '<div id="faq-purchase" class="product-page-faq">';
 	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
