@@ -5,7 +5,7 @@
 use Magento\Catalog\Helper\Category as H;
 use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
-$h = $this->helper(H::class); /** @var H $h */
+$h = df_category_h(); /** @var H $h */
 if (2 === $b->level()) {
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/faq', ['b' => $b]);
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/l3', ['b' => $b]);
