@@ -8,7 +8,6 @@ use Sharapov\Cabinetsbay\Block\Category\View as B;
 $h = $this->helper(H::class); /** @var H $h */
 // Show product categories only on second level
 if (2 === $b->level()) {
-	// If RTA products
 	if ($b->isRTA()) {
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about RTA Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
 		echo df_tag('div', 'product-page-info', df_cms_block_content('product-page-rta-info'));
@@ -18,7 +17,6 @@ if (2 === $b->level()) {
 		));
 	}
 	elseif ($b->isPA()) {
-	  // If Pre-Assembled products
 	  print '<h2 class="product-page-title"><span>'.$b->getCurrentCategory()->getName().'</span><sub>Frequently Asked Questions about Pre-Assembled Cabinets <a href="#faq-purchase" class="scrollTo">Learn More...</a></sub></h2>';
 	  print '<div class="product-page-info">';
 	  print strip_tags($block
