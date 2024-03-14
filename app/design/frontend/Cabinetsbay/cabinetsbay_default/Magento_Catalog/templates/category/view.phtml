@@ -7,58 +7,9 @@ use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $h = df_category_h(); /** @var H $h */
 if (2 === $b->level()) {
-	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/faq', ['b' => $b]);
+	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/top', ['b' => $b]);
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/l3', ['b' => $b]);
-	if ($b->isRTA()) {
-	  print '<div id="faq-purchase" class="product-page-faq">';
-	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-faq-rta-welcome')->toHtml(), '<p><h3>');
-	  print '</div>';
-	  print '<div class="product-page-faq">';
-	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-faq-rta-body')->toHtml(), '<p><h4><strong>');
-	  print '</div>';
-	  print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-rta-how-to-shop')
-						 ->toHtml(), '<p><h3>');
-	  print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
-	  print '</div>';
-	  print '<div class="product-page-info mobile-view">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-rta-info')
-						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-	  print '</div>';
-	}
-	elseif ($b->isPA()) { // If pre-assembled products
-	  print '<div id="faq-purchase" class="product-page-faq">';
-	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-faq-pa-welcome')->toHtml(), '<p><h3>');
-	  print '</div>';
-	  print '<div class="product-page-faq">';
-	  print strip_tags($b->getLayout()->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-faq-pa-body')->toHtml(), '<p><h4><strong>');
-	  print '</div>';
-	  print '<div id="how-to-shop" class="product-page-how-to-shop mobile-view">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-pa-how-to-shop')
-						 ->toHtml(), '<p><h3>');
-	  print '<a href="#products_list" class="scrollTo">Click here to start shopping</a>';
-	  print '</div>';
-	  print '<div class="product-page-info mobile-view">';
-	  print strip_tags($block
-						 ->getLayout()
-						 ->createBlock('Magento\Cms\Block\Block')
-						 ->setBlockId('product-page-pa-info')
-						 ->toHtml(), '<p><strong><a><table><tbody><tr><td><h3>');
-	  print '</div>';
-	}
+	echo df_block_output('CabinetsBay_Core', 'catalog/category/l2/bottom', ['b' => $b]);
 }
 elseif (3 <= $b->level()) {
 	$sndLevelCategories = $b->l3();
