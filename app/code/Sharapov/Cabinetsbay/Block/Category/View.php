@@ -1,9 +1,14 @@
 <?php
 namespace Sharapov\Cabinetsbay\Block\Category;
 use Magento\Catalog\Model\Category as C;
+use Magento\Catalog\Model\ResourceModel\Category\Collection as CC;
 use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
-	function getCategoryProducts() {
+	/**
+	 * 2024-03-14 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 */
+	function children():CC {
 		$objectManager_sub = \Magento\Framework\App\ObjectManager::getInstance();
 		$category = $objectManager_sub->get('Magento\Catalog\Model\Category');
 		return $category
