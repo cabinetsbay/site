@@ -406,7 +406,6 @@ return [
         'Df_Xml' => 1,
         'Df_Zf' => 1,
         'Mageplaza_Core' => 1,
-        'Mageplaza_Blog' => 1,
         'Mageplaza_BackendReindex' => 1,
         'Mageplaza_DeleteOrders' => 1,
         'Mageplaza_Smtp' => 1,
