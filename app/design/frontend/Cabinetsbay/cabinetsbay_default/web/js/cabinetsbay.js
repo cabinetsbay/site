@@ -16,16 +16,18 @@ require([
 	,'domReady!'
 ], function($) {
 	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
-	// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	// https://jsfiddle.net/dfediuk/rb0e7q82
-	$('#backTop').on('click', e => {
-		e.preventDefault();
-		$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - 130}, 500);
-	});
-	$('.scrollTo').on('click', e => {
-		e.preventDefault();
-		$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - 30}, 500);
-	});
+	(function() {
+		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// https://jsfiddle.net/dfediuk/rb0e7q82
+		const f = (n, offset) => {
+			$('#' + n).on('click', e => {
+				e.preventDefault();
+				$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - offset}, 500);
+			});
+		};
+		f('backTop', 130);
+		f('scrollTo', 30);
+	})();
 	$('li._hasSubmenu').find('.link-wrapper').on('click', function (event) {
 		event.preventDefault();
 		let el = $(this).parents('._hasSubmenu');
