@@ -179,12 +179,7 @@ require([
 
 	$(document).scroll(function () {
 		const y = $(this).scrollTop();
-		if (y > 30) {
-			$('.page-header').addClass('sticky');
-		}
-		else {
-			$('.page-header').removeClass('sticky');
-		}
+		$('.page-header').toggleClass('sticky', y > 30);
 		if (y > 800) {
 			$('#backTop').fadeIn();
 		}
