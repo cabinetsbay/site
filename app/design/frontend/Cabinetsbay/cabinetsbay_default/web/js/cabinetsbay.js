@@ -178,7 +178,7 @@ require([
   });
 
 	$(document).scroll(function () {
-		var y = $(this).scrollTop();
+		const y = $(this).scrollTop();
 		if (y > 30) {
 			$('.page-header').addClass('sticky');
 		}
