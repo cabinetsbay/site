@@ -30,7 +30,7 @@ require([
 	})();
 	$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
 		e.preventDefault();
-		let el = $(this).parents('._hasSubmenu');
+		const el = $(this).parents('._hasSubmenu');
 		if (el.hasClass('active')) {
 			el.removeClass('active').addClass('_closed');
 		}
