@@ -211,13 +211,9 @@ require([
 	}
   });
 
-  $('#amform-form-7').on('submit', function () {
-	if($(this).valid()) {
-	  console.log('datalayer even get_quote is fired');
-	  //dataLayer.push({event: 'get_quote'});
-	  gtag('event', 'sent', {
-		'event_category': 'get_quote'
-	  });
-	}
-  });
+	$('#amform-form-7').on('submit', function () {
+		if ($(this).valid()) {
+			gtag('event', 'sent', {'event_category': 'get_quote'});
+		}
+	});
 });
