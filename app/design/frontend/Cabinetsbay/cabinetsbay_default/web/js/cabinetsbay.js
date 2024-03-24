@@ -203,15 +203,11 @@ require([
 
   $('#amform-form-6').on('submit', function () {
 	if($(this).valid()) {
-	  console.log('datalayer even free_design is fired');
-	  //dataLayer.push({event: 'free_design'});
 	  gtag('event', 'sent', {
 		'event_category': 'free_design'
 	  });
 	}
   });
-
-
 	$('#amform-form-7').on('submit', function() {
 		if ($(this).valid()) {
 			gtag('event', 'sent', {'event_category': 'get_quote'});
