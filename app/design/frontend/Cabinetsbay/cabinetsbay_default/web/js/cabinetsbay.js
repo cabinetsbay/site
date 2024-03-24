@@ -16,13 +16,15 @@ require([
 	,'domReady!'
 ], function($) {
 	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
+	// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	// https://jsfiddle.net/dfediuk/rb0e7q82
 	$('#backTop').on('click', e => {
 		e.preventDefault();
-		$('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 130}, 500);
+		$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - 130}, 500);
 	});
 	$('.scrollTo').on('click', e => {
 		e.preventDefault();
-		$('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 30}, 500);
+		$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - 30}, 500);
 	});
 	$('li._hasSubmenu').find('.link-wrapper').on('click', function (event) {
 		event.preventDefault();
