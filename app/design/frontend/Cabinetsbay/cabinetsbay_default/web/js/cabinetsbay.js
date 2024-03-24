@@ -1,4 +1,6 @@
-// block-search
+// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js`":
+// https://github.com/cabinetsbay/site/issues/121
 require([
   'jquery',
   'jquery/ui',
