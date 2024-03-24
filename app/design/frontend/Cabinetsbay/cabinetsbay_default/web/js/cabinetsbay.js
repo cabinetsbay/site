@@ -149,20 +149,15 @@ require([
 		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));
 	});
 	(function() {
-		$('#newsletter-validate-detail').on('submit', function() {
-			if ($(this).valid()) {
-				gtag('event', 'sent', {'event_category': 'subscription'});
-			}
-		});
-		$('#amform-form-6').on('submit', function() {
-			if ($(this).valid()) {
-				gtag('event', 'sent', {'event_category': 'free_design'});
-			}
-		});
-		$('#amform-form-7').on('submit', function() {
-			if ($(this).valid()) {
-				gtag('event', 'sent', {'event_category': 'get_quote'});
-			}
-		});
+		const f = (s, c) => {
+			$('#' + s).on('submit', function() {
+				if ($(this).valid()) {
+					gtag('event', 'sent', {'event_category': c});
+				}
+			});
+		};
+		f('newsletter-validate-detail', 'subscription');
+		f('amform-form-6', 'free_design');
+		f('amform-form-7', 'get_quote');
 	})();
 });
