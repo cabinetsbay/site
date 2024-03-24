@@ -22,7 +22,11 @@ require([
 		const f = (n, offset) => {
 			$('#' + n).on('click', e => {
 				e.preventDefault();
-				$('html, body').animate({scrollTop: $(e.currentTarget.href).offset().top - offset}, 500);
+				// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+				// e.currentTarget.href => https://localhost.com:2255/pre-assembled-cabinets/moonlight-shaker.html#maincontent
+				// e.currentTarget.getAttribute('href') => #maincontent
+				// https://stackoverflow.com/a/15439946/
+				$('html, body').animate({scrollTop: $(e.currentTarget.getAttribute('href')).offset().top - offset}, 500);
 			});
 		};
 		f('backTop', 130);
