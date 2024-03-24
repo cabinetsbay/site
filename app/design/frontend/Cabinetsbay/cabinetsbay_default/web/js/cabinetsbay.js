@@ -142,7 +142,7 @@ require([
 	if(screen.width < 680 && $('.products.wrapper.list').hasClass('products-list')) {
 		$('.products.wrapper.list').removeClass('products-list').addClass('products-grid');
 	}
-	$(document).scroll(function () {
+	$(document).scroll(function() {
 		const y = $(this).scrollTop();
 		$('.page-header').toggleClass('sticky', y > 30);
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
