@@ -190,17 +190,11 @@ require([
 	  $('#backTop').fadeOut();
 	}
   });
-
-  $('#newsletter-validate-detail').on('submit', function () {
-	if($(this).valid()) {
-	  console.log('datalayer even subscription is fired');
-	  //dataLayer.push({event: 'subscription'});
-	  gtag('event', 'sent', {
-		'event_category': 'subscription'
-	  });
-	}
-  });
-  
+	$('#newsletter-validate-detail').on('submit', function() {
+		if ($(this).valid()) {
+			gtag('event', 'sent', {'event_category': 'subscription'});
+		}
+	});
 	$('#amform-form-6').on('submit', function() {
 		if ($(this).valid()) {
 			gtag('event', 'sent', {'event_category': 'free_design'});
