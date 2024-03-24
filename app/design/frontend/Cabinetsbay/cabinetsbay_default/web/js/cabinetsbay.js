@@ -16,11 +16,9 @@ require([
 	,'domReady!'
 ], function($) {
 	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
-	$('#backTop').on('click', function(e) {
+	$('#backTop').on('click', e => {
 		e.preventDefault();
-		$('html, body').animate({
-			scrollTop: $($.attr(this, 'href')).offset().top - 130
-		}, 500);
+		$('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 130}, 500);
 	});
 	$('.scrollTo').on('click', function (event) {
 		event.preventDefault();
