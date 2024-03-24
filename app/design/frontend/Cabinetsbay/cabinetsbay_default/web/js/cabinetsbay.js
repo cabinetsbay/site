@@ -40,17 +40,8 @@ require([
 		};
 		f($('li._hasSubmenu').find('.link-wrapper'), $e => $e.parents('._hasSubmenu'));
 		f($('.mobile-navigation-opener'), $e => $e.closest('#mobile-navigation'));
+		f($('.customlinks > div > p'), $e => $e.closest('div'));
 	})();
-	$('.customlinks > div > p').on('click', function (event) {
-		event.preventDefault();
-		let el = $(this).closest('div');
-		if (el.hasClass('active')) {
-			el.removeClass('active').addClass('_closed');
-		}
-		else {
-			el.removeClass('_closed').addClass('active');
-		}
-	});
 	$('.category-tab > label').on('click', function (event) {
 		event.preventDefault();
 		let el = $(this).parent('div');
