@@ -28,20 +28,22 @@ require([
 		f('backTop', 130);
 		f('scrollTo', 30);
 	})();
-	$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
-		e.preventDefault();
-		const el = $(this).parents('._hasSubmenu');
-		const active = el.hasClass('active');
-		el.toggleClass('active', !active);
-		el.toggleClass('_closed', active);
-	});
-	$('.mobile-navigation-opener').on('click', function(e) {
-		e.preventDefault();
-		const el = $(this).closest('#mobile-navigation');
-		const active = el.hasClass('active');
-		el.toggleClass('active', !active);
-		el.toggleClass('_closed', active);
-	});
+	(function() {
+		$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
+			e.preventDefault();
+			const el = $(this).parents('._hasSubmenu');
+			const active = el.hasClass('active');
+			el.toggleClass('active', !active);
+			el.toggleClass('_closed', active);
+		});
+		$('.mobile-navigation-opener').on('click', function(e) {
+			e.preventDefault();
+			const el = $(this).closest('#mobile-navigation');
+			const active = el.hasClass('active');
+			el.toggleClass('active', !active);
+			el.toggleClass('_closed', active);
+		});
+	})();
 	$('.customlinks > div > p').on('click', function (event) {
 		event.preventDefault();
 		let el = $(this).closest('div');
