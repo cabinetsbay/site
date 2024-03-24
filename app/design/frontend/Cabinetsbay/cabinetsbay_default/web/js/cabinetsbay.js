@@ -98,22 +98,22 @@ require([
 		});
 	}
 	let $sortWrapper = $('#products_list');
-
 	let $sortPriceToggler = $('#dropdown-price');
 	$sortPriceToggler.find('.dropdown li').on('click', function (el) {
-	$sortPriceToggler.find('span.toggle > span').text('Price (' + el.target.innerHTML + ')');
-	setTimeout(function () {
-	$('.category-filter-dropdown').removeClass('active');
-	}, 500);
-	if(el.target.dataset.sortby == 'asc') {
-	$sortWrapper.find('li').sort(function(a, b) {
-	return +a.dataset.sorterprice - +b.dataset.sorterprice;
-	}).appendTo($sortWrapper);
-	} else {
-	$sortWrapper.find('li').sort(function(a, b) {
-	return +b.dataset.sorterprice - +a.dataset.sorterprice;
-	}).appendTo($sortWrapper);
-	}
+		$sortPriceToggler.find('span.toggle > span').text('Price (' + el.target.innerHTML + ')');
+		setTimeout(function () {
+			$('.category-filter-dropdown').removeClass('active');
+		}, 500);
+		if(el.target.dataset.sortby == 'asc') {
+			$sortWrapper.find('li').sort(function(a, b) {
+				return +a.dataset.sorterprice - +b.dataset.sorterprice;
+			}).appendTo($sortWrapper);
+		}
+		else {
+			$sortWrapper.find('li').sort(function(a, b) {
+				return +b.dataset.sorterprice - +a.dataset.sorterprice;
+			}).appendTo($sortWrapper);
+		}
 	});
 
 	let $sortColorToggler = $('#dropdown-color');
