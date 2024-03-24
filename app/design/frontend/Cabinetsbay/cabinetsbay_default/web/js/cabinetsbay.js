@@ -41,17 +41,8 @@ require([
 		f($('li._hasSubmenu').find('.link-wrapper'), $e => $e.parents('._hasSubmenu'));
 		f($('.mobile-navigation-opener'), $e => $e.closest('#mobile-navigation'));
 		f($('.customlinks > div > p'), $e => $e.closest('div'));
+		f($('.category-tab > label'), $e => $e.parent('div'));
 	})();
-	$('.category-tab > label').on('click', function (event) {
-		event.preventDefault();
-		let el = $(this).parent('div');
-		if (el.hasClass('active')) {
-			el.removeClass('active').addClass('_closed');
-		}
-		else {
-			el.removeClass('_closed').addClass('active');
-		}
-	});
 	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length > 0) {
 		if ($(window).width() > 680) {
 			$.ui.tabs({active: 0}, "#categoryTabs");
