@@ -31,8 +31,8 @@ require([
 				$('html, body').animate({scrollTop: $(e.currentTarget.getAttribute('href')).offset().top - offset}, 500);
 			});
 		};
-		f('backTop', 130);
-		f('scrollTo', 30);
+		f('#backTop', 130);
+		f('.scrollTo', 30);
 	})();
 	(function() {
 		const f = ($e, f) => {
