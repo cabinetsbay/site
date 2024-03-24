@@ -200,14 +200,12 @@ require([
 	  });
 	}
   });
-
-  $('#amform-form-6').on('submit', function () {
-	if($(this).valid()) {
-	  gtag('event', 'sent', {
-		'event_category': 'free_design'
-	  });
-	}
-  });
+  
+	$('#amform-form-6').on('submit', function() {
+		if ($(this).valid()) {
+			gtag('event', 'sent', {'event_category': 'free_design'});
+		}
+	});
 	$('#amform-form-7').on('submit', function() {
 		if ($(this).valid()) {
 			gtag('event', 'sent', {'event_category': 'get_quote'});
