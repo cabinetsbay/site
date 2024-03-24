@@ -147,19 +147,19 @@ require([
 			$sortWrapper.find('li[data-sorterstyle="'+el.target.innerHTML+'"]').show();
 		}
 	});
-
 	let $sortConstructionToggler = $('#dropdown-construction');
 	$sortConstructionToggler.find('.dropdown li').on('click', function (el) {
-	$sortConstructionToggler.find('span.toggle > span').text('Cabinet Construction (' + el.target.innerHTML + ')');
-	setTimeout(function () {
-	$('.category-filter-dropdown').removeClass('active');
-	}, 500);
-	if(el.target.innerHTML == 'All') {
-	$sortWrapper.find('li').show();
-	} else {
-	$sortWrapper.find('li').hide();
-	$sortWrapper.find('li[data-sorterconstruction="'+el.target.innerHTML+'"]').show();
-	}
+		$sortConstructionToggler.find('span.toggle > span').text('Cabinet Construction (' + el.target.innerHTML + ')');
+		setTimeout(function () {
+			$('.category-filter-dropdown').removeClass('active');
+		}, 500);
+		if(el.target.innerHTML == 'All') {
+			$sortWrapper.find('li').show();
+		}
+		else {
+			$sortWrapper.find('li').hide();
+			$sortWrapper.find('li[data-sorterconstruction="'+el.target.innerHTML+'"]').show();
+		}
 	});
 
 	if(screen.width < 680 && $('.products.wrapper.list').hasClass('products-list')) {
