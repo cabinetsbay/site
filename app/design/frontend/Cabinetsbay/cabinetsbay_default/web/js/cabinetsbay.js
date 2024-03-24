@@ -53,25 +53,23 @@ require([
 	}
 	(function() {
 		const $g = $('#category-gallery');
-		if ($g.length) {
-			$g.lightSlider({
-				adaptiveHeight: true,
-				auto: false,
-				autoWidth: false,
-				enableDrag: false,
-				gallery: true,
-				galleryMargin: 0,
-				item: 1,
-				loop: true,
-				slideMargin: 0,
-				speed: 700,
-				thumbItem: 3,
-				onSliderLoad: function (el) {
-					$('#category-gallery').removeClass('cS-hidden');
-					el.lightGallery({download: false, selector: '#category-gallery .lslide'});
-				}
-			});
-		}
+		!$g.length || $g.lightSlider({
+			adaptiveHeight: true,
+			auto: false,
+			autoWidth: false,
+			enableDrag: false,
+			gallery: true,
+			galleryMargin: 0,
+			item: 1,
+			loop: true,
+			slideMargin: 0,
+			speed: 700,
+			thumbItem: 3,
+			onSliderLoad: function (el) {
+				$('#category-gallery').removeClass('cS-hidden');
+				el.lightGallery({download: false, selector: '#category-gallery .lslide'});
+			}
+		});
 	})();
 	let $sortWrapper = $('#products_list');
 	let $sortPriceToggler = $('#dropdown-price');
