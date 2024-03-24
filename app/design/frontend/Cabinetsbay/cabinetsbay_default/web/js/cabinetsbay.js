@@ -37,7 +37,7 @@ require([
 	});
 	$('.mobile-navigation-opener').on('click', function(e) {
 		e.preventDefault();
-		let el = $(this).closest('#mobile-navigation');
+		const el = $(this).closest('#mobile-navigation');
 		if (el.hasClass('active')) {
 			el.removeClass('active').addClass('_closed');
 		}
