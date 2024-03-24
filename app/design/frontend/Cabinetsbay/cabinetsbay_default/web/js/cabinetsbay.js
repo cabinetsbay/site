@@ -80,24 +80,24 @@ require([
 	}
 	if ($('#category-gallery').length > 0) {
 		$('#category-gallery').lightSlider({
-		gallery: true,
-		item: 1,
-		thumbItem: 3,
-		slideMargin: 0,
-		speed: 700,
-		auto: false,
-		loop: true,
-		galleryMargin: 0,
-		enableDrag: false,
-		autoWidth: false,
-		adaptiveHeight: true,
-		onSliderLoad: function (el) {
-		$('#category-gallery').removeClass('cS-hidden');
-		el.lightGallery({
-		selector: '#category-gallery .lslide',
-		download: false
-		});
-		}
+			adaptiveHeight: true,
+			auto: false,
+			autoWidth: false,
+			enableDrag: false,
+			gallery: true,
+			galleryMargin: 0,
+			item: 1,
+			loop: true,
+			slideMargin: 0,
+			speed: 700,
+			thumbItem: 3,
+			onSliderLoad: function (el) {
+				$('#category-gallery').removeClass('cS-hidden');
+				el.lightGallery({
+					selector: '#category-gallery .lslide',
+					download: false
+				});
+			}
 		});
 	}
 
