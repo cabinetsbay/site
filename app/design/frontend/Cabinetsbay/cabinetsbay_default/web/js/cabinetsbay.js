@@ -115,21 +115,21 @@ require([
 			}).appendTo($sortWrapper);
 		}
 	});
-
 	let $sortColorToggler = $('#dropdown-color');
 	$sortColorToggler.find('.dropdown li').on('click', function (el) {
 	$sortColorToggler.find('span.toggle > span').text('Color (' + el.target.innerHTML + ')');
 	setTimeout(function () {
-	$('.category-filter-dropdown').removeClass('active');
+		$('.category-filter-dropdown').removeClass('active');
 	}, 500);
 	if(el.target.dataset.sortby == 'darker') {
-	$sortWrapper.find('li').sort(function(a, b) {
-	return +b.dataset.sortercolor - +a.dataset.sortercolor;
-	}).appendTo($sortWrapper);
-	} else {
-	$sortWrapper.find('li').sort(function(a, b) {
-	return +a.dataset.sortercolor - +b.dataset.sortercolor;
-	}).appendTo($sortWrapper);
+		$sortWrapper.find('li').sort(function(a, b) {
+			return +b.dataset.sortercolor - +a.dataset.sortercolor;
+		}).appendTo($sortWrapper);
+	}
+	else {
+		$sortWrapper.find('li').sort(function(a, b) {
+			return +a.dataset.sortercolor - +b.dataset.sortercolor;
+		}).appendTo($sortWrapper);
 	}
 	});
 
