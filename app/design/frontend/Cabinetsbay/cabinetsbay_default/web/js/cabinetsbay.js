@@ -29,20 +29,17 @@ require([
 		f('scrollTo', 30);
 	})();
 	(function() {
-		$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
-			e.preventDefault();
-			const el = $(this).parents('._hasSubmenu');
-			const active = el.hasClass('active');
-			el.toggleClass('active', !active);
-			el.toggleClass('_closed', active);
-		});
-		$('.mobile-navigation-opener').on('click', function(e) {
-			e.preventDefault();
-			const el = $(this).closest('#mobile-navigation');
-			const active = el.hasClass('active');
-			el.toggleClass('active', !active);
-			el.toggleClass('_closed', active);
-		});
+		const f = ($e, f) => {
+			$e.on('click', function(e) {
+				e.preventDefault();
+				const el = f($(this));
+				const active = el.hasClass('active');
+				el.toggleClass('active', !active);
+				el.toggleClass('_closed', active);
+			});
+		};
+		f($('li._hasSubmenu').find('.link-wrapper'), $e => $e.parents('._hasSubmenu'));
+		f($('.mobile-navigation-opener'), $e => $e.closest('#mobile-navigation'));
 	})();
 	$('.customlinks > div > p').on('click', function (event) {
 		event.preventDefault();
