@@ -130,7 +130,15 @@ class Image implements LocalInterface
             case CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS:
                 return $this->getUrlWithTransformationParameters();
             case CatalogMediaConfig::HASH:
-                return $this->context->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getImageInfo();
+				# 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+				# 1) "Product images are not shown on the frontend on my workstation":
+				# https://github.com/cabinetsbay/site/issues/117
+				# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
+				# https://mage2.pro/t/6411
+				# 3) I replaced `DIRECTORY_SEPARATOR` with '/'.
+				# 4) The original code:
+				# https://github.com/magento/magento2/blob/2.4.6/app/code/Magento/Catalog/Model/View/Asset/Image.php#L133
+                return $this->context->getBaseUrl() . '/' . $this->getImageInfo();
             default:
                 throw new LocalizedException(
                     __("The specified Catalog media URL format '$this->mediaFormatUrl' is not supported.")
