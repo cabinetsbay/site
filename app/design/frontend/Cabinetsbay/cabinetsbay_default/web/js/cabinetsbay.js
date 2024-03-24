@@ -65,9 +65,9 @@ require([
 			slideMargin: 0,
 			speed: 700,
 			thumbItem: 3,
-			onSliderLoad: function (el) {
+			onSliderLoad: e => {
 				$('#category-gallery').removeClass('cS-hidden');
-				el.lightGallery({download: false, selector: '#category-gallery .lslide'});
+				e.lightGallery({download: false, selector: '#category-gallery .lslide'});
 			}
 		});
 	})();
