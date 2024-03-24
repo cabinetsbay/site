@@ -20,7 +20,7 @@ require([
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		// https://jsfiddle.net/dfediuk/rb0e7q82
 		const f = (n, offset) => {
-			$('#' + n).on('click', e => {
+			$(n).on('click', e => {
 				e.preventDefault();
 				// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 				// 1) https://caniuse.com/mdn-api_element_getattribute
