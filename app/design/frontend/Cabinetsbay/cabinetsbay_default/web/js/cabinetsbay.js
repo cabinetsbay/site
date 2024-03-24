@@ -121,7 +121,7 @@ require([
 	setTimeout(function () {
 		$('.category-filter-dropdown').removeClass('active');
 	}, 500);
-	if(el.target.dataset.sortby == 'darker') {
+	if (el.target.dataset.sortby == 'darker') {
 		$sortWrapper.find('li').sort(function(a, b) {
 			return +b.dataset.sortercolor - +a.dataset.sortercolor;
 		}).appendTo($sortWrapper);
