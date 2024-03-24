@@ -45,7 +45,7 @@ require([
 		f($('.customlinks > div > p'), $e => $e.closest('div'));
 		f($('.category-tab > label'), $e => $e.parent('div'));
 	})();
-	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length > 0) {
+	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length) {
 		if ($(window).width() > 680) {
 			$.ui.tabs({active: 0}, "#categoryTabs");
 		}
