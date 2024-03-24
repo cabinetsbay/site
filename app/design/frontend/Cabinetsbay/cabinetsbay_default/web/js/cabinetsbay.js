@@ -46,12 +46,12 @@ require([
 		f($('.category-tab > label'), $e => $e.parent('div'));
 	})();
 	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length) {
-		if ($(window).width() > 680) {
-			$.ui.tabs({active: 0}, "#categoryTabs");
-		}
-		else {
-			$('#overview.category-tab').addClass('active');
-		}
+		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
+		// should be always visible": https://github.com/cabinetsbay/site/issues/120
+		// 2) The previous code:
+		// https://github.com/cabinetsbay/site/blob/2024-03-25-before-120/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js#L49-L54
+		$('#overview.category-tab').addClass('active');
 	}
 	(() => {
 		const $g = $('#category-gallery');
