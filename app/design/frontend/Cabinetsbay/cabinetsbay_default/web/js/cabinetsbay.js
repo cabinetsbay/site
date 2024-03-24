@@ -31,12 +31,9 @@ require([
 	$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
 		e.preventDefault();
 		const el = $(this).parents('._hasSubmenu');
-		if (el.hasClass('active')) {
-			el.removeClass('active').addClass('_closed');
-		}
-		else {
-			el.removeClass('_closed').addClass('active');
-		}
+		const active = el.hasClass('active');
+		el.toggleClass('active', !active);
+		el.toggleClass('_closed', active);
 	});
 	$('.mobile-navigation-opener').on('click', function (event) {
 		event.preventDefault();
