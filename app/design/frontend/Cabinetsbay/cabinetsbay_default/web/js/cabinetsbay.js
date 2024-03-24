@@ -13,7 +13,7 @@ require([
 	'thumbnail',
 	'video',
 	'zoom'
-], function ($) {
+], function($) {
   jQuery(document).ready(function () {
 	jQuery('#search').on('click', function () {
 	  jQuery('.block-search').addClass('block-search-focused');
@@ -72,42 +72,6 @@ require([
 		el.removeClass('_closed').addClass('active');
 	  }
 	});
-
-	//jQuery('.category-filter-dropdown').on('click', function (e) {
-	  //e.preventDefault();
-	  //alert('ssss');
-	  //let $t = jQuery(e.currentTarget);
-	  //console.log($t);
-	  /*if ($t.find('ul.dropdown').length === 0) {
-		if ($t.find('span.action.toggle').is('[data-category-url]')) {
-		  window.location.href = $t.find('span.action.toggle').attr('data-category-url');
-		}
-	  } else {*/
-		//if($t.hasClass('active')) {
-		  //$t.removeClass('active');
-		//} else {
-		  //$t.addClass('active');
-		//}
-		/*
-		if ($t.find('ul.dropdown').length > 0) {
-
-		}*/
-		/*if ((('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0))) {
-		  if ($t.find('ul.dropdown').length > 0) {
-			if($t.hasClass('active')) {
-			  $t.removeClass('active');
-			} else {
-			  $t.addClass('active');
-			}
-		  }
-		}*/
-
-		//if ($t.find('ul.dropdown').find('span').filter(':hover').is('[data-category-url]')) {
-		//  window.location.href = $t.find('ul.dropdown').find('span').filter(':hover').attr('data-category-url');
-		//}
-	 //}
-	//});
-
 	if (typeof jQuery.ui.tabs != 'undefined' && jQuery('#categoryTabs').length > 0) {
 	  if (jQuery(window).width() > 680) {
 		jQuery.ui.tabs({
