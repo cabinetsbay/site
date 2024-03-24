@@ -32,6 +32,9 @@
 # "How to fix the «Invalid template file» / «require_js.phtml» failure for 2.3 ≤ Magento < 2.4.5 in Windows?"
 # https://mage2.pro/t/5774
 !/vendor/magento/framework/View/Element/Template/File/Validator.php
+# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6411
+!/vendor/magento/module-catalog/Model/View/Asset/Image.php
 # 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
 !/vendor/magento/module-cms/Model/Page/DataProvider.php
