@@ -16,7 +16,7 @@ require([
 	,'domReady!'
 ], function($) {
 	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
-	(function() {
+	(() => {
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		// https://jsfiddle.net/dfediuk/rb0e7q82
 		const f = (n, offset) => {
@@ -34,7 +34,7 @@ require([
 		f('#backTop', 130);
 		f('.scrollTo', 30);
 	})();
-	(function() {
+	(() => {
 		const f = ($e, f) => {
 			$e.on('click', function(e) {
 				e.preventDefault();
@@ -57,7 +57,7 @@ require([
 			$('#overview.category-tab').addClass('active');
 		}
 	}
-	(function() {
+	(() => {
 		const $g = $('#category-gallery');
 		!$g.length || $g.lightSlider({
 			adaptiveHeight: true,
@@ -77,7 +77,7 @@ require([
 			}
 		});
 	})();
-	(function() {
+	(() => {
 		let $sortWrapper = $('#products_list');
 		let $sortPriceToggler = $('#dropdown-price');
 		$sortPriceToggler.find('.dropdown li').on('click', function (el) {
@@ -154,7 +154,7 @@ require([
 		// 2) https://jsfiddle.net/dfediuk/c6epnqor
 		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));
 	});
-	(function() {
+	(() => {
 		const f = (s, c) => $('#' + s).on('submit', e =>
 			!$(e.currentTarget).valid() || gtag('event', 'sent', {'event_category': c})
 		);
