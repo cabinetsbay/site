@@ -130,7 +130,7 @@ class Image implements LocalInterface
             case CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS:
                 return $this->getUrlWithTransformationParameters();
             case CatalogMediaConfig::HASH:
-				# 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+				# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 				# 1) "Product images are not shown on the frontend on my workstation":
 				# https://github.com/cabinetsbay/site/issues/117
 				# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
