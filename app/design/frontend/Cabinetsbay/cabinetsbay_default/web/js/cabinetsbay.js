@@ -161,9 +161,8 @@ require([
 			$sortWrapper.find('li[data-sorterconstruction="'+el.target.innerHTML+'"]').show();
 		}
 	});
-
 	if(screen.width < 680 && $('.products.wrapper.list').hasClass('products-list')) {
-	$('.products.wrapper.list').removeClass('products-list').addClass('products-grid');
+		$('.products.wrapper.list').removeClass('products-list').addClass('products-grid');
 	}
 	$(document).scroll(function () {
 		const y = $(this).scrollTop();
