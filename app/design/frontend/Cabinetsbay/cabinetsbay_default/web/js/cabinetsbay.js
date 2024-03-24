@@ -20,11 +20,9 @@ require([
 		e.preventDefault();
 		$('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 130}, 500);
 	});
-	$('.scrollTo').on('click', function(e) {
+	$('.scrollTo').on('click', e => {
 		e.preventDefault();
-		$('html, body').animate({
-			scrollTop: $($.attr(this, 'href')).offset().top - 30
-		}, 500);
+		$('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 30}, 500);
 	});
 	$('li._hasSubmenu').find('.link-wrapper').on('click', function (event) {
 		event.preventDefault();
