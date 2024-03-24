@@ -93,14 +93,10 @@ require([
 			thumbItem: 3,
 			onSliderLoad: function (el) {
 				$('#category-gallery').removeClass('cS-hidden');
-				el.lightGallery({
-					selector: '#category-gallery .lslide',
-					download: false
-				});
+				el.lightGallery({download: false, selector: '#category-gallery .lslide'});
 			}
 		});
 	}
-
 	let $sortWrapper = $('#products_list');
 
 	let $sortPriceToggler = $('#dropdown-price');
