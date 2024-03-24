@@ -149,13 +149,9 @@ require([
 		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));
 	});
 	(function() {
-		const f = (s, c) => {
-			$('#' + s).on('submit', function() {
-				if ($(this).valid()) {
-					gtag('event', 'sent', {'event_category': c});
-				}
-			});
-		};
+		const f = (s, c) => $('#' + s).on('submit', e =>
+			!$(e.currentTarget).valid() || gtag('event', 'sent', {'event_category': c})
+		);
 		f('newsletter-validate-detail', 'subscription');
 		f('amform-form-6', 'free_design');
 		f('amform-form-7', 'get_quote');
