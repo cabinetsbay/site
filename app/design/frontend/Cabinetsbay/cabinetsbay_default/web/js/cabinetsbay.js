@@ -181,7 +181,8 @@ require([
 		const y = $(this).scrollTop();
 		$('.page-header').toggleClass('sticky', y > 30);
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		// https://jsfiddle.net/dfediuk/c6epnqor
+		// 1) "How to apply a jQuery function conditionally?": https://df.tips/t/2174
+		// 2) https://jsfiddle.net/dfediuk/c6epnqor
 		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));
 	});
 	$('#newsletter-validate-detail').on('submit', function() {
