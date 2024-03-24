@@ -19,18 +19,16 @@ require([
 	(() => {
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		// https://jsfiddle.net/dfediuk/rb0e7q82
-		const f = (n, offset) => {
-			$(n).on('click', e => {
-				e.preventDefault();
-				// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-				// 1) https://caniuse.com/mdn-api_element_getattribute
-				// 2.1) `e.currentTarget.href` =>
-				// 		«https://localhost.com:2255/pre-assembled-cabinets/moonlight-shaker.html#maincontent»
-				// 2.2) `e.currentTarget.getAttribute('href')` => «#maincontent»
-				// 2.3) https://stackoverflow.com/a/15439946/
-				$('html, body').animate({scrollTop: $(e.currentTarget.getAttribute('href')).offset().top - offset}, 500);
-			});
-		};
+		const f = (n, offset) => $(n).on('click', e => {
+			e.preventDefault();
+			// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			// 1) https://caniuse.com/mdn-api_element_getattribute
+			// 2.1) `e.currentTarget.href` =>
+			// 		«https://localhost.com:2255/pre-assembled-cabinets/moonlight-shaker.html#maincontent»
+			// 2.2) `e.currentTarget.getAttribute('href')` => «#maincontent»
+			// 2.3) https://stackoverflow.com/a/15439946/
+			$('html, body').animate({scrollTop: $(e.currentTarget.getAttribute('href')).offset().top - offset}, 500);
+		});
 		f('#backTop', 130);
 		f('.scrollTo', 30);
 	})();
