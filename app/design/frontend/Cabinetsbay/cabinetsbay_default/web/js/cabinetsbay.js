@@ -15,9 +15,7 @@ require([
 	'zoom'
 	,'domReady!'
 ], function($) {
-	$('#search').on('click', function () {
-		$('.block-search').addClass('block-search-focused');
-	});
+	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
 	$('#backTop').on('click', function (event) {
 		event.preventDefault();
 		$('html, body').animate({
