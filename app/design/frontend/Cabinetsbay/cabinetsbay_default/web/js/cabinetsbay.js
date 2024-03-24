@@ -2,18 +2,17 @@
 // "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js`":
 // https://github.com/cabinetsbay/site/issues/121
 require([
-  'jquery',
-  'jquery/ui',
-  'lightslider',
-  'lightgallery',
-  'autoplay',
-  'fullscreen',
-  'hash',
-  'pager',
-  // 'share',
-  'thumbnail',
-  'video',
-  'zoom'
+	'jquery',
+	'jquery/ui',
+	'lightslider',
+	'lightgallery',
+	'autoplay',
+	'fullscreen',
+	'hash',
+	'pager',
+	'thumbnail',
+	'video',
+	'zoom'
 ], function ($) {
   jQuery(document).ready(function () {
 	jQuery('#search').on('click', function () {
