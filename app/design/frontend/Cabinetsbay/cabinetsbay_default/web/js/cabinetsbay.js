@@ -28,8 +28,8 @@ require([
 		f('backTop', 130);
 		f('scrollTo', 30);
 	})();
-	$('li._hasSubmenu').find('.link-wrapper').on('click', function (event) {
-		event.preventDefault();
+	$('li._hasSubmenu').find('.link-wrapper').on('click', function(e) {
+		e.preventDefault();
 		let el = $(this).parents('._hasSubmenu');
 		if (el.hasClass('active')) {
 			el.removeClass('active').addClass('_closed');
