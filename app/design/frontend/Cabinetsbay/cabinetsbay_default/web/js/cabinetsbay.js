@@ -177,19 +177,21 @@ require([
 	}
   });
 
-  $(document).scroll(function () {
-	var y = $(this).scrollTop();
-	if (y > 30) {
-	  $('.page-header').addClass('sticky');
-	} else {
-	  $('.page-header').removeClass('sticky');
-	}
-	if (y > 800) {
-	  $('#backTop').fadeIn();
-	} else {
-	  $('#backTop').fadeOut();
-	}
-  });
+	$(document).scroll(function () {
+		var y = $(this).scrollTop();
+		if (y > 30) {
+			$('.page-header').addClass('sticky');
+		}
+		else {
+			$('.page-header').removeClass('sticky');
+		}
+		if (y > 800) {
+			$('#backTop').fadeIn();
+		}
+		else {
+			$('#backTop').fadeOut();
+		}
+	});
 	$('#newsletter-validate-detail').on('submit', function() {
 		if ($(this).valid()) {
 			gtag('event', 'sent', {'event_category': 'subscription'});
