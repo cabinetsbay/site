@@ -180,12 +180,9 @@ require([
 	$(document).scroll(function () {
 		const y = $(this).scrollTop();
 		$('.page-header').toggleClass('sticky', y > 30);
-		if (y > 800) {
-			$('#backTop').fadeIn();
-		}
-		else {
-			$('#backTop').fadeOut();
-		}
+		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// https://jsfiddle.net/dfediuk/c6epnqor
+		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));
 	});
 	$('#newsletter-validate-detail').on('submit', function() {
 		if ($(this).valid()) {
