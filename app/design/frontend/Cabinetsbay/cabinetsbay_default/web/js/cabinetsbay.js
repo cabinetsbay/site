@@ -211,7 +211,7 @@ require([
 	}
   });
 
-	$('#amform-form-7').on('submit', function() {
+	$('#amform-form-7').on('submit', () => {
 		if ($(this).valid()) {
 			gtag('event', 'sent', {'event_category': 'get_quote'});
 		}
