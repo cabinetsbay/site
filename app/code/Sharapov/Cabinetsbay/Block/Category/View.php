@@ -124,6 +124,7 @@ class View extends \Magento\Catalog\Block\Category\View {
   }
 
   /**
+   * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
    * @return array
    */
   function getMatchingProducts(): array
