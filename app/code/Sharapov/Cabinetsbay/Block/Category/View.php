@@ -61,20 +61,18 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * 		«Cabinet Organizers & Hardware»
 	 * 2.4) Level 3: «Steam White Shaker».
 	 * @used-by self::images()
+	 * @used-by self::l3a()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
 	/**
+	 * 2024-03-125 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
-	function getCabinetAssembly():string {return df_cms_filter_page((string)$this->l3()['cb_assembly']);}
-
-	/**
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-	 */
-	function getMatchingStyles():string {return df_cms_filter_page((string)$this->l3()['cb_styles']);}
+	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
 
 	/**
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
