@@ -81,12 +81,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 		$ids = $this->l3()->getData('cb_matching_products');
 		$ids = ($ids) ? explode(",", $ids) : [];
 		$matchingCategories = [];
-		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-		$categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
 		foreach ($ids as $id) {
-			array_push($matchingCategories, $categoryFactory->create()->load($id));
+			array_push($matchingCategories, df_category($id));
 		}
-		unset($categoryFactory, $objectManager, $ids);
 		return $matchingCategories;
 	}
 }
