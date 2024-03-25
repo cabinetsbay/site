@@ -5,7 +5,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-01-02
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs/overview.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 * @return array(string => string)
 	 */
 	function images():array {$r = []; /** @var array(string => string)  $r */
