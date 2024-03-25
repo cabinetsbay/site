@@ -82,22 +82,12 @@ class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
-	function getCabinetAssembly():string {return df_cms_fp()->getPageFilter()->filter(
-		(string)$this->l3()->getData('cb_assembly')
-	);}
+	function getCabinetAssembly():string {return df_cms_filter_page((string)$this->l3()['cb_assembly']);}
 
-  /**
-   * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-   * @return string
-   */
-  function getMatchingStyles() {
-	return \Magento\Framework\App\ObjectManager::getInstance()
-	  ->get('Magento\Cms\Model\Template\FilterProvider')
-	  ->getPageFilter()
-	  ->filter(
-		  (string)$this->l3()->getData('cb_styles')
-	  );
-  }
+	/**
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 */
+	function getMatchingStyles():string {return df_cms_filter_page((string)$this->l3()['cb_styles']);}
 
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
