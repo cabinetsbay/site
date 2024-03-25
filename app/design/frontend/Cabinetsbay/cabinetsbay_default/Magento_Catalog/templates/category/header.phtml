@@ -29,6 +29,8 @@ else {
 	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
 	# 3) It is visible on narrow screens only.
 	echo $title;
+	# 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	# These tabs are visible on wide screens only.
 	echo df_tag('ul', 'category-menu', df_map_k(function($k, $v):string {return df_tag('li', ['data-role' => 'title'],
 		df_tag('a', [
 			# 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
@@ -113,13 +115,13 @@ else {
 	<div id="specifications" class="category-tab category-tab-specifications" data-role="content">
 		<label>Specifications <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-			<?= /* @escapeNotVerified */ $this->getSpecifications(); ?>
+			<?= $this->getSpecifications(); ?>
 		</div>
 	</div>
 	<div id="cabinet-assembly" class="category-tab" data-role="content">
 		<label>Cabinet Assembly <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
-			<?= /* @escapeNotVerified */ $this->getCabinetAssembly(); ?>
+			<?= $this->getCabinetAssembly(); ?>
 		</div>
 	</div>
 	<div id="matching-styles" class="category-tab" data-role="content">
