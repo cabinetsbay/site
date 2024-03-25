@@ -66,19 +66,6 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
-  /**
-   * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-   * @return string
-   */
-  function getSpecifications() {
-	return \Magento\Framework\App\ObjectManager::getInstance()
-	  ->get('Magento\Cms\Model\Template\FilterProvider')
-	  ->getPageFilter()
-	  ->filter(
-		  (string)$this->l3()->getData('cb_specs')
-	  );
-  }
-
 	/**
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
@@ -88,6 +75,11 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function getMatchingStyles():string {return df_cms_filter_page((string)$this->l3()['cb_styles']);}
+
+	/**
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 */
+	function getSpecifications():string {return df_cms_filter_page((string)$this->l3()['cb_specs']);}
 
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
