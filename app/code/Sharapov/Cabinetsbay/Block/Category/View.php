@@ -72,6 +72,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs/matching-styles.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
 
