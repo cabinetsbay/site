@@ -4,6 +4,27 @@ use Magento\Catalog\Model\Category as C;
 use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
 	/**
+	 * 2024-01-02
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @return array(string => string)
+	 */
+	function images():array {$r = []; /** @var array(string => string)  $r */
+		$path = 'wysiwyg/catalog-carousel-images/'; /** @var string $path */
+		if ($p = $this->l3()) {
+			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/' . $path . $p->getId())) {
+				$dh = opendir($d);
+				$ff = [];
+				while (false !== ($f = readdir($dh))) {
+					$ff[] = 'wysiwyg/catalog-carousel-images/' . $p->getId() . '/' . $f;
+				}
+				$r = df_sort(df_trim_text_left(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)), $path));
+				$r = array_combine($r, df_mvar_n($r));
+			}
+		}
+		return $r;
+	}
+
+	/**
 	 * 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * 2) I use `(int)` because @uses \Magento\Framework\Model\AbstractModel::getId() return a string.
@@ -45,26 +66,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
-	/**
-	 * 2024-01-02
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-	 * @return array(string => string)
-	 */
-	function images():array {$r = []; /** @var array(string => string)  $r */
-		$path = 'wysiwyg/catalog-carousel-images/'; /** @var string $path */
-		if ($p = $this->l3()) {
-			if (is_dir($d = getcwd() . '/' . DirectoryList::MEDIA . '/' . $path . $p->getId())) {
-				$dh = opendir($d);
-				$ff = [];
-				while (false !== ($f = readdir($dh))) {
-					$ff[] = 'wysiwyg/catalog-carousel-images/' . $p->getId() . '/' . $f;
-				}
-				$r = df_sort(df_trim_text_left(df_eta(preg_grep('/\.jpg|\.png|\.gif$/i', $ff)), $path));
-				$r = array_combine($r, df_mvar_n($r));
-			}
-		}
-		return $r;
-	}
+
 
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
