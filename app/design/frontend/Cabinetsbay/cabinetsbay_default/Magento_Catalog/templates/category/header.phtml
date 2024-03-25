@@ -31,9 +31,9 @@ else {
 	echo $title;
 	echo df_tag('ul', 'category-menu', df_map_k(function($k, $v):string {return df_tag('li', ['data-role' => 'title'],
 		df_tag('a', [
-			// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-			// "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
-			// should be always visible": https://github.com/cabinetsbay/site/issues/120
+			# 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
+			# should be always visible": https://github.com/cabinetsbay/site/issues/120
 			'class' => 'scrollTo'
 			,'href' => "#$k"
 		], $v)
