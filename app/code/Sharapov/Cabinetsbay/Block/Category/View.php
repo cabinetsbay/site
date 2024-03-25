@@ -75,9 +75,8 @@ class View extends \Magento\Catalog\Block\Category\View {
 	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-   * @return array
    */
-  function getMatchingProducts(): array
+  function getMatchingProducts():array
   {
 	$ids = $this->l3()->getData('cb_matching_products');
 
