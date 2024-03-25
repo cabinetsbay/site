@@ -69,7 +69,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
 	/**
-	 * 2024-03-125 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
@@ -81,4 +81,18 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @return C[]
 	 */
 	function l3p():array {return df_map('df_category', df_csv_parse_int($this->l3()['cb_matching_products']));}
+
+	/**
+	 * 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 */
+	function title():string {return dfc($this, function():string {
+		$c = $this->getCurrentCategory(); /** @var C $c */
+		# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# "On frontend category pages of levels 3 and below, the name of a higher level category is mistakenly used for the H1 tag":
+		# https://github.com/cabinetsbay/site/issues/107
+		return df_tag('h1', 'page-title', implode([$c->getName(), df_tag('sub', [], $c->getParentCategory()->getName())]));
+	});}
 }

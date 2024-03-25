@@ -19,18 +19,11 @@ if (cb_category_is_l2($c)) {
 }
 else {
 	# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	# "On frontend category pages of levels 3 and below, the name of a higher level category is mistakenly used for the H1 tag":
-	# https://github.com/cabinetsbay/site/issues/107
-	/** @var string $title */
-	$title = df_tag('h1', 'page-title', implode([$c->getName(), df_tag('sub', [], $c->getParentCategory()->getName())]));
-	# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	# 1) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
 	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
 	# 3) It is visible on narrow screens only.
-	echo $title;
-	echo df_block_output('CabinetsBay_Core', 'catalog/category/tabs', ['b' => $b, 'title' => $title]);
-	?>
-<?php
+	echo $b->title();
+	echo df_block_output('CabinetsBay_Core', 'catalog/category/tabs', ['b' => $b]);
 }
 if ($b->isContentMode() || $b->isMixedMode()) {
 	?><div class="category-cms"><?= $b->getCmsBlockHtml() ?></div><?php
