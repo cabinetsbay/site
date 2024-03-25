@@ -59,13 +59,13 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * 2.4) Level 3: «Steam White Shaker».
 	 * @used-by self::images()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
-	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
 	/**
 	 * 2024-01-02
-	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/header.phtml:27
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 * @return array(string => string)
 	 */
 	function images():array {$r = []; /** @var array(string => string)  $r */
