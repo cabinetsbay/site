@@ -78,8 +78,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function getMatchingProducts():array {
-		$ids = $this->l3()['cb_matching_products'];
-		$ids = ($ids) ? explode(",", $ids) : [];
+		$ids = df_csv_parse($this->l3()['cb_matching_products']);
 		$matchingCategories = [];
 		foreach ($ids as $id) {
 			array_push($matchingCategories, df_category($id));
