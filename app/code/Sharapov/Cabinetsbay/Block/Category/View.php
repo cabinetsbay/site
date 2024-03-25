@@ -62,6 +62,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * 2.4) Level 3: «Steam White Shaker».
 	 * @used-by self::images()
 	 * @used-by self::l3a()
+	 * @used-by self:l3p()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
@@ -75,14 +76,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
 
 	/**
+	 * @uses df_category()
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @return C[]
 	 */
-	function getMatchingProducts():array {
-		$ids = df_csv_parse($this->l3()['cb_matching_products']);
-		$matchingCategories = [];
-		foreach ($ids as $id) {
-			array_push($matchingCategories, df_category($id));
-		}
-		return $matchingCategories;
-	}
+	function l3p():array {return df_map('df_category', df_csv_parse_int($this->l3()['cb_matching_products']));}
 }
