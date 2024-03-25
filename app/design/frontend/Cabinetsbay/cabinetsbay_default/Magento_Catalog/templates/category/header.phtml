@@ -98,7 +98,7 @@ else {
 			<div class="category-tab-right">
 				<?php if ($_description = $l3->getDescription()): ?>
 					<div class="category-description">
-						<?= $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($l3, $_description, 'description') ?>
+						<?= df_catalog_output()->categoryAttribute($l3, $_description, 'description') ?>
 					</div>
 				<?php endif; ?>
 				<div class="category-subdescription">
