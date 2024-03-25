@@ -98,7 +98,7 @@ else {
 			<div class="category-tab-right">
 				<?php if ($_description = $l3->getDescription()): ?>
 					<div class="category-description">
-						<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($l3, $_description, 'description') ?>
+						<?= $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($l3, $_description, 'description') ?>
 					</div>
 				<?php endif; ?>
 				<div class="category-subdescription">
@@ -129,7 +129,7 @@ else {
 		<div class="content">
 			<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
 			$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
-			<?= /* @escapeNotVerified */ $this->getMatchingStyles(); ?>
+			<?= $this->getMatchingStyles(); ?>
 			<?php $matchingProducts = $this->getMatchingProducts(); ?>
 			<?php if(count($matchingProducts) > 0) :
 			  print '<div class="c-products-grid">';
