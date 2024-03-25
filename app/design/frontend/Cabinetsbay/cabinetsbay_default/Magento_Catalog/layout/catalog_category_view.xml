@@ -3,7 +3,11 @@
 	<body>
 		<referenceContainer name='columns.top'>
 			<container name='category.view.container' htmlTag='div' htmlClass='category-view' htmlId='categoryTabs'>
-				<block class='Sharapov\Cabinetsbay\Block\Category\View' name='category.header' template='Magento_Catalog::category/header.phtml'/>
+				<block
+					class='Sharapov\Cabinetsbay\Block\Category\View'
+					name='category.header'
+					template='Magento_Catalog::category/header.phtml'
+				/>
 			</container>
 		</referenceContainer>
 		<referenceContainer name='content'>
