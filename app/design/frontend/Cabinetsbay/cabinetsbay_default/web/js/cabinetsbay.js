@@ -43,7 +43,13 @@ require([
 		f($('li._hasSubmenu').find('.link-wrapper'), $e => $e.parents('._hasSubmenu'));
 		f($('.mobile-navigation-opener'), $e => $e.closest('#mobile-navigation'));
 		f($('.customlinks > div > p'), $e => $e.closest('div'));
-		f($('.category-tab > label'), $e => $e.parent('div'));
+		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
+		// should be always visible": https://github.com/cabinetsbay/site/issues/120
+		// 2) The previous code:
+		//		f($('.category-tab > label'), $e => $e.parent('div'));
+		// https://github.com/cabinetsbay/site/blob/2024-03-25-before-120/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js#L46
+		//
 	})();
 	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length) {
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
