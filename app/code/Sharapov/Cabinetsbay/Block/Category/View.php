@@ -73,27 +73,20 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
-  /**
-   * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-   */
-  function getMatchingProducts():array
-  {
-	$ids = $this->l3()->getData('cb_matching_products');
 
-	$ids = ($ids) ? explode(",", $ids) : [];
-	$matchingCategories = [];
-
-	$objectManager
-	  = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
-	$categoryFactory
-	  = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');// Instance of Category Model
-
-	foreach ($ids as $id) {
-	  array_push($matchingCategories, $categoryFactory->create()->load($id));
+	/**
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 */
+	function getMatchingProducts():array {
+		$ids = $this->l3()->getData('cb_matching_products');
+		$ids = ($ids) ? explode(",", $ids) : [];
+		$matchingCategories = [];
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');
+		foreach ($ids as $id) {
+			array_push($matchingCategories, $categoryFactory->create()->load($id));
+		}
+		unset($categoryFactory, $objectManager, $ids);
+		return $matchingCategories;
 	}
-
-	unset($categoryFactory, $objectManager, $ids);
-
-	return $matchingCategories;
-  }
 }
