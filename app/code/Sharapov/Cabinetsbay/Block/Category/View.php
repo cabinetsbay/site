@@ -66,8 +66,6 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
-
-
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
    * @return string
@@ -81,18 +79,12 @@ class View extends \Magento\Catalog\Block\Category\View {
 	  );
   }
 
-  /**
-   * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-   * @return string
-   */
-  function getCabinetAssembly() {
-	return \Magento\Framework\App\ObjectManager::getInstance()
-	  ->get('Magento\Cms\Model\Template\FilterProvider')
-	  ->getPageFilter()
-	  ->filter(
-		  (string)$this->l3()->getData('cb_assembly')
-	  );
-  }
+	/**
+	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 */
+	function getCabinetAssembly():string {return df_cms_fp()->getPageFilter()->filter(
+		(string)$this->l3()->getData('cb_assembly')
+	);}
 
   /**
    * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
