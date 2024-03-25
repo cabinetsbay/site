@@ -29,13 +29,15 @@ else {
 	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
 	# 3) It is visible on narrow screens only.
 	echo $title;
+	echo df_tag('ul', 'category-menu', df_map_k(function($k, $v):string {return df_tag('li', ['data-role' => 'title'],
+		df_tag('a', ['href' => "#$k"], $v)
+	);}, [
+		'overview' => 'Product Overview'
+		,'specifications' => 'Specifications'
+		,'cabinet-assembly' => 'Cabinet Assembly'
+		,'matching-styles' => 'Matching Styles'
+	]));
 	?>
-	<ul class="category-menu">
-		<li data-role="title"><a href="#overview">Product Overview</a></li>
-		<li data-role="title"><a href="#specifications">Specifications</a></li>
-		<li data-role="title"><a href="#cabinet-assembly">Cabinet Assembly</a></li>
-		<li data-role="title"><a href="#matching-styles">Matching Styles</a></li>
-	</ul>
 	<div id="overview" class="category-tab" data-role="content">
 		<label>Product Overview <span class="submenu-toggle" data-role="trigger" tabindex="0"></span></label>
 		<div class="content">
