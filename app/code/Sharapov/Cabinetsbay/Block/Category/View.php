@@ -3,6 +3,19 @@ namespace Sharapov\Cabinetsbay\Block\Category;
 use Magento\Catalog\Model\Category as C;
 use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
+	function getRootCategoryName():string {
+		if($this->getCurrentCategory()) {
+			if($this->getCurrentCategory()->getParentCategories()) {
+				foreach($this->getCurrentCategory()->getParentCategories() as $parent) {
+					if (2 === df_category_level($parent)) {
+						return $parent->getName();
+					}
+				}
+			}
+		}
+		return '';
+	}
+
 	/**
 	 * 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
@@ -10,7 +23,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
 	function isPA():bool {return 4036 === (int)$this->getCurrentCategory()->getId();}
-	
+
 	/**
 	 * 2024-03-13 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * 1) "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
@@ -26,24 +39,6 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
 	 */
 	function level():int {return df_category_level($this->getCurrentCategory());}
-
-  function getRootCategoryName() {
-	if($this->getCurrentCategory()) {
-	  if($this->getCurrentCategory()->getParentCategories()) {
-		foreach(
-		  $this->getCurrentCategory()->getParentCategories() as
-		  $parent
-		) {
-		  if (2 === df_category_level($parent)) {
-			// returns the level 1 category id;
-			return $parent->getName();
-		  }
-		}
-	  }
-	}
-
-	return '';
-  }
 
 	/**
 	 * 2024-01-02
