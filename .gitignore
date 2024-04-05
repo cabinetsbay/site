@@ -12,6 +12,10 @@
 !/app/design/frontend/Cabinetsbay/**/*
 !/app/etc/config.php
 /dev
+# 2024-04-05
+# '«Mismatched anonymous define() module» on loading `cdn1.affirm.com/products/affirmjs/master/dist/ldclient.min.js`'
+# https://github.com/cabinetsbay/site/issues/128
+!/lib/web/requirejs/require.js
 # 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) "Product images are not shown on the frontend on my workstation":
 # https://github.com/cabinetsbay/site/issues/117
