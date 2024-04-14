@@ -47,9 +47,9 @@ h1.page-title {font-weight: 300;}
 // https://github.com/cabinetsbay/site/issues/135
 // 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1124-L1127
 // 3) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
-@media screen and (min-width: 681px) {
-	.category-pre-assembled-cabinets, .category-ready-to-assemble-cabinets {
-		h1.page-title {
+.category-pre-assembled-cabinets, .category-ready-to-assemble-cabinets {
+	h1.page-title {
+		@media screen and (min-width: 681px) {
 			font-family: @font-family-name__base;
 			font-weight: 500;
 			margin-top: 0;
@@ -61,42 +61,28 @@ h1.page-title {font-weight: 300;}
 // 1) "Titles are incorrectly displayed on the `/pre-assembled-cabinets.html` and 	`/ready-to-assemble-cabinets.html` pages":
 // https://github.com/cabinetsbay/site/issues/135
 // 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1123-L1170
-.product-page-title {
-	sub {
-		display: block;
-		font-weight: 200;
-		font-size: 0.5em;
-		line-height: 1.4em;
-		margin-bottom: 1.4em;
-		> a {
-			background-color: #feb101 !important;
-			color: #644A0E !important;
-			fill: #644A0E !important;
-			border: 0;
-			font-size: .76em;
-			font-weight: 600;
-			border-radius: 1em;
-			display: inline;
-			padding: .3em 1em;
-		}
-	}
-	@media screen and (max-width: 680px) {
-		margin-top: -0.5em;
-		border-top: 1px solid #689aa5;
-		> span {
-			display: none;
-		}
-		> sub {
-			text-align: center;
+.cb-faq {
+	font-weight: 200;
+	font-size: 0.5em;
+	line-height: 1.4em;
+	margin-bottom: 1.4em;
+	@media screen and (max-width: 680px) {line-height: 2em;  text-align: center;}
+	> a {
+		background-color: #feb101 !important;
+		color: #644A0E !important;
+		fill: #644A0E !important;
+		border: 0;
+		font-size: .76em;
+		font-weight: 600;
+		border-radius: 1em;
+		display: inline;
+		padding: .3em 1em;
+		@media screen and (max-width: 680px) {
+			padding: .6rem .1rem;
+			margin: 0 auto;
+			width: 12rem;
+			line-height: 1.6rem;
 			display: block;
-			line-height: 2em;
-			> a {
-				padding: .6rem .1rem;
-				margin: 0 auto;
-				width: 12rem;
-				line-height: 1.6rem;
-				display: block;
-			}
 		}
 	}
 }
