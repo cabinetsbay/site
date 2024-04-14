@@ -45,12 +45,23 @@ h1.page-title {font-weight: 300;}
 // 2024-04-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 // 1) "Titles are incorrectly displayed on the `/pre-assembled-cabinets.html` and 	`/ready-to-assemble-cabinets.html` pages":
 // https://github.com/cabinetsbay/site/issues/135
+// 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1124-L1127
+// 3) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
+@media screen and (min-width: 681px) {
+	.category-pre-assembled-cabinets, .category-ready-to-assemble-cabinets {
+		h1.page-title {
+			font-family: @font-family-name__base;
+			font-weight: 500;
+			margin-top: 0;
+			font-size: 2.6em;
+		}
+	}
+}
+// 2024-04-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// 1) "Titles are incorrectly displayed on the `/pre-assembled-cabinets.html` and 	`/ready-to-assemble-cabinets.html` pages":
+// https://github.com/cabinetsbay/site/issues/135
 // 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1123-L1170
 .product-page-title {
-	font-family: @font-family-name__base;
-	font-weight: 500;
-	margin-top: 0;
-	font-size: 2.6em;
 	sub {
 		display: block;
 		font-weight: 200;
