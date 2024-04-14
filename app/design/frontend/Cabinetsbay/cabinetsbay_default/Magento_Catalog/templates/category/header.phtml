@@ -21,7 +21,6 @@ else {
 	# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	# 1) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
 	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
-	# 3) It is visible on narrow screens only.
 	echo $b->title();
 	echo df_block_output('CabinetsBay_Core', 'catalog/category/tabs', ['b' => $b]);
 }
