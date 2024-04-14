@@ -7,7 +7,6 @@
 		width: 100%;
 		margin-bottom: 2em;
 		max-width: inherit !important;
-
 		& .form.subscribe {
 			@media screen and (min-width: 681px) {
 				max-width: 31em !important;
@@ -17,11 +16,9 @@
 				overflow: hidden;
 			}
 		}
-
 		& .actions {
 			vertical-align: middle;
 		}
-
 		& input {
 			border: 0;
 			padding: 1.2em;
@@ -32,7 +29,6 @@
 			border-color: transparent;
 			font-size: 1.2em;
 		}
-
 		& .content {
 			margin: 0 auto;
 			width: 100%;
@@ -40,70 +36,57 @@
 			padding: 1em;
 			max-width: 1140px;
 			box-sizing: border-box;
-
 			@media screen and (max-width: 886px) {
 				width: 90%;
 			}
-
 			@media screen and (max-width: 680px) {
 				display: block;
 				text-align: center;
 			}
-
 			& > span {
 				flex: auto;
 				width: 50%;
 				text-align: center;
 				font-weight: bold;
 				font-size: 1.2em;
-
 				&:first-child {
 					width: 44%;
 				}
-
 				&:last-child {
 					width: 56%;
 				}
-
 				@media screen and (max-width: 680px) {
 					width: 100%;
 				}
-
 				& > span {
 					display: block;
 					font-weight: 300;
 					font-size: .8em;
 				}
 			}
-
 			& > form {
 				flex: auto;
 				width: auto;
-
 				@media screen and (max-width: 680px) {
 					flex: none;
 				}
 			}
 		}
-
 		& .field {
 			@media screen and (min-width: 681px) {
 				margin-right: 20% !important;
 			}
-
 			& .control {
 				width: 100%;
 				@media screen and (max-width: 680px) {
 					margin-bottom: .6em;
 				}
-
 				&:before {
 					content: '';
 					display: none;
 				}
 			}
 		}
-
 		& .action {
 			&.subscribe {
 				border-radius: 2em;
@@ -112,17 +95,14 @@
 			}
 		}
 	}
-
 	& > .footer.content {
 		border: 0;
 		margin: 0 auto;
-
 		& > .copyright {
 			text-align: center;
 			margin: 0;
 		}
 	}
-
 	& > .footer.customlinks {
 		display: flex;
 		max-width: 1140px;
@@ -133,15 +113,12 @@
 		justify-content: flex-start;
 		align-content: stretch;
 		box-sizing: border-box;
-
 		& > div {
 			margin-bottom: 1em;
 			position: relative;
-
 			& > ul {
 				margin: 0;
 				padding: 0;
-
 				@media screen and (max-width: 680px) {
 					height: 0;
 					overflow: hidden;
@@ -150,39 +127,32 @@
 					-ms-transition: all .5s ease;
 					transition: all .5s ease;
 				}
-
 				& > li {
 					padding: 0;
 					margin: 0;
 					list-style: none;
-
 					& > a {
 						color: #232a3a;
 						text-decoration: none;
-
 						@media screen and (max-width: 680px) {
 							padding: .6em;
 							display: block;
 							font-size: 1.2em;
 						}
-
 						&:hover {
 							text-decoration: underline;
 						}
 					}
 				}
 			}
-
 			& > p {
 				@media screen and (max-width: 680px) {
 					margin-bottom: 0;
 				}
 			}
-
 			@media screen and (min-width: 681px) {
 				width: calc(100% / 4);
 			}
-
 			@media screen and (max-width: 680px) {
 				background-color: #cceaec;
 				width: 100%;
@@ -190,35 +160,28 @@
 				border-radius: 1.2em;
 				box-sizing: border-box;
 				cursor: pointer;
-
 				&.active {
 					& .submenu-toggle {
 						&:before, &:after {
 							transform: rotate(135deg);
 						}
 					}
-
 					& > ul {
 						height: auto;
 					}
 				}
 			}
 		}
-
-
 		@media screen and (max-width: 680px) {
 			display: block;
 		}
-
 	}
-
 	& > .footer.signs {
 		background: #cceaec;
 		height: auto;
 		margin: 0 auto 2em;
 		padding: 1em;
 		text-align: center;
-
 		& > div {
 			color: #689AA1;
 			text-transform: uppercase;
@@ -226,7 +189,6 @@
 			font-size: 1.3em;
 			margin-bottom: 0.5em;
 		}
-
 		& > img {
 			width: calc((100% / 6) - (.8em * 6));
 			margin: 0 .8em;
@@ -236,14 +198,12 @@
 				width: calc((100% / 3) - (.8em * 3));
 			}
 		}
-
 		@media screen and (min-width: 681px) {
 			& > br {
 				display: none;
 			}
 		}
 	}
-
 	// 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	// 1) "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less`":
 	// https://github.com/cabinetsbay/site/issues/119
