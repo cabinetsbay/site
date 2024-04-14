@@ -49,10 +49,10 @@ h1.page-title {font-weight: 300;}
 // 3) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
 .category-pre-assembled-cabinets, .category-ready-to-assemble-cabinets {
 	h1.page-title {
+		margin: 0;
 		@media screen and (min-width: 681px) {
 			font-family: @font-family-name__base;
 			font-weight: 500;
-			margin: 0;
 			font-size: 2.6em;
 		}
 	}
@@ -66,7 +66,11 @@ h1.page-title {font-weight: 300;}
 	font-size: 1.3em;
 	line-height: 1.4em;
 	margin-bottom: 1.4em;
-	@media screen and (max-width: 680px) {line-height: 2em;  text-align: center;}
+	@media screen and (max-width: 680px) {
+		border-top: 1px solid #689aa5;
+		line-height: 2em;
+		text-align: center;
+	}
 	> a {
 		background-color: #feb101 !important;
 		color: #644A0E !important;
