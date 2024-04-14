@@ -162,6 +162,10 @@
 			border-radius: 1em;
 			padding: 1em;
 			margin-bottom: .6em;
+			// 2024-04-15 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			// "Delete the border around the «Product Overview» block on the frontend category pages":
+			// https://github.com/cabinetsbay/site/issues/134
+			&:first-of-type {border: 0;}
 			&:last-of-type {margin-bottom: 3em;}
 			&.active {
 				background-color: #ffffff;
