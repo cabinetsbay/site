@@ -42,3 +42,50 @@ h1.page-title {font-weight: 300;}
 		}
 	}
 }
+// 2024-04-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// 1) "Titles are incorrectly displayed on the `/pre-assembled-cabinets.html` and 	`/ready-to-assemble-cabinets.html` pages":
+// https://github.com/cabinetsbay/site/issues/135
+// 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1123-L1170
+.product-page-title {
+	font-family: @font-family-name__base;
+	font-weight: 500;
+	margin-top: 0;
+	font-size: 2.6em;
+	sub {
+		display: block;
+		font-weight: 200;
+		font-size: 0.5em;
+		line-height: 1.4em;
+		margin-bottom: 1.4em;
+		> a {
+			background-color: #feb101 !important;
+			color: #644A0E !important;
+			fill: #644A0E !important;
+			border: 0;
+			font-size: .76em;
+			font-weight: 600;
+			border-radius: 1em;
+			display: inline;
+			padding: .3em 1em;
+		}
+	}
+	@media screen and (max-width: 680px) {
+		margin-top: -0.5em;
+		border-top: 1px solid #689aa5;
+		> span {
+			display: none;
+		}
+		> sub {
+			text-align: center;
+			display: block;
+			line-height: 2em;
+			> a {
+				padding: .6rem .1rem;
+				margin: 0 auto;
+				width: 12rem;
+				line-height: 1.6rem;
+				display: block;
+			}
+		}
+	}
+}
