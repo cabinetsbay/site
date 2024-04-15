@@ -81,7 +81,10 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 * @return C[]
 	 */
-	function l3p():array {return df_map('df_category', df_csv_parse_int($this->l3()['cb_matching_products']));}
+	function l3p():array {
+		$ids = df_csv_parse_int($this->l3()['cb_matching_products']); /** @var int[] $ids*/
+		return df_map('df_category', $ids);
+	}
 
 	/**
 	 * 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
