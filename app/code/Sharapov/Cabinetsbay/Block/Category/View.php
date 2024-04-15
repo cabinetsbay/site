@@ -82,8 +82,16 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @return C[]
 	 */
 	function l3p():array {
-		$ids = df_csv_parse_int($this->l3()['cb_matching_products']); /** @var int[] $ids*/
-		return df_map('df_category', $ids);
+		$s = $this->l3()['cb_matching_products']; /** @var string $s */
+		return df_map('df_category', df_try(
+			function()use($s):array {return df_csv_parse_int($s);}
+			,function() use($s) {
+				df_error(
+					"The value «{$s}» is invalid for the atrribute `cb_matching_products` of the current category."
+					,"Excepted a comma-separated list of natural numbers."
+				);
+			}
+		));
 	}
 
 	/**
