@@ -24,7 +24,27 @@ h1.page-title {
 .catalog-product-view h1.page-title {
 	font-size: 1.7em;
 	font-weight: bold;
-	margin-bottom: 0 !important;
+	// 2024-04-20 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	// 1) `margin-top` is `-13px` in `Magento/blank`:
+	//		.product-info-main {
+	//			.page-title-wrapper {
+	//				.page-title {
+	//					margin-top: -13px;
+	//				}
+	//			}
+	//		}
+	// https://github.com/magento/magento2/blob/2.4.4/app/design/frontend/Magento/blank/Magento_Catalog/web/css/source/_module.less#L589-L595
+	// 2024-04-20 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	// 2) `margin-bottom` is `10px` in `Magento/blank`:
+	//		.product-info-main {
+	//			.page-title-wrapper {
+	//				.page-title {
+	//					margin-bottom: @indent__s;
+	//				}
+	//			}
+	//		}
+	// https://github.com/magento/magento2/blob/2.4.4/app/design/frontend/Magento/blank/Magento_Catalog/web/css/source/_module.less#L176-L182
+	margin: 0;
 }
 .cms-page-view h1.page-title {margin-bottom: .5em;}
 .customer-account-login, .customer-account-forgotpassword, .customer-account-create, body.account {
