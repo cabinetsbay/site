@@ -1,0 +1,39 @@
+// 2024-04-20 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// 1) "Improve frontend category pages": https://github.com/cabinetsbay/site/issues/131
+// 2) "Add the current category level as a CSS class to `<body>`": https://github.com/cabinetsbay/core/issues/5
+body.cb-category-level-2 {
+	// 2024-04-14 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	// 1) "Titles are incorrectly displayed on the `/pre-assembled-cabinets.html` and 	`/ready-to-assemble-cabinets.html` pages":
+	// https://github.com/cabinetsbay/site/issues/135
+	// 2) https://github.com/cabinetsbay/site/blob/2024-03-25-2/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less#L1123-L1170
+	.cb-faq {
+		font-weight: 200;
+		font-size: 1.3em;
+		line-height: 1.4em;
+		margin-bottom: 1.4em;
+		@media screen and (max-width: 680px) {
+			border-top: 1px solid #689aa5;
+			margin: 0.5em 0;
+			padding-top: 0.2em;
+			text-align: center;
+		}
+		> a {
+			background-color: #feb101 !important;
+			border-radius: 1em;
+			border: 0;
+			color: #644A0E !important;
+			display: inline;
+			fill: #644A0E !important;
+			font-size: 0.77em;
+			font-weight: 600;
+			padding: .3em 1em;
+			@media screen and (max-width: 680px) {
+				display: block;
+				line-height: 1.6rem;
+				margin: 0 auto;
+				padding: .33em 0;
+				width: 8em;
+			}
+		}
+	}
+}
