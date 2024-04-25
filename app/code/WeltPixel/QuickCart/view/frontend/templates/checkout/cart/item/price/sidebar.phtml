@@ -22,9 +22,9 @@ if ($isDiscountedPriceEnabled) {
     <span class="price-including-tax" data-label="<?= $block->escapeHtmlAttr(__('Incl. Tax')) ?>">
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
-	<span class="minicart-price">
-    	<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
-    </span>
+		<span class="minicart-price">
+			<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
+		</span>
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
     </span>
