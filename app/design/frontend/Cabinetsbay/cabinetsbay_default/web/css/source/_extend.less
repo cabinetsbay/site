@@ -1303,8 +1303,10 @@ a {
 	margin-bottom: 2em;
 	& .toolbar-sorter {
 		padding-top: .72em;
+		@media screen and (max-width: 680px) {padding: 0;}
 		& .sorter-label {
 			font-size: 1.8em;
+			@media screen and (max-width: 680px) {font-size: initial;}
 			margin-right: 1em;
 		}
 	}
