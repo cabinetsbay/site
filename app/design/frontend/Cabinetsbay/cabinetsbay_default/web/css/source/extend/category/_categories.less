@@ -8,7 +8,10 @@
 	padding: 0;
 	position: relative;
 	margin: 0;
-	body.cb-category-level-2 & {margin-top: 1em;}
+	body.cb-category-level-2 & {
+		margin-top: 1em;
+		@media screen and (max-width: 680px) {margin-top: 0.5em;}
+	}
 	> ul {
 		margin: 0;
 		padding-left: 0;
