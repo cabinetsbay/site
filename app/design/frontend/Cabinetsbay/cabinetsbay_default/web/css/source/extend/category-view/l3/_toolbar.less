@@ -3,12 +3,7 @@
 	margin-bottom: 2em;
 	> .toolbar-sorter {
 		padding-top: .72em;
-		@media screen and (max-width: 680px) {padding: 0;}
-		.sorter-label {
-			font-size: 1.8em;
-			@media screen and (max-width: 680px) {font-size: initial;}
-			margin-right: 1em;
-		}
+		> .sorter-label {font-size: 1.8em; margin-right: 1em;}
 		> .sorter-options {
 			border-radius: 0;
 			border-color: #262d3c;
@@ -18,9 +13,12 @@
 			font-size: 18px;
 			line-height: 1.3em;
 			outline: none;
-			&::-ms-expand {
-				display: none;
-			}
+			&::-ms-expand {display: none;}
+		}
+		@media screen and (max-width: 680px) {
+			padding: 0;
+			> .sorter-label {font-size: initial;}
+			> .sorter-options {font-size: initial;}
 		}
 	}
 	> .modes {
