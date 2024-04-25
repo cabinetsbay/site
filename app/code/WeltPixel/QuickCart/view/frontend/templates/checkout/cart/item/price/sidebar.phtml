@@ -3,14 +3,16 @@
 # 1) "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144
 # 2) "Refactor the `WeltPixel_QuickCart` module": https://github.com/cabinetsbay/site/issues/145
 use Magento\Catalog\Model\Product as P;
+use Magento\Framework\Pricing\Render as R;
+use Magento\Quote\Model\Quote\Item as I;
 use Magento\Tax\Block\Item\Price\Renderer as B;
 use WeltPixel\QuickCart\Helper\Data as H;
-use Magento\Framework\Pricing\Render as R;
 /** @var B $block */ $b = $block; /** @var B $b */
 $originalZone = $b->getZone();
 $b->setZone(R::ZONE_CART);
 $h = df_o(H::class); /** @var H $h */
-$p = $b->getItem()->getProduct(); /** @var P $p */
+$i = $b->getItem(); /** @var I $i */
+$p = $i->getProduct(); /** @var P $p */
 $new = $p->getFinalPrice(); /** @var float $new */
 $old = $p->getPrice(); /** @var float $old */
 $hasDiscount = $old !== $new; /** @var bool $hasDiscount */
