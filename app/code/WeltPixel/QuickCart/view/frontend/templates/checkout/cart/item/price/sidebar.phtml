@@ -51,26 +51,6 @@ if ($isDiscountedPriceEnabled) {
 	</span>
 
     <?php echo $finalPriceWrapper ?>
-
-        <?php if ($block->displayPriceWithWeeeDetails()) : ?>
-            <?php if ($this->helper(\Magento\Weee\Helper\Data::class)->getApplied($item)) : ?>
-                <span class="minicart-tax-info">
-            <?php foreach ($this->helper(\Magento\Weee\Helper\Data::class)->getApplied($item) as $tax) : ?>
-                <span class="weee" data-label="<?= $block->escapeHtmlAttr($tax['title']) ?>">
-                    <?= /* @noEscape */ $block->formatPrice($tax['amount'], true, true) ?>
-                </span>
-            <?php endforeach; ?>
-            </span>
-
-            <?php if ($block->displayFinalPrice()) : ?>
-                    <span class="minicart-tax-total">
-                    <span class="weee" data-label="<?= $block->escapeHtmlAttr(__('Total')) ?>">
-                        <?= /* @noEscape */ $block->formatPrice($block->getFinalUnitDisplayPriceExclTax()) ?>
-                    </span>
-                </span>
-                <?php endif; ?>
-            <?php endif; ?>
-        <?php endif; ?>
     </span>
 <?php endif; ?>
 <?php $block->setZone($originalZone); ?>
