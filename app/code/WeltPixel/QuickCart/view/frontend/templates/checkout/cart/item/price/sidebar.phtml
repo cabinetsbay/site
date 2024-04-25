@@ -11,8 +11,8 @@ $originalZone = $b->getZone();
 $b->setZone(R::ZONE_CART);
 $h = df_o(H::class); /** @var H $h */
 $p = $b->getItem()->getProduct(); /** @var P $p */
-$new = $p->getFinalPrice();
-$old = $p->getPrice();
+$new = $p->getFinalPrice(); /** @var float $new */
+$old = $p->getPrice(); /** @var float $old */
 $hasDiscount = $old !== $new; /** @var bool $hasDiscount */
 ?>
 <span
