@@ -3,35 +3,29 @@
 # 1) "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144
 # 2) "Refactor the `WeltPixel_QuickCart` module": https://github.com/cabinetsbay/site/issues/145
 use Magento\Tax\Block\Item\Price\Renderer as B;
+use WeltPixel\QuickCart\Helper\Data as H;
 /** @var B $block */ $b = $block; /** @var B $b */
 $item = $b->getItem();
-// ensure we use the zone for the shopping cart / minicart
-$_helper = $this->helper('WeltPixel\QuickCart\Helper\Data');
 $originalZone = $b->getZone();
 $b->setZone(\Magento\Framework\Pricing\Render::ZONE_CART);
-$isDiscountedPriceEnabled = (int)$_helper->isQuickCartDiscountedPriceEnabled();
-$discountedPriceDisplayMode = $_helper->getQuickCartDiscountDisplayMode();
+$h = df_o(H::class); /** @var H $h */
+$discountedPriceDisplayMode = $h->getQuickCartDiscountDisplayMode();
 $priceWrapper = '<span class="minicart-price">';
 $finalPriceWrapper = '';
-if ($isDiscountedPriceEnabled) {
-    $finalPrice = $item->getProduct()->getFinalPrice();
-    $normalPrice = $item->getProduct()->getPrice();
-    if ($normalPrice != $finalPrice) {
-        $priceWrapper = '<span class="minicart-price final-price">';
-        $finalPriceWrapper .= '<span class="minicart-old-price">' . $b->formatPrice($normalPrice) . '</span>';
-    }
+$finalPrice = $item->getProduct()->getFinalPrice();
+$normalPrice = $item->getProduct()->getPrice();
+if ($normalPrice != $finalPrice) {
+	$priceWrapper = '<span class="minicart-price final-price">';
+	$finalPriceWrapper .= '<span class="minicart-old-price">' . $b->formatPrice($normalPrice) . '</span>';
 }
 ?>
 <span
 	class="price-excluding-tax <?= $discountedPriceDisplayMode ?>"
 	data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>"
 >
-<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
 	<?= $priceWrapper ?>
-	<?= /* @noEscape */ $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
+	<?= $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
 </span>
-
 <?= $finalPriceWrapper ?>
 </span>
 <?php $b->setZone($originalZone); ?>
