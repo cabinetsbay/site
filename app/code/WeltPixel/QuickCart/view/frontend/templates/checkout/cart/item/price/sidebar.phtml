@@ -2,18 +2,19 @@
 # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144
 # 2) "Refactor the `WeltPixel_QuickCart` module": https://github.com/cabinetsbay/site/issues/145
+use Magento\Quote\Model\Quote\Item as I;
 use Magento\Tax\Block\Item\Price\Renderer as B;
 use WeltPixel\QuickCart\Helper\Data as H;
 /** @var B $block */ $b = $block; /** @var B $b */
-$item = $b->getItem();
 $originalZone = $b->getZone();
 $b->setZone(\Magento\Framework\Pricing\Render::ZONE_CART);
 $h = df_o(H::class); /** @var H $h */
 $discountedPriceDisplayMode = $h->getQuickCartDiscountDisplayMode();
 $priceWrapper = '<span class="minicart-price">';
 $finalPriceWrapper = '';
-$finalPrice = $item->getProduct()->getFinalPrice();
-$normalPrice = $item->getProduct()->getPrice();
+$i = $b->getItem(); /** @var I $i */
+$finalPrice = $i->getProduct()->getFinalPrice();
+$normalPrice = $i->getProduct()->getPrice();
 if ($normalPrice != $finalPrice) {
 	$priceWrapper = '<span class="minicart-price final-price">';
 	$finalPriceWrapper .= '<span class="minicart-old-price">' . $b->formatPrice($normalPrice) . '</span>';
