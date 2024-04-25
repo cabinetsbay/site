@@ -2,31 +2,26 @@
 # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144
 # 2) "Refactor the `WeltPixel_QuickCart` module": https://github.com/cabinetsbay/site/issues/145
-use Magento\Quote\Model\Quote\Item as I;
+use Magento\Catalog\Model\Product as P;
 use Magento\Tax\Block\Item\Price\Renderer as B;
 use WeltPixel\QuickCart\Helper\Data as H;
+use Magento\Framework\Pricing\Render as R;
 /** @var B $block */ $b = $block; /** @var B $b */
 $originalZone = $b->getZone();
-$b->setZone(\Magento\Framework\Pricing\Render::ZONE_CART);
+$b->setZone(R::ZONE_CART);
 $h = df_o(H::class); /** @var H $h */
-$discountedPriceDisplayMode = $h->getQuickCartDiscountDisplayMode();
-$priceWrapper = '<span class="minicart-price">';
-$finalPriceWrapper = '';
-$i = $b->getItem(); /** @var I $i */
-$finalPrice = $i->getProduct()->getFinalPrice();
-$normalPrice = $i->getProduct()->getPrice();
-if ($normalPrice != $finalPrice) {
-	$priceWrapper = '<span class="minicart-price final-price">';
-	$finalPriceWrapper .= '<span class="minicart-old-price">' . $b->formatPrice($normalPrice) . '</span>';
-}
+$p = $b->getItem()->getProduct(); /** @var P $p */
+$new = $p->getFinalPrice();
+$old = $p->getPrice();
+$hasDiscount = $old !== $new; /** @var bool $hasDiscount */
 ?>
 <span
-	class="price-excluding-tax <?= $discountedPriceDisplayMode ?>"
+	class="price-excluding-tax <?= $h->getQuickCartDiscountDisplayMode() ?>"
 	data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>"
 >
-	<?= $priceWrapper ?>
-	<?= $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
+	<?=
+		df_cc_n(df_tag('span', df_cc_s('minicart-price', !$hasDiscount ? '' : 'final-price'), $b->formatPrice($new)))
+		,!$hasDiscount ? '' : df_tag('span', 'minicart-old-price', $b->formatPrice($old))
+	?>
 </span>
-<?= $finalPriceWrapper ?>
-</span>
-<?php $b->setZone($originalZone); ?>
+<?php $b->setZone($originalZone);
