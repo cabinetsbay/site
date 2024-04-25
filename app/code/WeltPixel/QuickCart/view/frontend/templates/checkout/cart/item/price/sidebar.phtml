@@ -21,27 +21,13 @@ if ($isDiscountedPriceEnabled) {
     }
 }
 ?>
-<?php if ($b->displayPriceInclTax() || $b->displayBothPrices()) : ?>
-    <span class="price-including-tax" data-label="<?= $b->escapeHtmlAttr(__('Incl. Tax')) ?>">
+<span class="price-excluding-tax <?= $discountedPriceDisplayMode ?>" data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>">
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
-		<span class="minicart-price">
-			<?= /* @noEscape */ $b->formatPrice($b->getUnitDisplayPriceInclTax()) ?>
-		</span>
-<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
-    </span>
-<?php endif; ?>
+	<?= $priceWrapper ?>
+	<?= /* @noEscape */ $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
+</span>
 
-<?php if ($b->displayPriceExclTax() || $b->displayBothPrices()) : ?>
-    <span class="price-excluding-tax <?php echo $discountedPriceDisplayMode ?>" data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>">
-<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
-		<?php echo $priceWrapper ?>
-		<?= /* @noEscape */ $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
-	</span>
-
-    <?php echo $finalPriceWrapper ?>
-    </span>
-<?php endif; ?>
+<?= $finalPriceWrapper ?>
+</span>
 <?php $b->setZone($originalZone); ?>
