@@ -13,13 +13,12 @@ $b->setZone(R::ZONE_CART);
 $h = df_o(H::class); /** @var H $h */
 $i = $b->getItem(); /** @var I $i */
 $p = $i->getProduct(); /** @var P $p */
-$new = $p->getFinalPrice(); /** @var float $new */
-$old = $p->getPrice(); /** @var float $old */
+$new = $i->getRowTotal(); /** @var float $new */
+$old = $p->getPrice() * $i->getQty(); /** @var float $old */
 $hasDiscount = $old !== $new; /** @var bool $hasDiscount */
 ?>
 <span
-	class="price-excluding-tax <?= $h->getQuickCartDiscountDisplayMode() ?>"
-	data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>"
+	class='price-excluding-tax <?= $h->getQuickCartDiscountDisplayMode() ?>' data-label='Excl. Tax'
 >
 	<?=
 		df_cc_n(df_tag('span', df_cc_s('minicart-price', !$hasDiscount ? '' : 'final-price'), $b->formatPrice($new)))
