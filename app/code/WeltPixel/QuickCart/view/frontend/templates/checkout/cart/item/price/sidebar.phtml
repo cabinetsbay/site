@@ -1,12 +1,13 @@
 <?php
 # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Rerfactor the `WeltPixel_QuickCart` module": https://github.com/cabinetsbay/site/issues/145
-/** @var $block \Magento\Weee\Block\Item\Price\Renderer */
-$item = $block->getItem();
+use Magento\Tax\Block\Item\Price\Renderer as B;
+/** @var B $block */ $b = $block; /** @var B $b */
+$item = $b->getItem();
 // ensure we use the zone for the shopping cart / minicart
 $_helper = $this->helper('WeltPixel\QuickCart\Helper\Data');
-$originalZone = $block->getZone();
-$block->setZone(\Magento\Framework\Pricing\Render::ZONE_CART);
+$originalZone = $b->getZone();
+$b->setZone(\Magento\Framework\Pricing\Render::ZONE_CART);
 $isDiscountedPriceEnabled = (int)$_helper->isQuickCartDiscountedPriceEnabled();
 $discountedPriceDisplayMode = $_helper->getQuickCartDiscountDisplayMode();
 $priceWrapper = '<span class="minicart-price">';
@@ -16,31 +17,31 @@ if ($isDiscountedPriceEnabled) {
     $normalPrice = $item->getProduct()->getPrice();
     if ($normalPrice != $finalPrice) {
         $priceWrapper = '<span class="minicart-price final-price">';
-        $finalPriceWrapper .= '<span class="minicart-old-price">' . $block->formatPrice($normalPrice) . '</span>';
+        $finalPriceWrapper .= '<span class="minicart-old-price">' . $b->formatPrice($normalPrice) . '</span>';
     }
 }
 ?>
-<?php if ($block->displayPriceInclTax() || $block->displayBothPrices()) : ?>
-    <span class="price-including-tax" data-label="<?= $block->escapeHtmlAttr(__('Incl. Tax')) ?>">
+<?php if ($b->displayPriceInclTax() || $b->displayBothPrices()) : ?>
+    <span class="price-including-tax" data-label="<?= $b->escapeHtmlAttr(__('Incl. Tax')) ?>">
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
 		<span class="minicart-price">
-			<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
+			<?= /* @noEscape */ $b->formatPrice($b->getUnitDisplayPriceInclTax()) ?>
 		</span>
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
     </span>
 <?php endif; ?>
 
-<?php if ($block->displayPriceExclTax() || $block->displayBothPrices()) : ?>
-    <span class="price-excluding-tax <?php echo $discountedPriceDisplayMode ?>" data-label="<?= $block->escapeHtmlAttr(__('Excl. Tax')) ?>">
+<?php if ($b->displayPriceExclTax() || $b->displayBothPrices()) : ?>
+    <span class="price-excluding-tax <?php echo $discountedPriceDisplayMode ?>" data-label="<?= $b->escapeHtmlAttr(__('Excl. Tax')) ?>">
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
 		<?php echo $priceWrapper ?>
-		<?= /* @noEscape */ $block->formatPrice($block->getItemDisplayPriceExclTax()) ?>
+		<?= /* @noEscape */ $b->formatPrice($b->getItemDisplayPriceExclTax()) ?>
 	</span>
 
     <?php echo $finalPriceWrapper ?>
     </span>
 <?php endif; ?>
-<?php $block->setZone($originalZone); ?>
+<?php $b->setZone($originalZone); ?>
