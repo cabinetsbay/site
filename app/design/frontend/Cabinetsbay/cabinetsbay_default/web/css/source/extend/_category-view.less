@@ -4,9 +4,11 @@
 // 2024-04-20 "Improve frontend category pages": https://github.com/cabinetsbay/site/issues/131
 .category-view {
 	> .category-tab {
-		border-bottom: 1px solid #689aa5;
-		padding-bottom: 2em;
-		margin-bottom: 2em;
+		&:not(:last-child) {
+			border-bottom: 1px solid #689aa5;
+			margin-bottom: 2em;
+			padding-bottom: 2em;
+		}
 		> .content {
 			> .category-info {
 				display: flex;
