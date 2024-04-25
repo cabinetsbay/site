@@ -32,12 +32,8 @@ if ($isDiscountedPriceEnabled) {
 
 <?php if ($block->displayPriceInclTax() || $block->displayBothPrices()) : ?>
     <span class="price-including-tax" data-label="<?= $block->escapeHtmlAttr(__('Incl. Tax')) ?>">
-    <?php if ($block->displayPriceWithWeeeDetails()) : ?>
-        <span class="minicart-tax-total">
-    <?php else : ?>
-        <span class="minicart-price">
-    <?php endif; ?>
-    <?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
+	<span class="minicart-price">
+    	<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
     </span>
 
     <?php if ($block->displayPriceWithWeeeDetails()) : ?>

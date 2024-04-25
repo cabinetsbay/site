@@ -26,7 +26,7 @@ class Renderer
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function beforeSetTemplate(\Magento\Weee\Block\Item\Price\Renderer $subject, $template)
+    public function beforeSetTemplate(\Magento\Tax\Block\Item\Price\Renderer $subject, $template)
     {
         if ($this->quickCartHelper->isQuickCartDiscountedPriceEnabled() && (strpos($template, 'sidebar.phtml')  !== false)) {
             $template = 'WeltPixel_QuickCart::checkout/cart/item/price/sidebar.phtml';

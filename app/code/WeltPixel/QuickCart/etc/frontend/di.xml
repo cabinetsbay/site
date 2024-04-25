@@ -3,7 +3,9 @@
     <type name="Magento\Checkout\CustomerData\Cart">
         <plugin name="weltpixel-quickcart-custom-message" type="WeltPixel\QuickCart\Plugin\Checkout\CustomerData\Cart" />
     </type>
-    <type name="Magento\Weee\Block\Item\Price\Renderer">
+<!-- 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+"Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 -->
+    <type name="Magento\Tax\Block\Item\Price\Renderer">
         <plugin name="weltpixel-quickcart-item-price-renderer" type="WeltPixel\QuickCart\Plugin\Item\Price\Renderer" />
     </type>
 </config>
