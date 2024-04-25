@@ -32,41 +32,23 @@ if ($isDiscountedPriceEnabled) {
 
 <?php if ($block->displayPriceInclTax() || $block->displayBothPrices()) : ?>
     <span class="price-including-tax" data-label="<?= $block->escapeHtmlAttr(__('Incl. Tax')) ?>">
+<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
 	<span class="minicart-price">
     	<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceInclTax()) ?>
     </span>
-
-    <?php if ($block->displayPriceWithWeeeDetails()) : ?>
-        <?php if ($this->helper(\Magento\Weee\Helper\Data::class)->getApplied($item)) : ?>
-            <span class="minicart-tax-info">
-            <?php foreach ($this->helper(\Magento\Weee\Helper\Data::class)->getApplied($item) as $tax) : ?>
-                <span class="weee" data-label="<?= $block->escapeHtmlAttr($tax['title']) ?>">
-                    <?= /* @noEscape */ $block->formatPrice($tax['amount_incl_tax'], true, true) ?>
-                </span>
-            <?php endforeach; ?>
-            </span>
-
-            <?php if ($block->displayFinalPrice()) : ?>
-                <span class="minicart-tax-total">
-                    <span class="weee" data-label="<?= $block->escapeHtmlAttr(__('Total Incl. Tax')) ?>">
-                        <?= /* @noEscape */ $block->formatPrice($block->getFinalUnitDisplayPriceInclTax()) ?>
-                    </span>
-                </span>
-            <?php endif; ?>
-        <?php endif; ?>
-    <?php endif; ?>
+<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
     </span>
 <?php endif; ?>
 
 <?php if ($block->displayPriceExclTax() || $block->displayBothPrices()) : ?>
     <span class="price-excluding-tax <?php echo $discountedPriceDisplayMode ?>" data-label="<?= $block->escapeHtmlAttr(__('Excl. Tax')) ?>">
-    <?php if ($block->displayPriceWithWeeeDetails()) : ?>
-        <span class="minicart-tax-total">
-    <?php else : ?>
-        <?php echo $priceWrapper ?>
-    <?php endif; ?>
-    <?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceExclTax()) ?>
-        </span>
+<?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
+		<?php echo $priceWrapper ?>
+		<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceExclTax()) ?>
+	</span>
 
     <?php echo $finalPriceWrapper ?>
 
