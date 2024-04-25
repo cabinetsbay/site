@@ -35,7 +35,7 @@ if ($isDiscountedPriceEnabled) {
 <?php # 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144 ?>
 		<?php echo $priceWrapper ?>
-		<?= /* @noEscape */ $block->formatPrice($block->getUnitDisplayPriceExclTax()) ?>
+		<?= /* @noEscape */ $block->formatPrice($block->getItemDisplayPriceExclTax()) ?>
 	</span>
 
     <?php echo $finalPriceWrapper ?>
