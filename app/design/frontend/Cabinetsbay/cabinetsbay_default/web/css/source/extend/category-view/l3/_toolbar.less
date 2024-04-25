@@ -1,26 +1,26 @@
 .toolbar-products {
 	padding: 0;
 	margin-bottom: 2em;
-	.toolbar-sorter {
+	> .toolbar-sorter {
 		padding-top: .72em;
 		@media screen and (max-width: 680px) {padding: 0;}
-		& .sorter-label {
+		.sorter-label {
 			font-size: 1.8em;
 			@media screen and (max-width: 680px) {font-size: initial;}
 			margin-right: 1em;
 		}
-	}
-	.sorter-options {
-		border-radius: 0;
-		border-color: #262d3c;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		font-size: 18px;
-		line-height: 1.3em;
-		outline: none;
-		&::-ms-expand {
-			display: none;
+		> .sorter-options {
+			border-radius: 0;
+			border-color: #262d3c;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			font-size: 18px;
+			line-height: 1.3em;
+			outline: none;
+			&::-ms-expand {
+				display: none;
+			}
 		}
 	}
 	.modes {
