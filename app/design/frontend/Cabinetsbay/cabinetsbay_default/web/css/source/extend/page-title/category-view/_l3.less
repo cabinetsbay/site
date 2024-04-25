@@ -3,7 +3,7 @@
 // 2) "Add the current category level as a CSS class to `<body>`": https://github.com/cabinetsbay/core/issues/5
 body.cb-category-level-3 {
 	h1.page-title {
-		@media screen and (min-width: 681px) {margin: .3em 0;}
+		@media screen and (min-width: 681px) {margin: .3em 0 0;}
 	}
 	// 2024-04-20
 	// "Move `<sub>` out of `<h1>` on the frontend category pages": https://github.com/cabinetsbay/site/issues/141
@@ -13,8 +13,6 @@ body.cb-category-level-3 {
 		font-size: initial;
 		font-weight: normal;
 		line-height: initial;
-		// 2024-04-15 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		// "Improve frontend category pages": https://github.com/cabinetsbay/site/issues/131
-		@media screen and (max-width: 680px) {font-size: initial;}
+		@media screen and (max-width: 680px) {font-size: initial;  margin-bottom: .3em;}
 	}
 }
