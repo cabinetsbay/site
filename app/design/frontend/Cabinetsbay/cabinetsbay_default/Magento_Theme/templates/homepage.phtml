@@ -6,19 +6,9 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 ?>
 <div class="homepage-grid">
-	<?= $b->getLayout()->createBlock('Magento\Cms\Block\Block')
-		->setBlockId('home-page-slider')->toHtml(); ?>
+	<?= df_cms_block_content('home-page-slider') ?>
 	<div class="homepage-why-us">
-	  <?= $b
-		->getLayout()
-		->createBlock('Magento\Cms\Block\Block')
-		->setBlockId('home-page-why-us')
-		->toHtml(); ?>
-	  <?= $b
-		->getLayout()
-		->createBlock('Magento\Cms\Block\Block')
-		->setBlockId('home-page-why-us-icon-block')
-		->toHtml(); ?>
+		<?= df_cc_n(df_cms_block_content('home-page-why-us'), df_cms_block_content('home-page-why-us-icon-block')) ?>
 	</div>
 	<div class="homepage-popular c-products-grid">
 		<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
