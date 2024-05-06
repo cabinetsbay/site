@@ -6,15 +6,15 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 ?>
 <div class="homepage-grid">
-	<?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
+	<?= $b->getLayout()->createBlock('Magento\Cms\Block\Block')
 		->setBlockId('home-page-slider')->toHtml(); ?>
 	<div class="homepage-why-us">
-	  <?= $block
+	  <?= $b
 		->getLayout()
 		->createBlock('Magento\Cms\Block\Block')
 		->setBlockId('home-page-why-us')
 		->toHtml(); ?>
-	  <?= $block
+	  <?= $b
 		->getLayout()
 		->createBlock('Magento\Cms\Block\Block')
 		->setBlockId('home-page-why-us-icon-block')
@@ -23,9 +23,9 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 	<div class="homepage-popular c-products-grid">
 		<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
 		$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
-		<?php $popularProductsCollection = $block->getPopularProducts(); ?>
+		<?php $popularProductsCollection = $b->getPopularProducts(); ?>
 		<?php if (count($popularProductsCollection) > 0) : ?>
-			<?php print $block
+			<?php print $b
 				->getLayout()
 				->createBlock('Magento\Cms\Block\Block')
 				->setBlockId('home-page-popular-kitchen')
@@ -53,25 +53,25 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		endif; /*if(count($popularProductsCollection) > 0)*/ ?>
 	</div>
 	<div class="homepage-workflow">
-		<?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
+		<?= $b->getLayout()->createBlock('Magento\Cms\Block\Block')
 			->setBlockId('home-page-project-workflow')->toHtml(); ?>
 	</div>
 	<div class="homepage-affirm-banner">
-	  <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
+	  <a href="/financing.html"><img src="<?php print $b->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
 	</div>
 	<div class="homepage-affirm-banner-mobile">
-	  <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner_mob.svg');?>" /></a>
+	  <a href="/financing.html"><img src="<?php print $b->getViewFileUrl('images/affirm_banner_mob.svg');?>" /></a>
 	</div>
 	<div class="homepage-call-us">
 		<div class="left">
 			<div class="call-us-block">
 				<h4>Call Us Today</h4>
-				<h4><?= trim(strip_tags($block->getLayout()
+				<h4><?= trim(strip_tags($b->getLayout()
 						->createBlock('Magento\Cms\Block\Block')
 						->setBlockId('block-header-top-phone')
 						->toHtml(), '<a>')); ?></h4>
 			</div>
-			<div><?= trim(strip_tags($block->getLayout()
+			<div><?= trim(strip_tags($b->getLayout()
 					->createBlock('Magento\Cms\Block\Block')
 					->setBlockId('home-page-schedule')
 					->toHtml(), '<br>')); ?></div>
@@ -79,7 +79,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<div class="right">
 			<div class="catalog-links">
 				<div>
-					<?= trim(strip_tags($block->getLayout()
+					<?= trim(strip_tags($b->getLayout()
 						->createBlock('Magento\Cms\Block\Block')
 						->setBlockId('home-page-catalog-links')
 						->toHtml(), '<a><ul><li>')); ?>
