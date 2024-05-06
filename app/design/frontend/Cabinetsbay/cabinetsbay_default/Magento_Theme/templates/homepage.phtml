@@ -8,85 +8,85 @@
  */
 ?>
 <div class="homepage-grid">
-    <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
-        ->setBlockId('home-page-slider')->toHtml(); ?>
-    <div class="homepage-why-us">
-      <?= $block
-        ->getLayout()
-        ->createBlock('Magento\Cms\Block\Block')
-        ->setBlockId('home-page-why-us')
-        ->toHtml(); ?>
-      <?= $block
-        ->getLayout()
-        ->createBlock('Magento\Cms\Block\Block')
-        ->setBlockId('home-page-why-us-icon-block')
-        ->toHtml(); ?>
-    </div>
-    <div class="homepage-popular c-products-grid">
-        <?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
-        $categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
-        <?php $popularProductsCollection = $block->getPopularProducts(); ?>
-        <?php if (count($popularProductsCollection) > 0) : ?>
-            <?php print $block
-                ->getLayout()
-                ->createBlock('Magento\Cms\Block\Block')
-                ->setBlockId('home-page-popular-kitchen')
-                ->toHtml();
-            print '<ul>';
-            foreach ($popularProductsCollection as $popularProduct) {
-                /** @var \Magento\Catalog\Model\Category\Interceptor $popularProduct */
-                print '<li>';
-                print '<a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct) . '">';
-                print '<div>' . $popularProduct->getName() . '</div>';
-                if($popularProduct->getData('cb_kitchen_set') != '') {
-                  print '<div class="size-price"><b>' . $popularProduct->getData('cb_kitchen_set') . '</b>' . $popularProduct->getData('cb_kitchen_price') . '</div>';
-                }
-                try {
-                    print '<img src="' . $popularProduct->getImageUrl() . '" border="0" />';
-                } catch (\Magento\Framework\Exception\LocalizedException $e) {
+	<?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
+		->setBlockId('home-page-slider')->toHtml(); ?>
+	<div class="homepage-why-us">
+	  <?= $block
+		->getLayout()
+		->createBlock('Magento\Cms\Block\Block')
+		->setBlockId('home-page-why-us')
+		->toHtml(); ?>
+	  <?= $block
+		->getLayout()
+		->createBlock('Magento\Cms\Block\Block')
+		->setBlockId('home-page-why-us-icon-block')
+		->toHtml(); ?>
+	</div>
+	<div class="homepage-popular c-products-grid">
+		<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
+		$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
+		<?php $popularProductsCollection = $block->getPopularProducts(); ?>
+		<?php if (count($popularProductsCollection) > 0) : ?>
+			<?php print $block
+				->getLayout()
+				->createBlock('Magento\Cms\Block\Block')
+				->setBlockId('home-page-popular-kitchen')
+				->toHtml();
+			print '<ul>';
+			foreach ($popularProductsCollection as $popularProduct) {
+				/** @var \Magento\Catalog\Model\Category\Interceptor $popularProduct */
+				print '<li>';
+				print '<a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct) . '">';
+				print '<div>' . $popularProduct->getName() . '</div>';
+				if($popularProduct->getData('cb_kitchen_set') != '') {
+				  print '<div class="size-price"><b>' . $popularProduct->getData('cb_kitchen_set') . '</b>' . $popularProduct->getData('cb_kitchen_price') . '</div>';
+				}
+				try {
+					print '<img src="' . $popularProduct->getImageUrl() . '" border="0" />';
+				} catch (\Magento\Framework\Exception\LocalizedException $e) {
 
-                }
-                print '</a>';
-                print '<div><a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct)
-                    . '">Shop cabinets</a><a href="'.$popularProduct->getData('cb_door_sample_link').'">Order sample</a></div>';
-                print '</li>';
-            }
-            print '</ul>';
-        endif; /*if(count($popularProductsCollection) > 0)*/ ?>
-    </div>
-    <div class="homepage-workflow">
-        <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
-            ->setBlockId('home-page-project-workflow')->toHtml(); ?>
-    </div>
-    <div class="homepage-affirm-banner">
-      <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
-    </div>
-    <div class="homepage-affirm-banner-mobile">
-      <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner_mob.svg');?>" /></a>
-    </div>
-    <div class="homepage-call-us">
-        <div class="left">
-            <div class="call-us-block">
-                <h4>Call Us Today</h4>
-                <h4><?= trim(strip_tags($block->getLayout()
-                        ->createBlock('Magento\Cms\Block\Block')
-                        ->setBlockId('block-header-top-phone')
-                        ->toHtml(), '<a>')); ?></h4>
-            </div>
-            <div><?= trim(strip_tags($block->getLayout()
-                    ->createBlock('Magento\Cms\Block\Block')
-                    ->setBlockId('home-page-schedule')
-                    ->toHtml(), '<br>')); ?></div>
-        </div>
-        <div class="right">
-            <div class="catalog-links">
-                <div>
-                    <?= trim(strip_tags($block->getLayout()
-                        ->createBlock('Magento\Cms\Block\Block')
-                        ->setBlockId('home-page-catalog-links')
-                        ->toHtml(), '<a><ul><li>')); ?>
-                </div>
-            </div>
-        </div>
-    </div>
+				}
+				print '</a>';
+				print '<div><a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct)
+					. '">Shop cabinets</a><a href="'.$popularProduct->getData('cb_door_sample_link').'">Order sample</a></div>';
+				print '</li>';
+			}
+			print '</ul>';
+		endif; /*if(count($popularProductsCollection) > 0)*/ ?>
+	</div>
+	<div class="homepage-workflow">
+		<?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')
+			->setBlockId('home-page-project-workflow')->toHtml(); ?>
+	</div>
+	<div class="homepage-affirm-banner">
+	  <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
+	</div>
+	<div class="homepage-affirm-banner-mobile">
+	  <a href="/financing.html"><img src="<?php print $block->getViewFileUrl('images/affirm_banner_mob.svg');?>" /></a>
+	</div>
+	<div class="homepage-call-us">
+		<div class="left">
+			<div class="call-us-block">
+				<h4>Call Us Today</h4>
+				<h4><?= trim(strip_tags($block->getLayout()
+						->createBlock('Magento\Cms\Block\Block')
+						->setBlockId('block-header-top-phone')
+						->toHtml(), '<a>')); ?></h4>
+			</div>
+			<div><?= trim(strip_tags($block->getLayout()
+					->createBlock('Magento\Cms\Block\Block')
+					->setBlockId('home-page-schedule')
+					->toHtml(), '<br>')); ?></div>
+		</div>
+		<div class="right">
+			<div class="catalog-links">
+				<div>
+					<?= trim(strip_tags($block->getLayout()
+						->createBlock('Magento\Cms\Block\Block')
+						->setBlockId('home-page-catalog-links')
+						->toHtml(), '<a><ul><li>')); ?>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
