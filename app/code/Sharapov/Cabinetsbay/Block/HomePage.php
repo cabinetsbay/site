@@ -12,50 +12,50 @@ namespace Sharapov\Cabinetsbay\Block;
 class HomePage extends \Magento\Framework\View\Element\Template
 {
 
-    const XML_CONFIG_POPULAR_PRODUCTS = 'cabinetsbay_settings/general/popular_products';
+	const XML_CONFIG_POPULAR_PRODUCTS = 'cabinetsbay_settings/general/popular_products';
 
-    private $scopeConfig;
+	private $scopeConfig;
 
-    /**
-     * Notification constructor.
-     *
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Checkout\Model\Session                  $checkoutSession
-     * @param array                                            $data
-     */
-    function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        array $data = []
-    ) {
-        parent::__construct($context, $data);
-        $this->scopeConfig = $scopeConfig;
-    }
+	/**
+	 * Notification constructor.
+	 *
+	 * @param \Magento\Framework\View\Element\Template\Context $context
+	 * @param \Magento\Checkout\Model\Session                  $checkoutSession
+	 * @param array                                            $data
+	 */
+	function __construct(
+		\Magento\Framework\View\Element\Template\Context $context,
+		\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+		array $data = []
+	) {
+		parent::__construct($context, $data);
+		$this->scopeConfig = $scopeConfig;
+	}
 
-    /**
-     * @return array
-     */
-    function getPopularProducts(): array
-    {
-        $ids = $this->scopeConfig->getValue(self::XML_CONFIG_POPULAR_PRODUCTS,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+	/**
+	 * @return array
+	 */
+	function getPopularProducts(): array
+	{
+		$ids = $this->scopeConfig->getValue(self::XML_CONFIG_POPULAR_PRODUCTS,
+			\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
-        $ids = ($ids) ? explode(",", $ids) : [];
-        $ids = array_slice($ids, 0, 3);
-        $popularCategories = [];
+		$ids = ($ids) ? explode(",", $ids) : [];
+		$ids = array_slice($ids, 0, 3);
+		$popularCategories = [];
 
-        $objectManager
-            = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
-        $categoryFactory
-            = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');// Instance of Category Model
+		$objectManager
+			= \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+		$categoryFactory
+			= $objectManager->get('\Magento\Catalog\Model\CategoryFactory');// Instance of Category Model
 
-        foreach ($ids as $id) {
-            array_push($popularCategories,
-                $categoryFactory->create()->load($id));
-        }
+		foreach ($ids as $id) {
+			array_push($popularCategories,
+				$categoryFactory->create()->load($id));
+		}
 
-        unset($categoryFactory, $objectManager, $ids);
+		unset($categoryFactory, $objectManager, $ids);
 
-        return $popularCategories;
-    }
+		return $popularCategories;
+	}
 }
