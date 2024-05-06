@@ -26,7 +26,7 @@ class HomePage extends \Magento\Framework\View\Element\Template {
 	 * @return array
 	 */
 	function getPopularProducts():array {
-		$ids = $this->scopeConfig->getValue(self::XML_CONFIG_POPULAR_PRODUCTS,
+		$ids = $this->scopeConfig->getValue('cabinetsbay_settings/general/popular_products',
 			\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 		$ids = ($ids) ? explode(",", $ids) : [];
 		$ids = array_slice($ids, 0, 3);
