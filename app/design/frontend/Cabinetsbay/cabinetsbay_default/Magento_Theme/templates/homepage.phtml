@@ -36,9 +36,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 			print '</ul>';
 		endif;  ?>
 	</div>
-	<div class="homepage-workflow">
-		<?= df_cms_block('home-page-project-workflow') ?>
-	</div>
+	<div class="homepage-workflow"><?= df_cms_block('home-page-project-workflow') ?></div>
 	<div class="homepage-affirm-banner">
 	  <a href="/financing.html"><img src="<?php print $b->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
 	</div>
