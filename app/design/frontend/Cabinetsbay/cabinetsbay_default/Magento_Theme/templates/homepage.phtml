@@ -53,10 +53,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 				<h4>Call Us Today</h4>
 				<h4><?= trim(strip_tags(df_cms_block('block-header-top-phone'), '<a>')); ?></h4>
 			</div>
-			<div><?= trim(strip_tags($b->getLayout()
-					->createBlock('Magento\Cms\Block\Block')
-					->setBlockId('home-page-schedule')
-					->toHtml(), '<br>')); ?></div>
+			<div><?= trim(strip_tags(df_cms_block('home-page-schedule'), '<br>')); ?></div>
 		</div>
 		<div class="right">
 			<div class="catalog-links">
