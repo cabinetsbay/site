@@ -51,10 +51,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<div class="left">
 			<div class="call-us-block">
 				<h4>Call Us Today</h4>
-				<h4><?= trim(strip_tags($b->getLayout()
-						->createBlock('Magento\Cms\Block\Block')
-						->setBlockId('block-header-top-phone')
-						->toHtml(), '<a>')); ?></h4>
+				<h4><?= trim(strip_tags(df_cms_block('block-header-top-phone'), '<a>')); ?></h4>
 			</div>
 			<div><?= trim(strip_tags($b->getLayout()
 					->createBlock('Magento\Cms\Block\Block')
