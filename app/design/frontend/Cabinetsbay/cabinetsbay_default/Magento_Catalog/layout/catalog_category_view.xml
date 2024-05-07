@@ -3,10 +3,12 @@
 	<body>
 		<referenceContainer name='columns.top'>
 			<container name='category.view.container' htmlTag='div' htmlClass='category-view' htmlId='categoryTabs'>
+<!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+"Transfer the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/core/issues/6 -->
 				<block
 					class='Sharapov\Cabinetsbay\Block\Category\View'
 					name='category.header'
-					template='Magento_Catalog::category/header.phtml'
+					template='CabinetsBay_Catalog::category/header.phtml'
 				/>
 			</container>
 		</referenceContainer>
