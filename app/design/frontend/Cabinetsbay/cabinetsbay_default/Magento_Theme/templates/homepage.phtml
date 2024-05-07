@@ -4,6 +4,7 @@
 # https://github.com/cabinetsbay/site/issues/146
 use Exception as E;
 use Magento\Catalog\Model\Category as C;
+use Magento\Catalog\Model\ResourceModel\Category\Collection as CC;
 use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 ?>
@@ -13,11 +14,16 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<?= df_cc_n(df_cms_block('home-page-why-us'), df_cms_block('home-page-why-us-icon-block')) ?>
 	</div>
 	<div class="homepage-popular c-products-grid">
-		<?php $popularProductsCollection = $b->popular(); ?>
-		<?php if (count($popularProductsCollection) > 0) : ?>
+		<?php
+			$cc = df_category_c(array_slice(df_csv_parse_int(df_cfg('cabinetsbay_settings/general/popular_products')), 0, 3))
+				->addAttributeToSelect(['cb_door_sample_link', 'cb_kitchen_price', 'cb_kitchen_set', 'image', 'name'])
+				->joinUrlRewrite()
+			; /** @var CC $cc */
+		?>
+		<?php if (count($cc)) : ?>
 			<?= df_cms_block('home-page-popular-kitchen') ?>
 			<ul> <?php
-			foreach ($popularProductsCollection as $popularProduct) {
+			foreach ($cc as $popularProduct) {
 				/** @var C $popularProduct */
 				print '<li>';
 				print '<a href="' . $popularProduct->getUrl() . '">';
