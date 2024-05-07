@@ -9,7 +9,6 @@ https://github.com/cabinetsbay/site/issues/146 -->
 	<body>
 		<referenceContainer name='content'>
 			<block
-				class='Magento\Framework\View\Element\Template'
 				name='home_page'
 				as='home_page'
 				template='Magento_Theme::homepage.phtml'
