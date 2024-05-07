@@ -58,10 +58,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<div class="right">
 			<div class="catalog-links">
 				<div>
-					<?= trim(strip_tags($b->getLayout()
-						->createBlock('Magento\Cms\Block\Block')
-						->setBlockId('home-page-catalog-links')
-						->toHtml(), '<a><ul><li>')); ?>
+					<?= trim(strip_tags(df_cms_block('home-page-catalog-links'), '<a><ul><li>')); ?>
 				</div>
 			</div>
 		</div>
