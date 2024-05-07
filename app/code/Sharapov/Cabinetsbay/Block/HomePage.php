@@ -4,7 +4,6 @@ namespace Sharapov\Cabinetsbay\Block;
 # "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Theme/templates/homepage.phtml`":
 # https://github.com/cabinetsbay/site/issues/146
 class HomePage extends \Magento\Framework\View\Element\Template {
-	const XML_CONFIG_POPULAR_PRODUCTS = 'cabinetsbay_settings/general/popular_products';
 	private $scopeConfig;
 	/**
 	 * Notification constructor.
@@ -26,8 +25,7 @@ class HomePage extends \Magento\Framework\View\Element\Template {
 	 * @return array
 	 */
 	function getPopularProducts():array {
-		$ids = $this->scopeConfig->getValue('cabinetsbay_settings/general/popular_products',
-			\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+		$ids = df_cfg('cabinetsbay_settings/general/popular_products');
 		$ids = ($ids) ? explode(",", $ids) : [];
 		$ids = array_slice($ids, 0, 3);
 		$popularCategories = [];

@@ -6,9 +6,9 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 ?>
 <div class="homepage-grid">
-	<?= df_cms_block_content('home-page-slider') ?>
+	<?= df_cms_block('home-page-slider') ?>
 	<div class="homepage-why-us">
-		<?= df_cc_n(df_cms_block_content('home-page-why-us'), df_cms_block_content('home-page-why-us-icon-block')) ?>
+		<?= df_cc_n(df_cms_block('home-page-why-us'), df_cms_block('home-page-why-us-icon-block')) ?>
 	</div>
 	<div class="homepage-popular c-products-grid">
 		<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
