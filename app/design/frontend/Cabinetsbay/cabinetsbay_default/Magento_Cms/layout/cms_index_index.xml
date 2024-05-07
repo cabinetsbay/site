@@ -8,11 +8,7 @@ https://github.com/cabinetsbay/site/issues/146 -->
 >
 	<body>
 		<referenceContainer name='content'>
-			<block
-				name='home_page'
-				as='home_page'
-				template='Magento_Theme::homepage.phtml'
-			/>
+			<block template='Magento_Theme::homepage.phtml'/>
 		</referenceContainer>
 	</body>
 </page>
