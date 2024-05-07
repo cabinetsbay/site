@@ -11,14 +11,12 @@ class HomePage extends \Magento\Framework\View\Element\Template {
 	 */
 	function getPopularProducts():array {
 		$ids = array_slice(df_csv_parse_int(df_cfg('cabinetsbay_settings/general/popular_products')), 0, 3);
-		$popularCategories = [];
+		$r = [];
 		$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
 		$categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');// Instance of Category Model
 		foreach ($ids as $id) {
-			array_push($popularCategories,
-				$categoryFactory->create()->load($id));
+			array_push($r, $categoryFactory->create()->load($id));
 		}
-		unset($categoryFactory, $objectManager, $ids);
-		return $popularCategories;
+		return $r;
 	}
 }
