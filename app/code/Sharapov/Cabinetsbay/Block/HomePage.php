@@ -10,9 +10,7 @@ class HomePage extends \Magento\Framework\View\Element\Template {
 	 * https://github.com/cabinetsbay/site/issues/146
 	 */
 	function getPopularProducts():array {
-		$ids = df_cfg('cabinetsbay_settings/general/popular_products');
-		$ids = ($ids) ? explode(",", $ids) : [];
-		$ids = array_slice($ids, 0, 3);
+		$ids = array_slice(df_csv_parse_int(df_cfg('cabinetsbay_settings/general/popular_products')), 0, 3);
 		$popularCategories = [];
 		$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
 		$categoryFactory = $objectManager->get('\Magento\Catalog\Model\CategoryFactory');// Instance of Category Model
