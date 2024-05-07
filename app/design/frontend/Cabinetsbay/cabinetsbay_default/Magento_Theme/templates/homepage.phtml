@@ -13,8 +13,6 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<?= df_cc_n(df_cms_block('home-page-why-us'), df_cms_block('home-page-why-us-icon-block')) ?>
 	</div>
 	<div class="homepage-popular c-products-grid">
-		<?php /** @var \Magento\Catalog\Helper\Category $categoryHelper_sub */
-		$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
 		<?php $popularProductsCollection = $b->getPopularProducts(); ?>
 		<?php if (count($popularProductsCollection) > 0) : ?>
 			<?= df_cms_block('home-page-popular-kitchen') ?>
