@@ -28,6 +28,7 @@
         "amasty/module-magento-custom-form": "1.17.3",
         "amasty/module-seo-toolkit-subscription-package-premium": "*",
         "amasty/shippingtablerates": "1.10.5",
+        "cabinetsbay/catalog": "*",
         "cabinetsbay/core": "*",
         "mage2pro/core": "*",
         "magento/composer-dependency-version-audit-plugin": "~0.1",

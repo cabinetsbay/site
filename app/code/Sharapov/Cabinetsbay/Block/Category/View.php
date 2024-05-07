@@ -5,7 +5,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-01-02
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs/overview.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/tabs/overview.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 * @return array(string => string)
 	 */
 	function images():array {$r = []; /** @var array(string => string)  $r */
@@ -64,21 +64,21 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 * @used-by self::l3a()
 	 * @used-by self:l3p()
 	 * @used-by app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Catalog/templates/category/view.phtml
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs/overview.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/tabs/overview.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3():?C {return dfc($this, function() {return df_category_ancestor_at_level($this->getCurrentCategory(), 3);});}
 
 	/**
 	 * 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs/matching-styles.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/tabs/matching-styles.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 */
 	function l3a(string $n):string {return df_cms_filter_page((string)$this->l3()[$n]);}
 
 	/**
 	 * @uses df_category()
-	 * @used-by vendor/cabinetsbay/core/view/frontend/templates/catalog/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
+	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/tabs.phtml (https://github.com/cabinetsbay/site/issues/105)
 	 * @return C[]
 	 */
 	function l3p():array {
