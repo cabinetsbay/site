@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+<?xml version='1.0'?>
 <!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Theme/templates/homepage.phtml`":
 https://github.com/cabinetsbay/site/issues/146 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'>
 	<body>
-		<referenceContainer name="content">
-			<block class="Magento\Framework\View\Element\Template"
-				   name="home_page"
-				   as="home_page"
-				   template="Magento_Theme::homepage.phtml" />
+		<referenceContainer name='content'>
+			<block class='Magento\Framework\View\Element\Template'
+				   name='home_page'
+				   as='home_page'
+				   template='Magento_Theme::homepage.phtml' />
 		</referenceContainer>
 	</body>
 </page>
