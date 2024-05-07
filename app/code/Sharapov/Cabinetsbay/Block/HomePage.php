@@ -9,7 +9,7 @@ class HomePage extends \Magento\Framework\View\Element\Template {
 	 * Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Theme/templates/homepage.phtml`":
 	 * https://github.com/cabinetsbay/site/issues/146
 	 */
-	function getPopularProducts():array {
+	function popular():array {
 		$ids = array_slice(df_csv_parse_int(df_cfg('cabinetsbay_settings/general/popular_products')), 0, 3);
 		$r = [];
 		$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager

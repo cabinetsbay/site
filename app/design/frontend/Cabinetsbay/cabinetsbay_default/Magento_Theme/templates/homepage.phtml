@@ -13,7 +13,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		<?= df_cc_n(df_cms_block('home-page-why-us'), df_cms_block('home-page-why-us-icon-block')) ?>
 	</div>
 	<div class="homepage-popular c-products-grid">
-		<?php $popularProductsCollection = $b->getPopularProducts(); ?>
+		<?php $popularProductsCollection = $b->popular(); ?>
 		<?php if (count($popularProductsCollection) > 0) : ?>
 			<?= df_cms_block('home-page-popular-kitchen') ?>
 			<ul> <?php
