@@ -2,6 +2,7 @@
 # 2024-05-06 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Theme/templates/homepage.phtml`":
 # https://github.com/cabinetsbay/site/issues/146
+use Exception as E;
 use Magento\Catalog\Model\Category as C;
 use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
@@ -21,18 +22,16 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 			foreach ($popularProductsCollection as $popularProduct) {
 				/** @var C $popularProduct */
 				print '<li>';
-				print '<a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct) . '">';
+				print '<a href="' . $popularProduct->getUrl() . '">';
 				print '<div>' . $popularProduct->getName() . '</div>';
 				if($popularProduct->getData('cb_kitchen_set') != '') {
 				  print '<div class="size-price"><b>' . $popularProduct->getData('cb_kitchen_set') . '</b>' . $popularProduct->getData('cb_kitchen_price') . '</div>';
 				}
 				try {
 					print '<img src="' . $popularProduct->getImageUrl() . '" border="0" />';
-				} catch (\Magento\Framework\Exception\LocalizedException $e) {
-
-				}
+				} catch (E $e) {}
 				print '</a>';
-				print '<div><a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct)
+				print '<div><a href="' . $popularProduct->getUrl()
 					. '">Shop cabinets</a><a href="'.$popularProduct->getData('cb_door_sample_link').'">Order sample</a></div>';
 				print '</li>';
 			}
