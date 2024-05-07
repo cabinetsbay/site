@@ -2,6 +2,7 @@
 # 2024-05-06 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/Magento_Theme/templates/homepage.phtml`":
 # https://github.com/cabinetsbay/site/issues/146
+use Magento\Catalog\Model\Category as C;
 use Sharapov\Cabinetsbay\Block\HomePage as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 ?>
@@ -18,7 +19,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 			<?= df_cms_block('home-page-popular-kitchen') ?>
 			<ul> <?php
 			foreach ($popularProductsCollection as $popularProduct) {
-				/** @var \Magento\Catalog\Model\Category\Interceptor $popularProduct */
+				/** @var C $popularProduct */
 				print '<li>';
 				print '<a href="' . $categoryHelper_sub->getCategoryUrl($popularProduct) . '">';
 				print '<div>' . $popularProduct->getName() . '</div>';
