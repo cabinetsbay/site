@@ -39,8 +39,7 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		endif;  ?>
 	</div>
 	<div class="homepage-workflow">
-		<?= $b->getLayout()->createBlock('Magento\Cms\Block\Block')
-			->setBlockId('home-page-project-workflow')->toHtml(); ?>
+		<?= df_cms_block('home-page-project-workflow') ?>
 	</div>
 	<div class="homepage-affirm-banner">
 	  <a href="/financing.html"><img src="<?php print $b->getViewFileUrl('images/affirm_banner.svg');?>" /></a>
