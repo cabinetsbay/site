@@ -7,7 +7,7 @@ use Sharapov\Cabinetsbay\Block\Category\View as B;
 /** @var B $block */ $b = $block; /** @var B $b */
 $echo = function(string ...$tt) use($b):void {
 	df_map($tt, function(string $t) use($b):void {
-		echo df_block_output('CabinetsBay_Core', "catalog/category/$t", ['b' => $b]);
+		echo df_block_output('CabinetsBay_Catalog', "category/$t", ['b' => $b]);
 	});
 };
 if (2 === $b->level()) {

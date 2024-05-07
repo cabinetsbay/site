@@ -22,7 +22,7 @@ else {
 	# 1) "The `H1` tag is duplicated on the frontend category pages": https://github.com/cabinetsbay/site/issues/104
 	# 2) "Category names are not shown on narrow screens": https://github.com/cabinetsbay/site/issues/108
 	echo $b->title();
-	echo df_block_output('CabinetsBay_Core', 'catalog/category/tabs', ['b' => $b]);
+	echo df_block_output('CabinetsBay_Catalog', 'category/tabs', ['b' => $b]);
 }
 if ($b->isContentMode() || $b->isMixedMode()) {
 	?><div class="category-cms"><?= $b->getCmsBlockHtml() ?></div><?php
