@@ -15,12 +15,8 @@ use Sharapov\Cabinetsbay\Block\HomePage as B;
 		$categoryHelper_sub = $this->helper('Magento\Catalog\Helper\Category'); ?>
 		<?php $popularProductsCollection = $b->getPopularProducts(); ?>
 		<?php if (count($popularProductsCollection) > 0) : ?>
-			<?php print $b
-				->getLayout()
-				->createBlock('Magento\Cms\Block\Block')
-				->setBlockId('home-page-popular-kitchen')
-				->toHtml();
-			print '<ul>';
+			<?= df_cms_block('home-page-popular-kitchen') ?>
+			<ul> <?php
 			foreach ($popularProductsCollection as $popularProduct) {
 				/** @var \Magento\Catalog\Model\Category\Interceptor $popularProduct */
 				print '<li>';
