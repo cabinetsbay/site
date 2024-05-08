@@ -23,11 +23,11 @@ class InstallData implements InstallDataInterface {
   /**
    * Init
    *
-   * @param EavSetupFactory $eavSetupFactory
+   * @param EavSetupFactory $eavFactory
    * @pram \Magento\Framework\Module\Manager $moduleManager
    */
-  function __construct(EavSetupFactory $eavSetupFactory, \Magento\Framework\Module\Manager $moduleManager) {
-	$this->eavSetupFactory = $eavSetupFactory;
+  function __construct(EavSetupFactory $eavFactory, \Magento\Framework\Module\Manager $moduleManager) {
+	$this->eavSetupFactory = $eavFactory;
 	$this->moduleManager = $moduleManager;
   }
 
@@ -41,12 +41,9 @@ class InstallData implements InstallDataInterface {
 	if(!$this->moduleManager->isEnabled('Sharapov_Cabinetsbay')) {
 	  throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
 	}
-
 	$setup->startSetup();
-
-	$eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-
-	$eavSetup->addAttribute(C::ENTITY, A::SPECS, [
+	$eav = $this->eavSetupFactory->create(['setup' => $setup]);
+	$eav->addAttribute(C::ENTITY, A::SPECS, [
 		'type'                  => 'text',
 		'label'                 => 'Product Specifications Content',
 		'input'                 => 'textarea',
@@ -59,8 +56,7 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  A::ASSEMBLY,
 	  [
@@ -78,7 +74,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  A::STYLES,
 	  [
@@ -96,7 +92,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  'cb_kitchen_set',
 	  [
@@ -114,7 +110,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  'cb_kitchen_price',
 	  [
@@ -132,7 +128,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  A::KITCHEN_COLOR,
 	  [
@@ -150,7 +146,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(\Magento\Catalog\Model\Category::ENTITY, A::KITCHEN_STYLE, [
+	$eav->addAttribute(\Magento\Catalog\Model\Category::ENTITY, A::KITCHEN_STYLE, [
 		'type'                  => 'varchar',
 		'label'                 => 'Style',
 		'input'                 => 'text',
@@ -164,7 +160,7 @@ class InstallData implements InstallDataInterface {
 		'is_filterable_in_grid' => false,
 	]);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  'cb_kitchen_type',
 	  [
@@ -182,7 +178,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  A::DOOR_SAMPLE_LINK,
 	  [
@@ -200,7 +196,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
+	$eav->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
 	  'cb_matching_products',
 	  [
