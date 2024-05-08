@@ -155,11 +155,7 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-
-	$eav->addAttribute(
-	  C::ENTITY,
-	  'cb_matching_products',
-	  [
+	$eav->addAttribute(C::ENTITY, 'cb_matching_products', [
 		'type'                  => 'varchar',
 		'label'                 => 'Matching Products IDs (comma-separated)',
 		'input'                 => 'text',
@@ -170,9 +166,7 @@ class InstallData implements InstallDataInterface {
 		'is_used_in_grid'       => true,
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
-	  ]
-	);
-
+	]);
 	$setup->endSetup();
   }
 }
