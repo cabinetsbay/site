@@ -50,10 +50,7 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-	$eav->addAttribute(
-	  C::ENTITY,
-	  A::ASSEMBLY,
-	  [
+	$eav->addAttribute(C::ENTITY, A::ASSEMBLY, [
 		'type'                  => 'text',
 		'label'                 => 'Cabinet Assembly Content',
 		'input'                 => 'textarea',
@@ -65,8 +62,7 @@ class InstallData implements InstallDataInterface {
 		'is_used_in_grid'       => true,
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
-	  ]
-	);
+	]);
 
 	$eav->addAttribute(
 	  C::ENTITY,
