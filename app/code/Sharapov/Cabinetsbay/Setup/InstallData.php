@@ -22,7 +22,6 @@ class InstallData implements InstallDataInterface {
 			A::ASSEMBLY => [
 				'input'                 => 'textarea',
 				'label'                 => 'Cabinet Assembly Content',
-				'required'              => false,
 				'sort_order'            => 40,
 				'type'                  => 'text',
 				'wysiwyg_enabled'       => true
@@ -30,7 +29,6 @@ class InstallData implements InstallDataInterface {
 			,A::SPECS => [
 				'input'                 => 'textarea',
 				'label'                 => 'Product Specifications Content',
-				'required'              => false,
 				'sort_order'            => 40,
 				'type'                  => 'text',
 				'wysiwyg_enabled'       => true
@@ -38,7 +36,6 @@ class InstallData implements InstallDataInterface {
 			,A::STYLES => [
 				'input'                 => 'textarea',
 				'label'                 => 'Matching Styles Content',
-				'required'              => false,
 				'sort_order'            => 40,
 				'type'                  => 'text',
 				'wysiwyg_enabled'       => true
@@ -57,7 +54,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'input'                 => 'text',
 			'label'                 => 'Kitchen Set',
-			'required'              => false,
 			'sort_order'            => 180,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -65,7 +61,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
 			'input'                 => 'text',
 			'label'                 => 'Price',
-			'required'              => false,
 			'sort_order'            => 190,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -73,7 +68,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
 			'input'                 => 'text',
 			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
-			'required'              => false,
 			'sort_order'            => 200,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -81,7 +75,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 			'input'                 => 'text',
 			'label'                 => 'Style',
-			'required'              => false,
 			'sort_order'            => 210,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -89,7 +82,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
 			'input'                 => 'text',
 			'label'                 => 'Construction Type',
-			'required'              => false,
 			'sort_order'            => 225,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -97,7 +89,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
 			'input'                 => 'text',
 			'label'                 => 'Door sample link',
-			'required'              => false,
 			'sort_order'            => 220,
 			'type'                  => 'varchar',
 			'wysiwyg_enabled'       => true
@@ -105,7 +96,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
 			'input'                 => 'text',
 			'label'                 => 'Matching Products IDs (comma-separated)',
-			'required'              => false,
 			'sort_order'            => 50,
 			'type'                  => 'varchar'
 		]);
