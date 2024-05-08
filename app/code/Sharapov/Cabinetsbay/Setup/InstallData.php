@@ -17,7 +17,6 @@ class InstallData implements InstallDataInterface {
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
-		$eav = df_eav_setup(); /** @var EavSetup $eav */
 		# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		# `array_map([__CLASS__, 'f'], [1, 2, 3])` for a private `f` is allowed: https://3v4l.org/29Zim
 		df_map_k([__CLASS__, 'aLong'], [
