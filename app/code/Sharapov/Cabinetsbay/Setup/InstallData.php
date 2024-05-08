@@ -37,9 +37,9 @@ class InstallData implements InstallDataInterface {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 */
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
-		df_assert(df_module_enabled('Sharapov_Cabinetsbay'), 'Sharapov_Cabinetsbay module must be enabled.');
+		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
-		$eav = $this->eavSetupFactory->create(['setup' => $setup]);
+		$eav = df_eav_setup();
 		$eav->addAttribute(C::ENTITY, A::SPECS, [
 			'type'                  => 'text',
 			'label'                 => 'Product Specifications Content',
