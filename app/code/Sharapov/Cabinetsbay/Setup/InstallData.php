@@ -128,29 +128,29 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
-			'type'                  => 'varchar',
-			'label'                 => 'Door sample link',
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
 			'input'                 => 'text',
+			'is_filterable_in_grid' => false,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'label'                 => 'Door sample link',
 			'required'              => false,
 			'sort_order'            => 220,
-			'global'                => IScopedAttribute::SCOPE_STORE,
-			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
-			'is_used_in_grid'       => true,
-			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
+			'type'                  => 'varchar',
+			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
-			'type'                  => 'varchar',
-			'label'                 => 'Matching Products IDs (comma-separated)',
-			'input'                 => 'text',
-			'required'              => false,
-			'sort_order'            => 50,
 			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
+			'input'                 => 'text',
+			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
+			'label'                 => 'Matching Products IDs (comma-separated)',
+			'required'              => false,
+			'sort_order'            => 50,
+			'type'                  => 'varchar'
 		]);
 		$setup->endSetup();
 	}
