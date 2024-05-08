@@ -57,7 +57,7 @@ class InstallData implements InstallDataInterface {
 		'is_filterable_in_grid' => false,
 	]);
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  A::ASSEMBLY,
 	  [
 		'type'                  => 'text',
@@ -75,7 +75,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  A::STYLES,
 	  [
 		'type'                  => 'text',
@@ -93,7 +93,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  'cb_kitchen_set',
 	  [
 		'type'                  => 'varchar',
@@ -111,7 +111,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  'cb_kitchen_price',
 	  [
 		'type'                  => 'varchar',
@@ -129,7 +129,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  A::KITCHEN_COLOR,
 	  [
 		'type'                  => 'varchar',
@@ -146,7 +146,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eav->addAttribute(\Magento\Catalog\Model\Category::ENTITY, A::KITCHEN_STYLE, [
+	$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 		'type'                  => 'varchar',
 		'label'                 => 'Style',
 		'input'                 => 'text',
@@ -161,7 +161,7 @@ class InstallData implements InstallDataInterface {
 	]);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  'cb_kitchen_type',
 	  [
 		'type'                  => 'varchar',
@@ -179,7 +179,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  A::DOOR_SAMPLE_LINK,
 	  [
 		'type'                  => 'varchar',
@@ -197,7 +197,7 @@ class InstallData implements InstallDataInterface {
 	);
 
 	$eav->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
+	  C::ENTITY,
 	  'cb_matching_products',
 	  [
 		'type'                  => 'varchar',
