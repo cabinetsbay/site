@@ -47,7 +47,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_specs',
+	  A::SPECS,
 	  [
 		'type'                  => 'text',
 		'label'                 => 'Product Specifications Content',
