@@ -56,7 +56,7 @@ class InstallData implements InstallDataInterface {
 				'required'              => false,
 				'sort_order'            => 40,
 				'type'                  => 'text',
-				'wysiwyg_enabled'       => true,
+				'wysiwyg_enabled'       => true
 			]
 		];
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
