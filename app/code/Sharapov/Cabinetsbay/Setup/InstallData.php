@@ -20,7 +20,6 @@ class InstallData implements InstallDataInterface {
 		$eav = df_eav_setup(); /** @var EavSetup $eav */
 		$attrs = [
 			A::ASSEMBLY => [
-				'global'                => IScopedAttribute::SCOPE_STORE,
 				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
@@ -33,7 +32,6 @@ class InstallData implements InstallDataInterface {
 				'wysiwyg_enabled'       => true
 			]
 			,A::SPECS => [
-				'global'                => IScopedAttribute::SCOPE_STORE,
 				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
@@ -46,7 +44,6 @@ class InstallData implements InstallDataInterface {
 				'wysiwyg_enabled'       => true
 			]
 			,A::STYLES => [
-				'global'                => IScopedAttribute::SCOPE_STORE,
 				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
@@ -60,10 +57,9 @@ class InstallData implements InstallDataInterface {
 			]
 		];
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
-			$eav->addAttribute(C::ENTITY, $k, $v);
+			$eav->addAttribute(C::ENTITY, $k, $v + ['global' => IScopedAttribute::SCOPE_STORE]);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -76,7 +72,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -89,7 +84,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -102,7 +96,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -115,7 +108,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -128,7 +120,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
@@ -141,7 +132,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
-			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
