@@ -46,10 +46,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 
-	$eavSetup->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
-	  A::SPECS,
-	  [
+	$eavSetup->addAttribute(C::ENTITY, A::SPECS, [
 		'type'                  => 'text',
 		'label'                 => 'Product Specifications Content',
 		'input'                 => 'textarea',
@@ -61,8 +58,7 @@ class InstallData implements InstallDataInterface {
 		'is_used_in_grid'       => true,
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
-	  ]
-	);
+	]);
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
