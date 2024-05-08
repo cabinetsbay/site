@@ -32,6 +32,10 @@ class InstallData implements InstallDataInterface {
 		$this->moduleManager = $moduleManager;
 	}
 
+	/**
+	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 */
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
 		if(!$this->moduleManager->isEnabled('Sharapov_Cabinetsbay')) {
 		  throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
