@@ -41,7 +41,7 @@ class InstallData implements InstallDataInterface {
 				'wysiwyg_enabled'       => true
 			]
 		];
-		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
+		$att = function(string $k, array $v) use($eav):void {/** @var array(string => string|int|bool) $v */
 			$eav->addAttribute(C::ENTITY, $k, $v + [
 				'global' => IScopedAttribute::SCOPE_STORE
 				,'group' => 'General Information'
@@ -50,7 +50,14 @@ class InstallData implements InstallDataInterface {
 				,'is_visible_in_grid' => true
 				,'required' => false
 			]);
-		}
+		};
+		$attLong = function(string $k, array $v) use($att):void {/** @var array(string => string|int|bool) $v */
+			$att($k, $v + ['input' => 'text', 'type' => 'varchar']);
+		};
+		$attShort = function(string $k, array $v) use($att):void {/** @var array(string => string|int|bool) $v */
+			$att($k, $v + ['input' => 'text', 'type' => 'varchar']);
+		};
+		df_map_k($attrs, $att);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'input'                 => 'text',
 			'label'                 => 'Kitchen Set',
@@ -101,4 +108,28 @@ class InstallData implements InstallDataInterface {
 		]);
 		$setup->endSetup();
 	}
+
+	/**
+	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by self::attShort()
+	 * @param array(string => string|int|bool) $v
+	 */
+	private static function att(string $k, array $v):void {
+		df_eav_setup()->addAttribute(C::ENTITY, $k, $v + [
+			'global' => IScopedAttribute::SCOPE_STORE
+			,'group' => 'General Information'
+			,'is_filterable_in_grid' => false
+			,'is_used_in_grid' => true
+			,'is_visible_in_grid' => true
+			,'required' => false
+		]);
+	}
+
+	/**
+	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @param array(string => string|int|bool) $v
+	 */
+	private static function attShort(string $k, array $v):void {self::att($k, $v + ['input' => 'text', 'type' => 'varchar']);}
 }
