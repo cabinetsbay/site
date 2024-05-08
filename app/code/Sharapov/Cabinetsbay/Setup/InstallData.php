@@ -65,7 +65,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_assembly',
+	  A::ASSEMBLY,
 	  [
 		'type'                  => 'text',
 		'label'                 => 'Cabinet Assembly Content',
@@ -83,7 +83,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_styles',
+	  A::STYLES,
 	  [
 		'type'                  => 'text',
 		'label'                 => 'Matching Styles Content',
