@@ -57,7 +57,10 @@ class InstallData implements InstallDataInterface {
 			]
 		];
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
-			$eav->addAttribute(C::ENTITY, $k, $v + ['global' => IScopedAttribute::SCOPE_STORE]);
+			$eav->addAttribute(C::ENTITY, $k, $v + [
+				'global' => IScopedAttribute::SCOPE_STORE
+				,'group' => 'General Information'
+			]);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'group'                 => 'General Information',
