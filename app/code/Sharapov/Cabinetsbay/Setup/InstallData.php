@@ -45,23 +45,24 @@ class InstallData implements InstallDataInterface {
 				'type'                  => 'text',
 				'wysiwyg_enabled'       => true
 			]
+			,A::STYLES => [
+				'global'                => IScopedAttribute::SCOPE_STORE,
+				'group'                 => 'General Information',
+				'input'                 => 'textarea',
+				'is_filterable_in_grid' => false,
+				'is_used_in_grid'       => true,
+				'is_visible_in_grid'    => true,
+				'label'                 => 'Matching Styles Content',
+				'required'              => false,
+				'sort_order'            => 40,
+				'type'                  => 'text',
+				'wysiwyg_enabled'       => true,
+			]
 		];
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
 			$eav->addAttribute(C::ENTITY, $k, $v);
 		}
-		$eav->addAttribute(C::ENTITY, A::STYLES, [
-			'type'                  => 'text',
-			'label'                 => 'Matching Styles Content',
-			'input'                 => 'textarea',
-			'required'              => false,
-			'sort_order'            => 40,
-			'global'                => IScopedAttribute::SCOPE_STORE,
-			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
-			'is_used_in_grid'       => true,
-			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
-		]);
+		$eav->addAttribute(C::ENTITY, );
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'type'                  => 'varchar',
 			'label'                 => 'Kitchen Set',
