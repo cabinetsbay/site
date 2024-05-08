@@ -3,7 +3,6 @@ namespace Sharapov\Cabinetsbay\Setup;
 use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface as IScopedAttribute;
-use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
