@@ -18,19 +18,24 @@ class InstallData implements InstallDataInterface {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
 		$eav = df_eav_setup(); /** @var EavSetup $eav */
-		$eav->addAttribute(C::ENTITY, A::SPECS, [
-			'type'                  => 'text',
-			'label'                 => 'Product Specifications Content',
-			'input'                 => 'textarea',
-			'required'              => false,
-			'sort_order'            => 40,
-			'global'                => IScopedAttribute::SCOPE_STORE,
-			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
-			'is_used_in_grid'       => true,
-			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
-		]);
+		$attrs = [
+			A::SPECS => [
+				'type'                  => 'text',
+				'label'                 => 'Product Specifications Content',
+				'input'                 => 'textarea',
+				'required'              => false,
+				'sort_order'            => 40,
+				'global'                => IScopedAttribute::SCOPE_STORE,
+				'group'                 => 'General Information',
+				'wysiwyg_enabled'       => true,
+				'is_used_in_grid'       => true,
+				'is_visible_in_grid'    => true,
+				'is_filterable_in_grid' => false,
+			]
+		];
+		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
+			$eav->addAttribute(C::ENTITY, $k, $v);
+		}
 		$eav->addAttribute(C::ENTITY, A::ASSEMBLY, [
 			'type'                  => 'text',
 			'label'                 => 'Cabinet Assembly Content',
