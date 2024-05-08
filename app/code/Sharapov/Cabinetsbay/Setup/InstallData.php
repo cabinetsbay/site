@@ -191,7 +191,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_door_sample_link',
+	  A::DOOR_SAMPLE_LINK,
 	  [
 		'type'                  => 'varchar',
 		'label'                 => 'Door sample link',
