@@ -20,7 +20,6 @@ class InstallData implements InstallDataInterface {
 		$eav = df_eav_setup(); /** @var EavSetup $eav */
 		$attrs = [
 			A::ASSEMBLY => [
-				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
 				'is_used_in_grid'       => true,
@@ -32,7 +31,6 @@ class InstallData implements InstallDataInterface {
 				'wysiwyg_enabled'       => true
 			]
 			,A::SPECS => [
-				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
 				'is_used_in_grid'       => true,
@@ -44,7 +42,6 @@ class InstallData implements InstallDataInterface {
 				'wysiwyg_enabled'       => true
 			]
 			,A::STYLES => [
-				'group'                 => 'General Information',
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
 				'is_used_in_grid'       => true,
@@ -63,7 +60,6 @@ class InstallData implements InstallDataInterface {
 			]);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -75,7 +71,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -87,7 +82,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -99,7 +93,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -111,7 +104,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -123,7 +115,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
@@ -135,7 +126,6 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
-			'group'                 => 'General Information',
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
