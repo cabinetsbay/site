@@ -26,18 +26,12 @@ class InstallData implements InstallDataInterface {
    * @param EavSetupFactory $eavFactory
    * @pram \Magento\Framework\Module\Manager $moduleManager
    */
-  function __construct(EavSetupFactory $eavFactory, \Magento\Framework\Module\Manager $moduleManager) {
-	$this->eavSetupFactory = $eavFactory;
-	$this->moduleManager = $moduleManager;
-  }
+	function __construct(EavSetupFactory $eavFactory, \Magento\Framework\Module\Manager $moduleManager) {
+		$this->eavSetupFactory = $eavFactory;
+		$this->moduleManager = $moduleManager;
+	}
 
-  function install(
-	ModuleDataSetupInterface $setup,
-	ModuleContextInterface $context
-  ) {
-	/**
-	 * Forced verification of the Backend module
-	 */
+	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
 	if(!$this->moduleManager->isEnabled('Sharapov_Cabinetsbay')) {
 	  throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
 	}
