@@ -20,30 +20,30 @@ class InstallData implements InstallDataInterface {
 		$eav = df_eav_setup(); /** @var EavSetup $eav */
 		$attrs = [
 			A::ASSEMBLY => [
-				'type'                  => 'text',
-				'label'                 => 'Cabinet Assembly Content',
-				'input'                 => 'textarea',
-				'required'              => false,
-				'sort_order'            => 40,
 				'global'                => IScopedAttribute::SCOPE_STORE,
 				'group'                 => 'General Information',
-				'wysiwyg_enabled'       => true,
+				'input'                 => 'textarea',
+				'is_filterable_in_grid' => false,
 				'is_used_in_grid'       => true,
 				'is_visible_in_grid'    => true,
-				'is_filterable_in_grid' => false,
+				'label'                 => 'Cabinet Assembly Content',
+				'required'              => false,
+				'sort_order'            => 40,
+				'type'                  => 'text',
+				'wysiwyg_enabled'       => true
 			]
 			,A::SPECS => [
-				'type'                  => 'text',
-				'label'                 => 'Product Specifications Content',
-				'input'                 => 'textarea',
-				'required'              => false,
-				'sort_order'            => 40,
 				'global'                => IScopedAttribute::SCOPE_STORE,
 				'group'                 => 'General Information',
-				'wysiwyg_enabled'       => true,
+				'input'                 => 'textarea',
+				'is_filterable_in_grid' => false,
 				'is_used_in_grid'       => true,
 				'is_visible_in_grid'    => true,
-				'is_filterable_in_grid' => false,
+				'label'                 => 'Product Specifications Content',
+				'required'              => false,
+				'sort_order'            => 40,
+				'type'                  => 'text',
+				'wysiwyg_enabled'       => true
 			]
 		];
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
