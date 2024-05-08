@@ -54,7 +54,9 @@ class InstallData implements InstallDataInterface {
 			$eav->addAttribute(C::ENTITY, $k, $v + [
 				'global' => IScopedAttribute::SCOPE_STORE
 				,'group' => 'General Information'
-				,'is_used_in_grid' => true,
+				,'is_filterable_in_grid' => false
+				,'is_used_in_grid' => true
+				,'is_visible_in_grid' => true
 			]);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
