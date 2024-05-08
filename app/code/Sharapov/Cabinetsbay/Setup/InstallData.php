@@ -116,7 +116,6 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-
 	$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 		'type'                  => 'varchar',
 		'label'                 => 'Style',
@@ -130,7 +129,6 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-
 	$eav->addAttribute(
 	  C::ENTITY,
 	  'cb_kitchen_type',
