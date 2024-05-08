@@ -51,6 +51,7 @@ class InstallData implements InstallDataInterface {
 				,'is_filterable_in_grid' => false
 				,'is_used_in_grid' => true
 				,'is_visible_in_grid' => true
+				,'required' => false
 			]);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
