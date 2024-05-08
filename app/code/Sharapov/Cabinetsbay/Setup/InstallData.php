@@ -1,37 +1,15 @@
 <?php
-# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 namespace Sharapov\Cabinetsbay\Setup;
 use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface as IScopedAttribute;
-use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 class InstallData implements InstallDataInterface {
-  /**
-   * EAV setup factory
-   * @var EavSetupFactory
-   */
-  private $eavSetupFactory;
-
-  /**
-   * @var \Magento\Framework\Module\Manager
-   */
-  protected $moduleManager;
-
-  /**
-   * Init
-   *
-   * @param EavSetupFactory $eavFactory
-   * @pram \Magento\Framework\Module\Manager $moduleManager
-   */
-	function __construct(EavSetupFactory $eavFactory, \Magento\Framework\Module\Manager $moduleManager) {
-		$this->eavSetupFactory = $eavFactory;
-		$this->moduleManager = $moduleManager;
-	}
-
 	/**
 	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
@@ -39,7 +17,7 @@ class InstallData implements InstallDataInterface {
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
-		$eav = df_eav_setup();
+		$eav = df_eav_setup(); /** @var EavSetup $eav */
 		$eav->addAttribute(C::ENTITY, A::SPECS, [
 			'type'                  => 'text',
 			'label'                 => 'Product Specifications Content',
