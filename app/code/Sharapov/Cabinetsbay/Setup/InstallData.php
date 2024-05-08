@@ -63,17 +63,17 @@ class InstallData implements InstallDataInterface {
 			$eav->addAttribute(C::ENTITY, $k, $v);
 		}
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
-			'type'                  => 'varchar',
-			'label'                 => 'Kitchen Set',
-			'input'                 => 'text',
-			'required'              => false,
-			'sort_order'            => 180,
 			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
+			'input'                 => 'text',
+			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
+			'label'                 => 'Kitchen Set',
+			'required'              => false,
+			'sort_order'            => 180,
+			'type'                  => 'varchar',
+			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
 			'type'                  => 'varchar',
