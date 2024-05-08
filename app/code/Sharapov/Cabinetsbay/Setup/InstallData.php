@@ -62,7 +62,6 @@ class InstallData implements InstallDataInterface {
 		foreach ($attrs as $k => $v) {/** @var string $k */ /** @var array(string => string|int|bool) $v */
 			$eav->addAttribute(C::ENTITY, $k, $v);
 		}
-		$eav->addAttribute(C::ENTITY, );
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'type'                  => 'varchar',
 			'label'                 => 'Kitchen Set',
