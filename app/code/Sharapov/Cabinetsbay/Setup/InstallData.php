@@ -37,9 +37,7 @@ class InstallData implements InstallDataInterface {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 */
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
-		if (!df_module_enabled('Sharapov_Cabinetsbay')) {
-			throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
-		}
+		df_assert(df_module_enabled('Sharapov_Cabinetsbay'), 'Sharapov_Cabinetsbay module must be enabled.');
 		$setup->startSetup();
 		$eav = $this->eavSetupFactory->create(['setup' => $setup]);
 		$eav->addAttribute(C::ENTITY, A::SPECS, [
