@@ -43,16 +43,14 @@ class InstallData implements InstallDataInterface {
 	 * @used-by self::aShort()
 	 * @param array(string => string|int|bool) $v
 	 */
-	private static function a(string $k, array $v):void {
-		df_eav_setup()->addAttribute(C::ENTITY, $k, $v + [
-			'global' => IScopedAttribute::SCOPE_STORE
-			,'group' => 'General Information'
-			,'is_filterable_in_grid' => false
-			,'is_used_in_grid' => true
-			,'is_visible_in_grid' => true
-			,'required' => false
-		]);
-	}
+	private static function a(string $k, array $v):void {df_eav_setup()->addAttribute(C::ENTITY, $k, $v + [
+		'global' => IScopedAttribute::SCOPE_STORE
+		,'group' => 'General Information'
+		,'is_filterable_in_grid' => false
+		,'is_used_in_grid' => true
+		,'is_visible_in_grid' => true
+		,'required' => false
+	]);}
 
 	/**
 	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
