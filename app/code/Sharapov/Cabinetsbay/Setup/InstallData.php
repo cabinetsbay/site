@@ -153,10 +153,7 @@ class InstallData implements InstallDataInterface {
 	  ]
 	);
 
-	$eavSetup->addAttribute(
-	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_kitchen_style',
-	  [
+	$eavSetup->addAttribute(\Magento\Catalog\Model\Category::ENTITY, A::KITCHEN_STYLE, [
 		'type'                  => 'varchar',
 		'label'                 => 'Style',
 		'input'                 => 'text',
@@ -168,8 +165,7 @@ class InstallData implements InstallDataInterface {
 		'is_used_in_grid'       => true,
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
-	  ]
-	);
+	]);
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
