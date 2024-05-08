@@ -112,10 +112,11 @@ class InstallData implements InstallDataInterface {
 	/**
 	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * @used-by self::attShort()
+	 * @used-by self::aLong()
+	 * @used-by self::aShort()
 	 * @param array(string => string|int|bool) $v
 	 */
-	private static function att(string $k, array $v):void {
+	private static function a(string $k, array $v):void {
 		df_eav_setup()->addAttribute(C::ENTITY, $k, $v + [
 			'global' => IScopedAttribute::SCOPE_STORE
 			,'group' => 'General Information'
@@ -131,5 +132,14 @@ class InstallData implements InstallDataInterface {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @param array(string => string|int|bool) $v
 	 */
-	private static function attShort(string $k, array $v):void {self::att($k, $v + ['input' => 'text', 'type' => 'varchar']);}
+	private static function aLong(string $k, array $v):void {self::a($k, $v + [
+		'input' => 'textarea', 'type'  => 'text', 'wysiwyg_enabled' => true
+	]);}
+
+	/**
+	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @param array(string => string|int|bool) $v
+	 */
+	private static function aShort(string $k, array $v):void {self::a($k, $v + ['input' => 'text', 'type' => 'varchar']);}
 }
