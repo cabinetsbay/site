@@ -1,19 +1,11 @@
 <?php
-/**
- * @copyright Sharapov A. <alexander@sharapov.biz>
- * @link      http://www.sharapov.biz/
- * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License
- * Date: 06.11.2019
- * Time: 23:49
- */
-
+# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 namespace Sharapov\Cabinetsbay\Setup;
-
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-
 class InstallData implements InstallDataInterface {
   /**
    * EAV setup factory
