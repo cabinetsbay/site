@@ -18,93 +18,21 @@ class InstallData implements InstallDataInterface {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
 		$eav = df_eav_setup(); /** @var EavSetup $eav */
-		$attrs = [
-			A::ASSEMBLY => [
-				'input'                 => 'textarea',
-				'label'                 => 'Cabinet Assembly Content',
-				'sort_order'            => 40,
-				'type'                  => 'text',
-				'wysiwyg_enabled'       => true
-			]
-			,A::SPECS => [
-				'input'                 => 'textarea',
-				'label'                 => 'Product Specifications Content',
-				'sort_order'            => 40,
-				'type'                  => 'text',
-				'wysiwyg_enabled'       => true
-			]
-			,A::STYLES => [
-				'input'                 => 'textarea',
-				'label'                 => 'Matching Styles Content',
-				'sort_order'            => 40,
-				'type'                  => 'text',
-				'wysiwyg_enabled'       => true
-			]
-		];
-		$att = function(string $k, array $v) use($eav):void {/** @var array(string => string|int|bool) $v */
-			$eav->addAttribute(C::ENTITY, $k, $v + [
-				'global' => IScopedAttribute::SCOPE_STORE
-				,'group' => 'General Information'
-				,'is_filterable_in_grid' => false
-				,'is_used_in_grid' => true
-				,'is_visible_in_grid' => true
-				,'required' => false
-			]);
-		};
-		$attLong = function(string $k, array $v) use($att):void {/** @var array(string => string|int|bool) $v */
-			$att($k, $v + ['input' => 'text', 'type' => 'varchar']);
-		};
-		$attShort = function(string $k, array $v) use($att):void {/** @var array(string => string|int|bool) $v */
-			$att($k, $v + ['input' => 'text', 'type' => 'varchar']);
-		};
-		df_map_k($attrs, $att);
-		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
-			'input'                 => 'text',
-			'label'                 => 'Kitchen Set',
-			'sort_order'            => 180,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
+		# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# `array_map([__CLASS__, 'f'], [1, 2, 3])` for a private `f` is allowed: https://3v4l.org/29Zim
+		df_map_k([__CLASS__, 'aLong'], [
+			A::ASSEMBLY => 'Cabinet Assembly Content'
+			,A::SPECS => 'Product Specifications Content'
+			,A::STYLES => 'Matching Styles Content'
 		]);
-		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
-			'input'                 => 'text',
-			'label'                 => 'Price',
-			'sort_order'            => 190,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
-		]);
-		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
-			'input'                 => 'text',
-			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
-			'sort_order'            => 200,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
-		]);
-		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
-			'input'                 => 'text',
-			'label'                 => 'Style',
-			'sort_order'            => 210,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
-		]);
-		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
-			'input'                 => 'text',
-			'label'                 => 'Construction Type',
-			'sort_order'            => 225,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
-		]);
-		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
-			'input'                 => 'text',
-			'label'                 => 'Door sample link',
-			'sort_order'            => 220,
-			'type'                  => 'varchar',
-			'wysiwyg_enabled'       => true
-		]);
-		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
-			'input'                 => 'text',
-			'label'                 => 'Matching Products IDs (comma-separated)',
-			'sort_order'            => 50,
-			'type'                  => 'varchar'
+		df_map_k([__CLASS__, 'aShort'], [
+			A::KITCHEN_SET => [180, 'Kitchen Set']
+			,A::KITCHEN_PRICE => [190, 'Price']
+			,A::KITCHEN_COLOR => [200, 'Color (numeric value: lower - the lighter, higher - the darker)']
+			,A::KITCHEN_STYLE => [210, 'Style']
+			,A::KITCHEN_TYPE => [225, 'Construction Type']
+			,A::DOOR_SAMPLE_LINK => [220, 'Door sample link']
+			,A::MATCHING_PRODUCTS => [50, 'Matching Products IDs (comma-separated)']
 		]);
 		$setup->endSetup();
 	}
@@ -130,10 +58,9 @@ class InstallData implements InstallDataInterface {
 	/**
 	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-	 * @param array(string => string|int|bool) $v
 	 */
-	private static function aLong(string $k, array $v):void {self::a($k, $v + [
-		'input' => 'textarea', 'type'  => 'text', 'wysiwyg_enabled' => true
+	private static function aLong(string $k, string $l):void {self::a($k, [
+		'input' => 'textarea', 'label' => $l, 'sort_order' => 40, 'type'  => 'text', 'wysiwyg_enabled' => true
 	]);}
 
 	/**
@@ -141,5 +68,7 @@ class InstallData implements InstallDataInterface {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @param array(string => string|int|bool) $v
 	 */
-	private static function aShort(string $k, array $v):void {self::a($k, $v + ['input' => 'text', 'type' => 'varchar']);}
+	private static function aShort(string $k, array $v):void {self::a($k, [
+		'input' => 'text', 'label' => $v[1], 'sort_order' => $v[0], 'type' => 'varchar'
+	]);}
 }
