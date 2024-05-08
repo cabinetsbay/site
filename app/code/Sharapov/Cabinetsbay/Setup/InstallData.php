@@ -103,11 +103,7 @@ class InstallData implements InstallDataInterface {
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
 	]);
-
-	$eav->addAttribute(
-	  C::ENTITY,
-	  A::KITCHEN_COLOR,
-	  [
+	$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
 		'type'                  => 'varchar',
 		'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
 		'input'                 => 'text',
@@ -119,8 +115,7 @@ class InstallData implements InstallDataInterface {
 		'is_used_in_grid'       => true,
 		'is_visible_in_grid'    => true,
 		'is_filterable_in_grid' => false,
-	  ]
-	);
+	]);
 
 	$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 		'type'                  => 'varchar',
