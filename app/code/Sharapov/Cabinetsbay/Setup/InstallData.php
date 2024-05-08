@@ -137,7 +137,7 @@ class InstallData implements InstallDataInterface {
 
 	$eavSetup->addAttribute(
 	  \Magento\Catalog\Model\Category::ENTITY,
-	  'cb_kitchen_color',
+	  A::KITCHEN_COLOR,
 	  [
 		'type'                  => 'varchar',
 		'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
