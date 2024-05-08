@@ -22,7 +22,6 @@ class InstallData implements InstallDataInterface {
 			A::ASSEMBLY => [
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
-				'is_used_in_grid'       => true,
 				'is_visible_in_grid'    => true,
 				'label'                 => 'Cabinet Assembly Content',
 				'required'              => false,
@@ -33,7 +32,6 @@ class InstallData implements InstallDataInterface {
 			,A::SPECS => [
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
-				'is_used_in_grid'       => true,
 				'is_visible_in_grid'    => true,
 				'label'                 => 'Product Specifications Content',
 				'required'              => false,
@@ -44,7 +42,6 @@ class InstallData implements InstallDataInterface {
 			,A::STYLES => [
 				'input'                 => 'textarea',
 				'is_filterable_in_grid' => false,
-				'is_used_in_grid'       => true,
 				'is_visible_in_grid'    => true,
 				'label'                 => 'Matching Styles Content',
 				'required'              => false,
@@ -63,7 +60,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Kitchen Set',
 			'required'              => false,
@@ -74,7 +70,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Price',
 			'required'              => false,
@@ -85,7 +80,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
 			'required'              => false,
@@ -96,7 +90,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Style',
 			'required'              => false,
@@ -107,7 +100,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Construction Type',
 			'required'              => false,
@@ -118,7 +110,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Door sample link',
 			'required'              => false,
@@ -129,7 +120,6 @@ class InstallData implements InstallDataInterface {
 		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
 			'input'                 => 'text',
 			'is_filterable_in_grid' => false,
-			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
 			'label'                 => 'Matching Products IDs (comma-separated)',
 			'required'              => false,
