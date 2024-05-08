@@ -89,17 +89,17 @@ class InstallData implements InstallDataInterface {
 			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
-			'type'                  => 'varchar',
-			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
-			'input'                 => 'text',
-			'required'              => false,
-			'sort_order'            => 200,
 			'global'                => IScopedAttribute::SCOPE_STORE,
 			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
+			'input'                 => 'text',
+			'is_filterable_in_grid' => false,
 			'is_used_in_grid'       => true,
 			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
+			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
+			'required'              => false,
+			'sort_order'            => 200,
+			'type'                  => 'varchar',
+			'wysiwyg_enabled'       => true
 		]);
 		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
 			'type'                  => 'varchar',
