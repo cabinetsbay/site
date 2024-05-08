@@ -33,140 +33,140 @@ class InstallData implements InstallDataInterface {
 	}
 
 	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
-	if(!$this->moduleManager->isEnabled('Sharapov_Cabinetsbay')) {
-	  throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
+		if(!$this->moduleManager->isEnabled('Sharapov_Cabinetsbay')) {
+		  throw new \Magento\Framework\Validator\Exception(__('Sharapov_Cabinetsbay module must be enabled.'));
+		}
+		$setup->startSetup();
+		$eav = $this->eavSetupFactory->create(['setup' => $setup]);
+		$eav->addAttribute(C::ENTITY, A::SPECS, [
+			'type'                  => 'text',
+			'label'                 => 'Product Specifications Content',
+			'input'                 => 'textarea',
+			'required'              => false,
+			'sort_order'            => 40,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::ASSEMBLY, [
+			'type'                  => 'text',
+			'label'                 => 'Cabinet Assembly Content',
+			'input'                 => 'textarea',
+			'required'              => false,
+			'sort_order'            => 40,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::STYLES, [
+			'type'                  => 'text',
+			'label'                 => 'Matching Styles Content',
+			'input'                 => 'textarea',
+			'required'              => false,
+			'sort_order'            => 40,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
+			'type'                  => 'varchar',
+			'label'                 => 'Kitchen Set',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 180,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
+			'type'                  => 'varchar',
+			'label'                 => 'Price',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 190,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
+			'type'                  => 'varchar',
+			'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 200,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
+			'type'                  => 'varchar',
+			'label'                 => 'Style',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 210,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
+			'type'                  => 'varchar',
+			'label'                 => 'Construction Type',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 225,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
+			'type'                  => 'varchar',
+			'label'                 => 'Door sample link',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 220,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'wysiwyg_enabled'       => true,
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
+			'type'                  => 'varchar',
+			'label'                 => 'Matching Products IDs (comma-separated)',
+			'input'                 => 'text',
+			'required'              => false,
+			'sort_order'            => 50,
+			'global'                => IScopedAttribute::SCOPE_STORE,
+			'group'                 => 'General Information',
+			'is_used_in_grid'       => true,
+			'is_visible_in_grid'    => true,
+			'is_filterable_in_grid' => false,
+		]);
+		$setup->endSetup();
 	}
-	$setup->startSetup();
-	$eav = $this->eavSetupFactory->create(['setup' => $setup]);
-	$eav->addAttribute(C::ENTITY, A::SPECS, [
-		'type'                  => 'text',
-		'label'                 => 'Product Specifications Content',
-		'input'                 => 'textarea',
-		'required'              => false,
-		'sort_order'            => 40,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::ASSEMBLY, [
-		'type'                  => 'text',
-		'label'                 => 'Cabinet Assembly Content',
-		'input'                 => 'textarea',
-		'required'              => false,
-		'sort_order'            => 40,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::STYLES, [
-		'type'                  => 'text',
-		'label'                 => 'Matching Styles Content',
-		'input'                 => 'textarea',
-		'required'              => false,
-		'sort_order'            => 40,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::KITCHEN_SET, [
-		'type'                  => 'varchar',
-		'label'                 => 'Kitchen Set',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 180,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::KITCHEN_PRICE, [
-		'type'                  => 'varchar',
-		'label'                 => 'Price',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 190,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::KITCHEN_COLOR, [
-		'type'                  => 'varchar',
-		'label'                 => 'Color (numeric value: lower - the lighter, higher - the darker)',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 200,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::KITCHEN_STYLE, [
-		'type'                  => 'varchar',
-		'label'                 => 'Style',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 210,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::KITCHEN_TYPE, [
-		'type'                  => 'varchar',
-		'label'                 => 'Construction Type',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 225,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::DOOR_SAMPLE_LINK, [
-		'type'                  => 'varchar',
-		'label'                 => 'Door sample link',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 220,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'wysiwyg_enabled'       => true,
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$eav->addAttribute(C::ENTITY, A::MATCHING_PRODUCTS, [
-		'type'                  => 'varchar',
-		'label'                 => 'Matching Products IDs (comma-separated)',
-		'input'                 => 'text',
-		'required'              => false,
-		'sort_order'            => 50,
-		'global'                => IScopedAttribute::SCOPE_STORE,
-		'group'                 => 'General Information',
-		'is_used_in_grid'       => true,
-		'is_visible_in_grid'    => true,
-		'is_filterable_in_grid' => false,
-	]);
-	$setup->endSetup();
-  }
 }
