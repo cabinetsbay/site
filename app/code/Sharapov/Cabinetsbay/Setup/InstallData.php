@@ -3,6 +3,7 @@
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 namespace Sharapov\Cabinetsbay\Setup;
 use CabinetsBay\Catalog\Category\Attribute as A;
+use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
