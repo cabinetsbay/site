@@ -18,15 +18,10 @@ class UpgradeData implements UpgradeDataInterface {
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
 			df_map(
 				[__CLASS__, 'a']
-				,['cb_assembly', 'cb_specs', 'cb_styles']
-				,[['is_visible_on_front' => true, 'wysiwyg_enabled' => true]]
+				, ['cb_assembly', 'cb_specs', 'cb_styles']
+				, [['is_visible_on_front' => true, 'wysiwyg_enabled' => true]]
 			);
-			self::a('cb_kitchen_set', [
-				'is_visible_on_front' => true
-			]);
-			self::a('cb_kitchen_style', [
-				'is_visible_on_front' => true
-			]);
+			df_map([__CLASS__, 'a'], ['cb_kitchen_set', 'cb_kitchen_style'], [['is_visible_on_front' => true]]);
 			self::a('cb_kitchen_type', [
 				'type'                  => 'varchar',
 				'label'                 => 'Construction Type',
