@@ -34,6 +34,7 @@ class UpgradeData implements UpgradeDataInterface {
 	/**
 	 * 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by self::upgrade()
 	 * @param array(string => string|int|bool) $v
 	 */
 	private static function a(string $k, array $v):void {df_eav_setup()->updateAttribute(C::ENTITY, $k, $v);}
