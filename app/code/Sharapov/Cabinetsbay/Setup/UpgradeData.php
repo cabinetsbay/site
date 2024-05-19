@@ -1,8 +1,8 @@
 <?php
 namespace Sharapov\Cabinetsbay\Setup;
 use Magento\Eav\Setup\EavSetup;
-use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\ModuleContextInterface as IContext;
+use Magento\Framework\Setup\ModuleDataSetupInterface as ISetup;
 use Magento\Framework\Setup\UpgradeDataInterface;
 # 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
@@ -11,7 +11,7 @@ class UpgradeData implements UpgradeDataInterface {
    * {@inheritdoc}
    * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
-  function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
+  function upgrade(ISetup $setup, IContext $context) {
 	$setup->startSetup();
 	$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
 	if(version_compare($context->getVersion(), '1.0.1') < 0) {
