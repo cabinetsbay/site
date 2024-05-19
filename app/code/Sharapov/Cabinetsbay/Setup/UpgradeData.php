@@ -23,7 +23,7 @@ class UpgradeData implements UpgradeDataInterface {
 			);
 			df_map(
 				[__CLASS__, 'a']
-				,['cb_door_sample_link', 'cb_kitchen_price', 'cb_kitchen_set', 'cb_kitchen_style']
+				,[A::DOOR_SAMPLE_LINK, 'cb_kitchen_price', 'cb_kitchen_set', 'cb_kitchen_style']
 				,[['is_visible_on_front' => true]]
 			);
 		}
