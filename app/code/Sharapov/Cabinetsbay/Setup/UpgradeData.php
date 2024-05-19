@@ -18,7 +18,7 @@ class UpgradeData implements UpgradeDataInterface {
 		$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_specs',
 			[
 			'is_visible_on_front' => true,
@@ -26,7 +26,7 @@ class UpgradeData implements UpgradeDataInterface {
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_assembly',
 			[
 			'is_visible_on_front' => true,
@@ -34,7 +34,7 @@ class UpgradeData implements UpgradeDataInterface {
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_styles',
 			[
 			'is_visible_on_front' => true,
@@ -42,21 +42,21 @@ class UpgradeData implements UpgradeDataInterface {
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_kitchen_set',
 			[
 			'is_visible_on_front' => true
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_kitchen_style',
 			[
 			'is_visible_on_front' => true
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_kitchen_type',
 			[
 			'type'                  => 'varchar',
@@ -73,14 +73,14 @@ class UpgradeData implements UpgradeDataInterface {
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_kitchen_price',
 			[
 			'is_visible_on_front' => true
 			]
 			);
 			$eavSetup->updateAttribute(
-			\Magento\Catalog\Model\Category::ENTITY,
+			C::ENTITY,
 			'cb_door_sample_link',
 			[
 			'is_visible_on_front' => true
