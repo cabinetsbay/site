@@ -1,5 +1,7 @@
 <?php
 namespace Sharapov\Cabinetsbay\Setup;
+use CabinetsBay\Catalog\Category\Attribute as A;
+use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\ModuleContextInterface as IContext;
 use Magento\Framework\Setup\ModuleDataSetupInterface as ISetup;
