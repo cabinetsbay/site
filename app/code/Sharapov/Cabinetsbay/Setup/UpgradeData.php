@@ -7,10 +7,10 @@ use Magento\Framework\Setup\UpgradeDataInterface;
 # 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 class UpgradeData implements UpgradeDataInterface {
-  /**
-   * {@inheritdoc}
-   * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
-   */
+	/**
+	 * 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 */
   function upgrade(ISetup $setup, IContext $context) {
 	$setup->startSetup();
 	$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
