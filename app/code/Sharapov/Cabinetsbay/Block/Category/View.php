@@ -104,7 +104,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 		$c = $this->getCurrentCategory(); /** @var C $c */
 		# 2024-03-11 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		# "On frontend category pages of levels 3 and below,
-		# the name of a higher level category is mistakenly used for the H1 tag": https://github.com/cabinetsbay/site/issues/107
+		# the name of a higher level category is mistakenly used for the H1 tag": https://github.com/cabinetsbay/catalog/issues/21
 		// 2024-04-20 "Move `<sub>` out of `<h1>` on the frontend category pages": https://github.com/cabinetsbay/catalog/issues/5
 		return df_cc_n(df_tag('h1', 'page-title', $c->getName()), df_tag('sub', 'cb-title', $c->getParentCategory()->getName()));
 	});}
