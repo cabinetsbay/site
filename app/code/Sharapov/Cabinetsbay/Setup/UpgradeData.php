@@ -35,23 +35,19 @@ class UpgradeData implements UpgradeDataInterface {
 			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_style', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(
-			C::ENTITY,
-			'cb_kitchen_type',
-			[
-			'type'                  => 'varchar',
-			'label'                 => 'Construction Type',
-			'input'                 => 'text',
-			'required'              => false,
-			'sort_order'            => 225,
-			'global'                => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
-			'group'                 => 'General Information',
-			'wysiwyg_enabled'       => true,
-			'is_used_in_grid'       => true,
-			'is_visible_in_grid'    => true,
-			'is_filterable_in_grid' => false,
-			]
-			);
+			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_type', [
+				'type'                  => 'varchar',
+				'label'                 => 'Construction Type',
+				'input'                 => 'text',
+				'required'              => false,
+				'sort_order'            => 225,
+				'global'                => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+				'group'                 => 'General Information',
+				'wysiwyg_enabled'       => true,
+				'is_used_in_grid'       => true,
+				'is_visible_in_grid'    => true,
+				'is_filterable_in_grid' => false,
+			]);
 			$eavSetup->updateAttribute(
 			C::ENTITY,
 			'cb_kitchen_price',
