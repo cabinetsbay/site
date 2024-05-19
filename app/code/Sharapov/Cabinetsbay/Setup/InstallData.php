@@ -4,8 +4,8 @@ use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface as IScopedAttribute;
 use Magento\Framework\Setup\InstallDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\ModuleContextInterface as IContext;
+use Magento\Framework\Setup\ModuleDataSetupInterface as ISetup;
 # 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 class InstallData implements InstallDataInterface {
@@ -13,7 +13,7 @@ class InstallData implements InstallDataInterface {
 	 * 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 */
-	function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
+	function install(ISetup $setup, IContext $context) {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
 		# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
