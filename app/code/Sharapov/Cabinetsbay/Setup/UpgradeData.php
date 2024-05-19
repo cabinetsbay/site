@@ -32,13 +32,9 @@ class UpgradeData implements UpgradeDataInterface {
 			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_set', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(
-			C::ENTITY,
-			'cb_kitchen_style',
-			[
-			'is_visible_on_front' => true
-			]
-			);
+			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_style', [
+				'is_visible_on_front' => true
+			]);
 			$eavSetup->updateAttribute(
 			C::ENTITY,
 			'cb_kitchen_type',
