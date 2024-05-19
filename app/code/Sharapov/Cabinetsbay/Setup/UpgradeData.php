@@ -1,7 +1,6 @@
 <?php
 namespace Sharapov\Cabinetsbay\Setup;
 use Magento\Eav\Setup\EavSetup;
-use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
@@ -9,30 +8,12 @@ use Magento\Framework\Setup\UpgradeDataInterface;
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 class UpgradeData implements UpgradeDataInterface {
   /**
-   * EAV setup factory
-   * @var EavSetupFactory
-   */
-  private $eavSetupFactory;
-
-  /**
-   * Init
-   *
-   * @param EavSetupFactory $eavSetupFactory
-   */
-  function __construct(EavSetupFactory $eavSetupFactory) {
-	$this->eavSetupFactory = $eavSetupFactory;
-  }
-
-  /**
    * {@inheritdoc}
    * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
   function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context) {
 	$setup->startSetup();
-
-	/** @var EavSetup $eavSetup */
-	$eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-
+	$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
 	if(version_compare($context->getVersion(), '1.0.1') < 0) {
 	  $eavSetup->updateAttribute(
 		\Magento\Catalog\Model\Category::ENTITY,
