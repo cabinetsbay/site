@@ -16,22 +16,7 @@ class InstallData implements InstallDataInterface {
 	function install(ISetup $setup, IContext $context) {
 		df_assert_module_enabled('Sharapov_Cabinetsbay');
 		$setup->startSetup();
-		# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# `array_map([__CLASS__, 'f'], [1, 2, 3])` for a private `f` is allowed: https://3v4l.org/29Zim
-		df_map_k([__CLASS__, 'aLong'], [
-			A::ASSEMBLY => 'Cabinet Assembly Content'
-			,A::SPECS => 'Product Specifications Content'
-			,A::STYLES => 'Matching Styles Content'
-		]);
-		df_map_k([__CLASS__, 'aShort'], [
-			A::KITCHEN_SET => [180, 'Kitchen Set']
-			,A::KITCHEN_PRICE => [190, 'Price']
-			,A::KITCHEN_COLOR => [200, 'Color (numeric value: lower - the lighter, higher - the darker)']
-			,A::KITCHEN_STYLE => [210, 'Style']
-			,A::KITCHEN_TYPE => [225, 'Construction Type']
-			,A::DOOR_SAMPLE_LINK => [220, 'Door sample link']
-			,A::MATCHING_PRODUCTS => [50, 'Matching Products IDs (comma-separated)']
-		]);
+
 		$setup->endSetup();
 	}
 
