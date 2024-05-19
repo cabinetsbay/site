@@ -15,27 +15,26 @@ class UpgradeData implements UpgradeDataInterface {
 	 */
 	function upgrade(ISetup $setup, IContext $context) {
 		$setup->startSetup();
-		$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
 			self::a('cb_specs', [
 				'is_visible_on_front' => true,
 				'wysiwyg_enabled'     => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_assembly', [
+			self::a('cb_assembly', [
 				'is_visible_on_front' => true,
 				'wysiwyg_enabled'     => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_styles', [
+			self::a('cb_styles', [
 				'is_visible_on_front' => true,
 				'wysiwyg_enabled'     => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_set', [
+			self::a('cb_kitchen_set', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_style', [
+			self::a('cb_kitchen_style', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_type', [
+			self::a('cb_kitchen_type', [
 				'type'                  => 'varchar',
 				'label'                 => 'Construction Type',
 				'input'                 => 'text',
@@ -48,10 +47,10 @@ class UpgradeData implements UpgradeDataInterface {
 				'is_visible_in_grid'    => true,
 				'is_filterable_in_grid' => false,
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_price', [
+			self::a('cb_kitchen_price', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(C::ENTITY, 'cb_door_sample_link', [
+			self::a('cb_door_sample_link', [
 				'is_visible_on_front' => true
 			]);
 		}
