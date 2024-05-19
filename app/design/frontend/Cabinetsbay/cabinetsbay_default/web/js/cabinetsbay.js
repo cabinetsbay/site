@@ -45,7 +45,7 @@ require([
 		f($('.customlinks > div > p'), $e => $e.closest('div'));
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
-		// should be always visible": https://github.com/cabinetsbay/site/issues/120
+		// should be always visible": https://github.com/cabinetsbay/catalog/issues/11
 		// 2) The previous code:
 		//		f($('.category-tab > label'), $e => $e.parent('div'));
 		// https://github.com/cabinetsbay/site/blob/2024-03-25-before-120/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js#L46
@@ -54,7 +54,7 @@ require([
 	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length) {
 		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
-		// should be always visible": https://github.com/cabinetsbay/site/issues/120
+		// should be always visible": https://github.com/cabinetsbay/catalog/issues/11
 		// 2) The previous code:
 		// https://github.com/cabinetsbay/site/blob/2024-03-25-before-120/app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js#L49-L54
 		$('#overview.category-tab').addClass('active');
