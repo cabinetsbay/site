@@ -2,6 +2,7 @@
 namespace Sharapov\Cabinetsbay\Setup;
 use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface as IScopedAttribute;
 /**
  * 22024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
  * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
@@ -30,14 +31,22 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 	 * @used-by self::_process()
 	 */
 	private function p100():void {
-		# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# `array_map([__CLASS__, 'f'], [1, 2, 3])` for a private `f` is allowed: https://3v4l.org/29Zim
-		df_map_k([__CLASS__, 'aLong'], [
+		$a = function(string $k, array $v):void {$this->sEav()->addAttribute(C::ENTITY, $k, $v + [
+			'global' => IScopedAttribute::SCOPE_STORE
+			,'group' => 'General Information'
+			,'is_filterable_in_grid' => false
+			,'is_used_in_grid' => true
+			,'is_visible_in_grid' => true
+			,'required' => false
+		]);};
+		df_map_k([
 			A::ASSEMBLY => 'Cabinet Assembly Content'
 			,A::SPECS => 'Product Specifications Content'
 			,A::STYLES => 'Matching Styles Content'
-		]);
-		df_map_k([__CLASS__, 'aShort'], [
+		], function(string $k, string $l) use($a):void {$a($k, [
+			'input' => 'textarea', 'label' => $l, 'sort_order' => 40, 'type'  => 'text', 'wysiwyg_enabled' => true
+		]);});
+		df_map_k([
 			A::KITCHEN_SET => [180, 'Kitchen Set']
 			,A::KITCHEN_PRICE => [190, 'Price']
 			,A::KITCHEN_COLOR => [200, 'Color (numeric value: lower - the lighter, higher - the darker)']
@@ -45,7 +54,9 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 			,A::KITCHEN_TYPE => [225, 'Construction Type']
 			,A::DOOR_SAMPLE_LINK => [220, 'Door sample link']
 			,A::MATCHING_PRODUCTS => [50, 'Matching Products IDs (comma-separated)']
-		]);
+		], function(string $k, array $v) use($a):void {$a($k, [
+			'input' => 'text', 'label' => $v[1], 'sort_order' => $v[0], 'type' => 'varchar'
+		]);});
 	}
 
 	/**
