@@ -1,5 +1,6 @@
 <?php
 namespace Sharapov\Cabinetsbay\Block\Category;
+use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
 use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
@@ -83,7 +84,7 @@ class View extends \Magento\Catalog\Block\Category\View {
 	 */
 	function l3p():array {
 		$c = $this->l3(); /** @var C $c */
-		$s = $c['cb_matching_products']; /** @var string $s */
+		$s = $c[A::MATCHING_PRODUCTS]; /** @var string $s */
 		return df_map('df_category', df_try(
 			function() use($s):array {return df_csv_parse_int($s);}
 			,function() use($c, $s) {df_error(
