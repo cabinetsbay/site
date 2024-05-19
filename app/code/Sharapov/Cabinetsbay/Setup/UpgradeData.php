@@ -21,14 +21,10 @@ class UpgradeData implements UpgradeDataInterface {
 				'is_visible_on_front' => true,
 				'wysiwyg_enabled'     => true
 			]);
-			$eavSetup->updateAttribute(
-			C::ENTITY,
-			'cb_assembly',
-			[
-			'is_visible_on_front' => true,
-			'wysiwyg_enabled'     => true
-			]
-			);
+			$eavSetup->updateAttribute(C::ENTITY, 'cb_assembly', [
+				'is_visible_on_front' => true,
+				'wysiwyg_enabled'     => true
+			]);
 			$eavSetup->updateAttribute(
 			C::ENTITY,
 			'cb_styles',
