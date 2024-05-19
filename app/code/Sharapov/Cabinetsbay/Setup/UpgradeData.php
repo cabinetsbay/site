@@ -1,17 +1,12 @@
 <?php
-
 namespace Sharapov\Cabinetsbay\Setup;
-
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
-
-/**
- * Upgrade Data script
- * @codeCoverageIgnore
- */
+# 2024-05-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 class UpgradeData implements UpgradeDataInterface {
   /**
    * EAV setup factory
