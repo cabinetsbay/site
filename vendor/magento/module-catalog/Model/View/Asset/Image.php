@@ -132,7 +132,7 @@ class Image implements LocalInterface
             case CatalogMediaConfig::HASH:
 				# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 				# 1) "Product images are not shown on the frontend on my workstation":
-				# https://github.com/cabinetsbay/site/issues/117
+				# https://github.com/cabinetsbay/catalog/issues/12
 				# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
 				# https://mage2.pro/t/6411
 				# 3) I replaced `DIRECTORY_SEPARATOR` with '/'.
@@ -279,7 +279,7 @@ class Image implements LocalInterface
     {
 		# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		# 1) "Product images are not shown on the frontend on my workstation":
-		# https://github.com/cabinetsbay/site/issues/117
+		# https://github.com/cabinetsbay/catalog/issues/12
 		# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
 		# https://mage2.pro/t/6411
 		# 3) The original code:

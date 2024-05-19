@@ -45,7 +45,7 @@ if (file_exists($configCacheFile) && is_readable($configCacheFile)) {
         if ($mediaDirectory) {
 			# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 			# 1) "Product images are not shown on the frontend on my workstation":
-			# https://github.com/cabinetsbay/site/issues/117
+			# https://github.com/cabinetsbay/catalog/issues/12
 			# 2) "How to adapt `pub/get.php` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6415
 			# 3) The original code: https://github.com/magento/magento2/blob/2.4.6/pub/get.php#L61
             $fileAbsolutePath = str_replace('\\', '/', __DIR__) . '/' . $relativePath;

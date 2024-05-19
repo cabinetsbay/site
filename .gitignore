@@ -18,7 +18,7 @@
 !/lib/web/requirejs/require.js
 # 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) "Product images are not shown on the frontend on my workstation":
-# https://github.com/cabinetsbay/site/issues/117
+# https://github.com/cabinetsbay/catalog/issues/12
 # 2) "How to adapt `pub/get.php` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6415
 !/pub/get.php
 # 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
@@ -42,7 +42,7 @@
 # https://mage2.pro/t/5774
 !/vendor/magento/framework/View/Element/Template/File/Validator.php
 # 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# 1) "Product images are not shown on the frontend on my workstation": https://github.com/cabinetsbay/site/issues/117
+# 1) "Product images are not shown on the frontend on my workstation": https://github.com/cabinetsbay/catalog/issues/12
 # 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6411
 !/vendor/magento/module-catalog/Model/View/Asset/Image.php
 # 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
