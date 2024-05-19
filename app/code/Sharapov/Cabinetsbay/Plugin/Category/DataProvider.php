@@ -59,14 +59,7 @@ class DataProvider {
 	 * @return array
 	 */
 	protected function _getFieldsMap() {return ['content' => [
-		'cb_assembly',
-		'cb_kitchen_color',
-		'cb_kitchen_price',
-		'cb_kitchen_set',
-		'cb_kitchen_style',
-		'cb_kitchen_type',
-		'cb_matching_products',
-		'cb_specs',
-		'cb_styles'
+		A::ASSEMBLY, A::KITCHEN_COLOR, A::KITCHEN_PRICE, A::KITCHEN_SET, A::KITCHEN_STYLE, A::KITCHEN_TYPE,
+		A::MATCHING_PRODUCTS, A::SPECS, A::STYLES
 	]];}
 }
