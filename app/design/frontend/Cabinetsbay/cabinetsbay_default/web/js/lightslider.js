@@ -360,7 +360,7 @@
                         if (settings.gallery === true) {
 							// 2024-01-02 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 							// "Provide an ability to specify the `ALT` HTML attribute's value for category images":
-							// https://github.com/cabinetsbay/site/issues/97
+							// https://github.com/cabinetsbay/catalog/issues/2
 							let $li = $('<li>').attr({
 								style:
 									'width:100%;'
