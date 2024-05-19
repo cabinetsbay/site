@@ -51,13 +51,9 @@ class UpgradeData implements UpgradeDataInterface {
 			$eavSetup->updateAttribute(C::ENTITY, 'cb_kitchen_price', [
 				'is_visible_on_front' => true
 			]);
-			$eavSetup->updateAttribute(
-			C::ENTITY,
-			'cb_door_sample_link',
-			[
-			'is_visible_on_front' => true
-			]
-			);
+			$eavSetup->updateAttribute(C::ENTITY, 'cb_door_sample_link', [
+				'is_visible_on_front' => true
+			]);
 		}
 		$setup->endSetup();
 	}
