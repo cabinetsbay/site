@@ -18,7 +18,7 @@ class UpgradeData implements UpgradeDataInterface {
 			self::a(A::KITCHEN_TYPE, ['input' => 'text', 'type' => 'varchar']);
 			df_map(
 				[__CLASS__, 'a']
-				,['cb_assembly', 'cb_specs', 'cb_styles']
+				,[A::ASSEMBLY, A::SPECS, 'cb_styles']
 				,[['is_visible_on_front' => true, 'wysiwyg_enabled' => true]]
 			);
 			df_map(
