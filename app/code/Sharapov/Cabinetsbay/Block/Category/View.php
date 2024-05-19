@@ -88,8 +88,9 @@ class View extends \Magento\Catalog\Block\Category\View {
 		return df_map('df_category', df_try(
 			function() use($s):array {return df_csv_parse_int($s);}
 			,function() use($c, $s) {df_error(
-				"The value «{$s}» is invalid for the atrribute `cb_matching_products` of the current category ({$c->getId()})."
+				"The value «{$s}» is invalid for the atrribute `%s` of the current category ({$c->getId()})."
 				. "\nExcepted a comma-separated list of natural numbers."
+				,A::MATCHING_PRODUCTS
 			);}
 		));
 	}
