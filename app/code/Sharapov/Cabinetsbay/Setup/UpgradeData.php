@@ -16,18 +16,9 @@ class UpgradeData implements UpgradeDataInterface {
 	function upgrade(ISetup $setup, IContext $context) {
 		$setup->startSetup();
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
-			self::a('cb_specs', [
-				'is_visible_on_front' => true,
-				'wysiwyg_enabled'     => true
-			]);
-			self::a('cb_assembly', [
-				'is_visible_on_front' => true,
-				'wysiwyg_enabled'     => true
-			]);
-			self::a('cb_styles', [
-				'is_visible_on_front' => true,
-				'wysiwyg_enabled'     => true
-			]);
+			df_map(['cb_assembly', 'cb_specs', 'cb_styles'], function(string $k):void {
+				self::a($k, ['is_visible_on_front' => true, 'wysiwyg_enabled' => true]);
+			});
 			self::a('cb_kitchen_set', [
 				'is_visible_on_front' => true
 			]);
