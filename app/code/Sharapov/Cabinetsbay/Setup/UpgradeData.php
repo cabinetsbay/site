@@ -14,7 +14,7 @@ class UpgradeData implements UpgradeDataInterface {
 	 */
 	function upgrade(ISetup $setup, IContext $context) {
 		$setup->startSetup();
-		if(version_compare($context->getVersion(), '1.0.1') < 0) {
+		if (version_compare($context->getVersion(), '1.0.1') < 0) {
 			self::a(A::KITCHEN_TYPE, ['input' => 'text', 'type' => 'varchar']);
 			df_map(
 				[__CLASS__, 'a']
