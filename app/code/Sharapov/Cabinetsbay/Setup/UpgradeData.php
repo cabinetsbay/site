@@ -16,6 +16,7 @@ class UpgradeData implements UpgradeDataInterface {
 	function upgrade(ISetup $setup, IContext $context) {
 		$setup->startSetup();
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
+			self::a('cb_kitchen_type', ['input' => 'text', 'type' => 'varchar']);
 			df_map(
 				[__CLASS__, 'a']
 				,['cb_assembly', 'cb_specs', 'cb_styles']
@@ -26,19 +27,6 @@ class UpgradeData implements UpgradeDataInterface {
 				,['cb_door_sample_link', 'cb_kitchen_price', 'cb_kitchen_set', 'cb_kitchen_style']
 				,[['is_visible_on_front' => true]]
 			);
-			self::a('cb_kitchen_type', [
-				'type'                  => 'varchar',
-				'label'                 => 'Construction Type',
-				'input'                 => 'text',
-				'required'              => false,
-				'sort_order'            => 225,
-				'global'                => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
-				'group'                 => 'General Information',
-				'wysiwyg_enabled'       => true,
-				'is_used_in_grid'       => true,
-				'is_visible_in_grid'    => true,
-				'is_filterable_in_grid' => false,
-			]);
 		}
 		$setup->endSetup();
 	}
