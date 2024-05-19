@@ -17,14 +17,10 @@ class UpgradeData implements UpgradeDataInterface {
 		$setup->startSetup();
 		$eavSetup = df_eav_setup(); /** @var EavSetup $eavSetup */
 		if(version_compare($context->getVersion(), '1.0.1') < 0) {
-			$eavSetup->updateAttribute(
-			C::ENTITY,
-			'cb_specs',
-			[
-			'is_visible_on_front' => true,
-			'wysiwyg_enabled'     => true
-			]
-			);
+			$eavSetup->updateAttribute(C::ENTITY, 'cb_specs', [
+				'is_visible_on_front' => true,
+				'wysiwyg_enabled'     => true
+			]);
 			$eavSetup->updateAttribute(
 			C::ENTITY,
 			'cb_assembly',
