@@ -58,19 +58,15 @@ class DataProvider
 	 * Rewrite this in all subclassess, provide the list with category attributes
 	 * @return array
 	 */
-	protected function _getFieldsMap() {
-		return [
-			'content' => [
-				'cb_specs',
-				'cb_assembly',
-				'cb_styles',
-				'cb_kitchen_set',
-				'cb_kitchen_price',
-				'cb_kitchen_color',
-				'cb_kitchen_style',
-				'cb_kitchen_type',
-				'cb_matching_products'
-			]
-		];
-	}
+	protected function _getFieldsMap() {return ['content' => [
+		'cb_assembly',
+		'cb_kitchen_color',
+		'cb_kitchen_price',
+		'cb_kitchen_set',
+		'cb_kitchen_style',
+		'cb_kitchen_type',
+		'cb_matching_products',
+		'cb_specs',
+		'cb_styles'
+	]];}
 }
