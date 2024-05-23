@@ -55,10 +55,11 @@ class DataProvider {
 	}
 
 	/**
-	 * Rewrite this in all subclassess, provide the list with category attributes
-	 * @return array
+	 * 2024-05-23 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by self::STUB()
 	 */
-	protected function _getFieldsMap() {return ['content' => [
+	protected function _getFieldsMap():array {return ['content' => [
 		A::ASSEMBLY, A::KITCHEN_COLOR, A::KITCHEN_PRICE, A::KITCHEN_SET, A::KITCHEN_STYLE, A::KITCHEN_TYPE,
 		A::MATCHING_PRODUCTS, A::SPECS, A::STYLES
 	]];}
