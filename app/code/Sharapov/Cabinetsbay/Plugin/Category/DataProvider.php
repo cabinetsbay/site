@@ -1,10 +1,11 @@
 <?php
+# 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 namespace Sharapov\Cabinetsbay\Plugin\Category;
 use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Eav\Model\Config;
-# 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
-class DataProvider {
+use Sharapov\Cabinetsbay\Plugin\Category\DataProvider as Sb;
+final class DataProvider {
 	/**
 	 * @var Config
 	 */
