@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
-    <type name="Magento\Catalog\Model\Category\DataProvider">
-        <plugin name="sharapov-cabinetsbay-category-dataprovider" type="Sharapov\Cabinetsbay\Plugin\Category\DataProvider" sortOrder="1" />
-    </type>
-    <preference for="Magento\CatalogWidget\Block\Product\ProductsList" type="Sharapov\Cabinetsbay\Block\Product\ProductsList" />
+	<type name="Magento\Catalog\Model\Category\DataProvider">
+		<plugin name="sharapov-cabinetsbay-category-dataprovider" type="Sharapov\Cabinetsbay\Plugin\Category\DataProvider" sortOrder="1" />
+	</type>
+	<preference for="Magento\CatalogWidget\Block\Product\ProductsList" type="Sharapov\Cabinetsbay\Block\Product\ProductsList" />
 </config>
