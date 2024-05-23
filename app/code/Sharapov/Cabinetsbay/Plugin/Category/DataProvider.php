@@ -11,7 +11,13 @@ final class DataProvider {
 	 * @used-by self::STUB()
 	 */
 	function afterPrepareMeta(Sb $sb, $result) {return array_merge_recursive($result, $this->_prepareFieldsMeta(
-		$this->_getFieldsMap(), $sb->getAttributesMeta(df_eav_category())
+		[
+			'content' => [
+				A::ASSEMBLY, A::KITCHEN_COLOR, A::KITCHEN_PRICE, A::KITCHEN_SET, A::KITCHEN_STYLE, A::KITCHEN_TYPE,
+				A::MATCHING_PRODUCTS, A::SPECS, A::STYLES
+			]
+		]
+		,$sb->getAttributesMeta(df_eav_category())
 	));}
 
 	/**
