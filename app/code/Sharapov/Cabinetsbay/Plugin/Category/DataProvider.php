@@ -10,14 +10,9 @@ final class DataProvider {
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by self::STUB()
 	 */
-	function afterPrepareMeta(Sb $sb, $result)
-	{
-		$meta = array_merge_recursive($result, $this->_prepareFieldsMeta(
-			$this->_getFieldsMap(), $sb->getAttributesMeta(df_eav_category())
-		));
-
-		return $meta;
-	}
+	function afterPrepareMeta(Sb $sb, $result) {return array_merge_recursive($result, $this->_prepareFieldsMeta(
+		$this->_getFieldsMap(), $sb->getAttributesMeta(df_eav_category())
+	));}
 
 	/**
 	 * Prepare fields meta based on xml declaration of form and fields metadata
