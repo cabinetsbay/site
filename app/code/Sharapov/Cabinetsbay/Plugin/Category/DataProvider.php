@@ -3,33 +3,18 @@
 # "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 namespace Sharapov\Cabinetsbay\Plugin\Category;
 use CabinetsBay\Catalog\Category\Attribute as A;
-use Magento\Eav\Model\Config;
-use Sharapov\Cabinetsbay\Plugin\Category\DataProvider as Sb;
+use Magento\Catalog\Model\Category\DataProvider as Sb;
 final class DataProvider {
 	/**
-	 * @var Config
+	 * 2024-05-23 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
+	 * @used-by self::STUB()
 	 */
-	private $eavConfig;
-
-	function __construct(
-		Config $eavConfig
-	)
-	{
-		$this->eavConfig = $eavConfig;
-	}
-
-	/**
-	 * @param \Magento\Catalog\Model\Category\DataProvider $subject
-	 * @param                                              $result
-	 *
-	 * @return array
-	 * @throws \Magento\Framework\Exception\LocalizedException
-	 */
-	function afterPrepareMeta(\Magento\Catalog\Model\Category\DataProvider $subject, $result)
+	function afterPrepareMeta(Sb $sb, $result)
 	{
 		$meta = array_merge_recursive($result, $this->_prepareFieldsMeta(
 			$this->_getFieldsMap(),
-			$subject->getAttributesMeta($this->eavConfig->getEntityType('catalog_category'))
+			$sb->getAttributesMeta(df_eav_config()->getEntityType('catalog_category'))
 		));
 
 		return $meta;
