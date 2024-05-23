@@ -53,6 +53,8 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 			,A::KITCHEN_STYLE => [210, 'Style']
 			,A::KITCHEN_TYPE => [225, 'Construction Type']
 			,A::DOOR_SAMPLE_LINK => [220, 'Door sample link']
+			# 2024-05-23 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# https://github.com/cabinetsbay/catalog/labels/matching-products
 			,A::MATCHING_PRODUCTS => [50, 'Matching Products IDs (comma-separated)']
 		], function(string $k, array $v) use($a):void {$a($k, [
 			'input' => 'text', 'label' => $v[1], 'sort_order' => $v[0], 'type' => 'varchar'
