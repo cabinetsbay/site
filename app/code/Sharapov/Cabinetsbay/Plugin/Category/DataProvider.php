@@ -13,8 +13,7 @@ final class DataProvider {
 	function afterPrepareMeta(Sb $sb, $result)
 	{
 		$meta = array_merge_recursive($result, $this->_prepareFieldsMeta(
-			$this->_getFieldsMap(),
-			$sb->getAttributesMeta(df_eav_config()->getEntityType('catalog_category'))
+			$this->_getFieldsMap(), $sb->getAttributesMeta(df_eav_category())
 		));
 
 		return $meta;
