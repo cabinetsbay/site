@@ -403,6 +403,7 @@ return [
         'Df_User' => 1,
         'Df_Variable' => 1,
         'Df_Webapi' => 1,
+        'Df_Widget' => 1,
         'Df_Wishlist' => 1,
         'Df_Xml' => 1,
         'Df_Zf' => 1,
