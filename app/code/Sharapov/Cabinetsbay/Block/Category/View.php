@@ -6,6 +6,18 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class View extends \Magento\Catalog\Block\Category\View {
 	/**
 	 * 2024-01-02
+	 * 2024-06-09
+	 * A result:
+	 * 	{
+	 * 		"3628/swuc_1.jpg": "Croydon White Shaker Ready to Assemble Cabinets",
+	 * 		"3628/swuc_1_1.jpg": "Croydon White Shaker Ready to Assemble Cabinets in Philadelphia",
+	 * 		"3628/swuc_2.jpg": "best Croydon White Shaker Ready to Assemble Cabinets ",
+	 * 		"3628/swuc_2_1.jpg": "Door Sample Croydon White Shaker Ready to Assemble Cabinets",
+	 * 		"3628/swuc_3.jpg": "Croydon White Shaker Ready to Assemble Cabinets for kitchen island",
+	 * 		"3628/swuc_4.jpg": "Croydon White Shaker Ready to Assemble Cabinets for office",
+	 * 		"3628/swuc_5.jpg": "Bathroom Croydon White Shaker Ready to Assemble Cabinets",
+	 * 		"3628/swuc_5_7.jpg": "Bathroom Croydon White Shaker Cabinets"
+	 *	 }
 	 * @used-by vendor/cabinetsbay/catalog/view/frontend/templates/category/l3/tabs/overview.phtml (https://github.com/cabinetsbay/catalog/issues/22)
 	 * @return array(string => string)
 	 */
