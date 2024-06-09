@@ -6,7 +6,7 @@
 <!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 "Transfer the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/catalog/issues/2 -->
 				<block
-					class='Sharapov\Cabinetsbay\Block\Category\View'
+					class='CabinetsBay\Catalog\B\Category'
 					name='category.header'
 					template='CabinetsBay_Catalog::category/header.phtml'
 				/>
@@ -16,7 +16,7 @@
 <!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 "Transfer the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/catalog/issues/2 -->
 			<block
-				class='Sharapov\Cabinetsbay\Block\Category\View'
+				class='CabinetsBay\Catalog\B\Category'
 				name='category_products'
 				as='category_products'
 				template='CabinetsBay_Catalog::category/view.phtml'
