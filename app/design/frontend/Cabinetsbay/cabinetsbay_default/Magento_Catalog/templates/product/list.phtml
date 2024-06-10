@@ -41,9 +41,23 @@ if ($block->level() >= 3) :
 		$pos = $block->getPositioned();
 		?>
 		<div class="products wrapper <?= $viewMode ?> products-<?= $viewMode ?>">
-		  <?php if (df_category_level($block->getCurrentCategory()) > 3) : ?>
-			<h3><?=$block->getCurrentCategory()->getName(); ?></h3>
-		  <?php endif; ?>
+			<?php
+				/**
+				 * 2024-03-10
+				 * 1.1) Level 0: «Root Catalog».
+				 * 1.2) Level 1: «Default Category».
+				 * 1.3) Level 2:
+				 * 		«Ready to Assemble Cabinets»
+				 * 		«Pre-Assembled Cabinets»
+				 * 		«Cabinet Organizers & Hardware»
+				 * 2024-06-10
+				 * 1) "Handle category levels > 3": https://github.com/cabinetsbay/catalog/issues/36
+				 * 2.1) Level 4: https://localhost.com:2255/ready-to-assemble-cabinets/croydon-white-shaker/pantry-oven-cabinets.html
+				 * 2.2) Level 5: https://localhost.com:2255/ready-to-assemble-cabinets/croydon-white-shaker/pantry-oven-cabinets/pantry-cabinets.html
+				 */
+				if (df_category_level($block->getCurrentCategory()) > 3) { ?>
+					<h3><?=$block->getCurrentCategory()->getName(); ?></h3>
+		  		<?php } ?>
 			<ol class="products list items product-items">
 				<?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
 				<?php foreach ($_productCollection as $_product): ?>
