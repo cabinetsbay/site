@@ -375,6 +375,7 @@ return [
         'Df_Intl' => 1,
         'Df_InventoryCatalog' => 1,
         'Df_MediaStorage' => 1,
+        'Df_Newsletter' => 1,
         'Df_OAuth' => 1,
         'Df_Quote' => 1,
         'Df_PageCache' => 1,
