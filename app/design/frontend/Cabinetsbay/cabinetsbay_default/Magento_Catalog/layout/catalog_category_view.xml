@@ -28,12 +28,7 @@
 				name='category.products'
 				template='Magento_Catalog::category/products.phtml'
 			>
-				<block
-					as='product_list'
-					class='CabinetsBay\Catalog\B\Products'
-					name='category.products.list'
-					template='Magento_Catalog::product/list.phtml'
-				>
+				<block as='product_list' class='CabinetsBay\Catalog\B\Products' name='category.products.list'>
 					<container name='category.product.list.additional' as='additional' />
 					<block class='Magento\Framework\View\Element\RendererList' name='category.product.type.details.renderers' as='details.renderers'>
 						<block class='Magento\Framework\View\Element\Template' name='category.product.type.details.renderers.default' as='default'/>
