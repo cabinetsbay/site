@@ -1,4 +1,6 @@
 <?xml version='1.0'?>
+<!-- 2024-06-17 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+"Refactor the `Cabinetsbay/cabinetsbay_default` design theme": https://github.com/cabinetsbay/site/issues/130 -->
 <page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' layout='2columns-left' xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'>
 	<body>
 		<referenceContainer name='columns.top'>
