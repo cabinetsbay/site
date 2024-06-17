@@ -28,6 +28,8 @@
 				name='category.products'
 				template='Magento_Catalog::category/products.phtml'
 			>
+<!-- 2024-06-17
+"Move the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/catalog/issues/2 -->
 				<block as='product_list' class='CabinetsBay\Catalog\B\Products' name='category.products.list'>
 					<container name='category.product.list.additional' as='additional' />
 					<block class='Magento\Framework\View\Element\RendererList' name='category.product.type.details.renderers' as='details.renderers'>
