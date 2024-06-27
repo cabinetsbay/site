@@ -94,9 +94,10 @@ a {
 // 2) "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/web/css/source/_extend.less`":
 // https://github.com/cabinetsbay/site/issues/119
 @import 'extend/_breadcrumbs.less';
-.cms-index-index .page-wrapper .page-main {
-	margin-top: 7em;
-}
+// 2024-06-27 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// 1) "Remove `position: fixed` from the `header` tag": https://github.com/cabinetsbay/core/issues/13
+// 2) The previous code:
+//		.cms-index-index .page-wrapper .page-main {margin-top: 7em;}
 .search-autocomplete {
 	ul {
 		li {
