@@ -79,7 +79,7 @@ a {
 	}
 }
 .page-wrapper {
-	& .page-header {
+	.page-header {
 		position: fixed;
 		width: 100%;
 		background: #fff;
@@ -90,7 +90,7 @@ a {
 			box-shadow: 0 3px 5px 0 rgba(150, 150, 150, 1);
 		}
 	}
-	& .page-main {
+	.page-main {
 		max-width: 1140px;
 		padding: 0 1em;
 		margin-top: 10em;
@@ -169,7 +169,7 @@ a {
 	}
 	> table {
 		border: 0;
-		& td {
+		td {
 			width: calc(100% / 4);
 			padding-left: 5.2em;
 			border: none;
@@ -235,7 +235,7 @@ a {
 		> h3, &.mobile-view {
 			display: block;
 		}
-		& td > p:last-of-type {
+		td > p:last-of-type {
 			position: absolute;
 			margin: auto;
 			left: 0;
@@ -433,7 +433,7 @@ a {
 /* Hot fix to prevent wrong 2 columns layer to be selected */
 /* Could be removed, but each 3rd level category must has 1-column layout */
 .page-layout-2columns-left {
-	& .column.main {
+	.column.main {
 		width: 100%;
 		padding-left: 0;
 	}
@@ -1770,26 +1770,26 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	transition: left 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
 }
 .customer-account-login, .customer-account-forgotpassword, .customer-account-create, body.account {
-	& .fieldset > .field:not(.choice) > .label,
-	& .fieldset > .field > .control {
+	.fieldset > .field:not(.choice) > .label,
+	.fieldset > .field > .control {
 		font-weight: 300;
 		float: none;
 		width: 100%;
 		text-align: left;
 	}
-	& .fieldset > .field {
+	.fieldset > .field {
 		&.note, &.email, &.field-name-firstname {
 			margin-bottom: 0;
 		}
 	}
-	& .actions-toolbar {
+	.actions-toolbar {
 		margin-left: 0 !important;
 		margin-top: 3em;
 	}
-	& .columns {
+	.columns {
 		margin-top: 1em;
 	}
-	& .fieldset {
+	.fieldset {
 		margin-bottom: 0;
 		> legend {
 			text-transform: uppercase;
@@ -1840,9 +1840,9 @@ input[type="email"] {
 }
 .form.password.forget, .form.create.account {
 	margin: 0 auto;
-	& .fieldset > .field {
+	.fieldset > .field {
 		margin: 0;
-		& .note {
+		.note {
 			text-align: center;
 			margin-top: 1em;
 			margin-bottom: 1em;
@@ -1850,27 +1850,27 @@ input[type="email"] {
 	}
 }
 .form.create.account {
-	& .newsletter {
+	.newsletter {
 		&:before {
 			padding-left: 0;
 			display: none;
 		}
 		margin-bottom: 29px;
 	}
-	& fieldset.create.account, & fieldset.create.info {
+	fieldset.create.account, fieldset.create.info {
 		margin-top: 2em;
 	}
 }
 .header .quickcart-wrapper .block-quickcart .block-content-quickcart .quickcart-items-wrapper .quickcart-items .quickcart-product-item {
-	& span.qty-update.item-plus, & span.qty-update.item-minus {
+	span.qty-update.item-plus, span.qty-update.item-minus {
 		font-family: 'icons-blank-theme';
 		font-size: 2em;
 		line-height: .5em;
 	}
-	& span.qty-update.item-plus:after {
+	span.qty-update.item-plus:after {
 		content: '\e619';
 	}
-	& span.qty-update.item-minus:after {
+	span.qty-update.item-minus:after {
 		content: '\e61a';
 	}
 }
@@ -1911,10 +1911,10 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	display: none;
 }
 .actions {
-	& .secondary {
+	.secondary {
 		padding: 10px 10px 0 !important;
 		margin-bottom: 0.6em;
-		& a.action {
+		a.action {
 			background-color: #F6F6F6;
 			color: #000;
 			border: 0;
@@ -1936,7 +1936,7 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	top: 0;
 	left: 0;
 	z-index: 100;
-	& a.action {
+	a.action {
 		padding: .4em 1em;
 	}
 }
@@ -1944,7 +1944,7 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	padding: 0 !important;
 }
 .details-qty.qty {
-	& label {
+	label {
 		padding: 0 !important;
 	}
 }
@@ -1952,7 +1952,7 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	margin: 2px 6px !important;
 }
 .minicart-items {
-	& .item-qty {
+	.item-qty {
 		width: 23px !important;
 	}
 }
@@ -1960,7 +1960,7 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	z-index: 200 !important;
 }
 #co-transparent-form {
-	& input[type="text"], & input[type="number"] {
+	input[type="text"], input[type="number"] {
 		border: 1px solid #c2c2c2;
 		border-radius: 1px;
 		padding: 5px 10px 4px;
@@ -1990,14 +1990,14 @@ button, .cart.table-wrapper .actions-toolbar > .action, .action-gift {
 	}
 }
 .price-box {
-	& .special-price {
+	.special-price {
 		color: red;
-		& .price-label {
+		.price-label {
 			display: none;
 		}
 	}
-	& .old-price {
-		& .price-label {
+	.old-price {
+		.price-label {
 			display: none;
 		}
 	}
