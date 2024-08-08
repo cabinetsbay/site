@@ -28,6 +28,9 @@
 /update/
 /vendor/aws/aws-crt-php
 /vendor/magento/framework/Test
+# 2024-08-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+!/vendor/magento/framework/Filter/Template.php
 # 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "How to fix catalog images in Magento ≥ 2.3.5 in Windows?" https://mage2.pro/t/6177
 !/vendor/magento/framework/Image/Adapter/Gd2.php
