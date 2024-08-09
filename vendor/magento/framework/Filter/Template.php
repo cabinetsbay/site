@@ -153,7 +153,7 @@ class Template implements \Zend_Filter_Interface
 		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L135-L139
         $this->signatureProvider = $signatureProvider ?? ObjectManager::getInstance()
                 ->get(SignatureProvider::class);
-		
+
         $this->filteringDepthMeter = $filteringDepthMeter ?? ObjectManager::getInstance()
                 ->get(FilteringDepthMeter::class);
 
@@ -219,22 +219,48 @@ class Template implements \Zend_Filter_Interface
             )->render());
         }
 
-        foreach ($this->directiveProcessors as $directiveProcessor) {
-            if (!$directiveProcessor instanceof DirectiveProcessorInterface) {
-                throw new InvalidArgumentException(
-                    'Directive processors must implement ' . DirectiveProcessorInterface::class
-                );
-            }
+		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L204-L242
+        $this->filteringDepthMeter->descend();
 
-            if (preg_match_all($directiveProcessor->getRegularExpression(), $value, $constructions, PREG_SET_ORDER)) {
-                foreach ($constructions as $construction) {
-                    $replacedValue = $directiveProcessor->process($construction, $this, $this->templateVars);
-                    $value = str_replace($construction[0], $replacedValue, $value);
+        // Processing of template directives.
+        $templateDirectivesResults = array_unique(
+            $this->processDirectives($value),
+            SORT_REGULAR
+        );
+
+        $value = $this->applyDirectivesResults($value, $templateDirectivesResults);
+
+        // Processing of deferred directives received from child templates
+        // or nested directives.
+        $deferredDirectivesResults = array_unique(
+            $this->processDirectives($value, true),
+            SORT_REGULAR
+        );
+
+        $value = $this->applyDirectivesResults($value, $deferredDirectivesResults);
+
+        if ($this->filteringDepthMeter->showMark() > 1) {
+            // Signing own deferred directives (if any).
+            $signature = $this->signatureProvider->get();
+
+            foreach ($templateDirectivesResults as $result) {
+                if ($result['directive'] === $result['output']) {
+                    $value = str_replace(
+                        $result['output'],
+                        $signature . $result['output'] . $signature,
+                        $value
+                    );
                 }
             }
         }
 
-        return $this->afterFilter($value);
+        $value = $this->afterFilter($value);
+
+        $this->filteringDepthMeter->ascend();
+
+        return $value;
     }
 
     /**
