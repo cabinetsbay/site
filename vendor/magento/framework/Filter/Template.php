@@ -155,6 +155,7 @@ class Template implements \Zend_Filter_Interface
                 ->get(SignatureProvider::class);
         $this->filteringDepthMeter = $filteringDepthMeter ?? ObjectManager::getInstance()
                 ->get(FilteringDepthMeter::class);
+		
         if (empty($directiveProcessors)) {
             $this->directiveProcessors = [
                 'depend' => ObjectManager::getInstance()->get(DependDirective::class),
