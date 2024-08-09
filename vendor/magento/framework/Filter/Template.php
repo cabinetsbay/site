@@ -148,7 +148,13 @@ class Template implements \Zend_Filter_Interface
         $this->directiveProcessors = $directiveProcessors;
         $this->variableResolver = $variableResolver ?? ObjectManager::getInstance()
                 ->get(VariableResolverInterface::class);
-
+		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L135-L139
+        $this->signatureProvider = $signatureProvider ?? ObjectManager::getInstance()
+                ->get(SignatureProvider::class);
+        $this->filteringDepthMeter = $filteringDepthMeter ?? ObjectManager::getInstance()
+                ->get(FilteringDepthMeter::class);
         if (empty($directiveProcessors)) {
             $this->directiveProcessors = [
                 'depend' => ObjectManager::getInstance()->get(DependDirective::class),
