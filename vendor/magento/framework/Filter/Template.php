@@ -153,9 +153,10 @@ class Template implements \Zend_Filter_Interface
 		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L135-L139
         $this->signatureProvider = $signatureProvider ?? ObjectManager::getInstance()
                 ->get(SignatureProvider::class);
+		
         $this->filteringDepthMeter = $filteringDepthMeter ?? ObjectManager::getInstance()
                 ->get(FilteringDepthMeter::class);
-		
+
         if (empty($directiveProcessors)) {
             $this->directiveProcessors = [
                 'depend' => ObjectManager::getInstance()->get(DependDirective::class),
