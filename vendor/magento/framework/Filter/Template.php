@@ -18,8 +18,9 @@ use Magento\Framework\Filter\DirectiveProcessor\LegacyDirective;
 use Magento\Framework\Filter\DirectiveProcessor\TemplateDirective;
 use Magento\Framework\Filter\DirectiveProcessor\VarDirective;
 use Magento\Framework\Stdlib\StringUtils;
-# 2024-08-08 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L19-L20
 use Magento\Framework\Filter\Template\SignatureProvider;
 use Magento\Framework\Filter\Template\FilteringDepthMeter;
 
