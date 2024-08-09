@@ -40,6 +40,9 @@
 # in lib\internal\Magento\Framework\Interception\PluginListGenerator.php on line 414» in Magento 2.4-develop in Windows?"
 # https://mage2.pro/t/6178
 !/vendor/magento/framework/Interception/PluginListGenerator.php
+# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+!/vendor/magento/framework/Filter/Template/FilteringDepthMeter.php
 # 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # "How to fix the «Invalid template file» / «require_js.phtml» failure for 2.3 ≤ Magento < 2.4.5 in Windows?"
 # https://mage2.pro/t/5774

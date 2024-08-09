@@ -264,6 +264,136 @@ class Template implements \Zend_Filter_Interface
     }
 
     /**
+	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L245-L294
+	 *
+     * Processes template directives and returns an array that contains results produced by each directive.
+     *
+     * @param string $value
+     * @param bool $isSigned
+     *
+     * @return array
+     *
+     * @throws InvalidArgumentException
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    private function processDirectives($value, $isSigned = false): array
+    {
+        $results = [];
+
+        foreach ($this->directiveProcessors as $directiveProcessor) {
+            if (!$directiveProcessor instanceof DirectiveProcessorInterface) {
+                throw new InvalidArgumentException(
+                    'Directive processors must implement ' . DirectiveProcessorInterface::class
+                );
+            }
+
+            $pattern = $directiveProcessor->getRegularExpression();
+
+            if ($isSigned) {
+                $pattern = $this->embedSignatureIntoPattern($pattern);
+            }
+
+            if (preg_match_all($pattern, $value, $constructions, PREG_SET_ORDER)) {
+                foreach ($constructions as $construction) {
+                    $replacedValue = $directiveProcessor->process($construction, $this, $this->templateVars);
+
+                    $result = [
+                        'directive' => $construction[0],
+                        'output' => $replacedValue
+                    ];
+
+                    if (count($this->afterFilterCallbacks) > 0) {
+                        $result['callbacks'] = $this->afterFilterCallbacks;
+
+                        $this->resetAfterFilterCallbacks();
+                    }
+
+                    $results[] = $result;
+                }
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L296-L329
+	 *
+     * Applies results produced by directives.
+     *
+     * @param string $value
+     * @param array $results
+     *
+     * @return string
+     */
+    private function applyDirectivesResults(string $value, array $results): string
+    {
+        $processedResults = [];
+
+        foreach ($results as $result) {
+            foreach ($processedResults as $processedResult) {
+                $result['directive'] = str_replace(
+                    $processedResult['directive'],
+                    $processedResult['output'],
+                    $result['directive']
+                );
+            }
+
+            $value = str_replace($result['directive'], $result['output'], $value);
+
+            if (isset($result['callbacks'])) {
+                foreach ($result['callbacks'] as $callback) {
+                    $this->addAfterFilterCallback($callback);
+                }
+            }
+
+            $processedResults[] = $result;
+        }
+
+        return $value;
+    }
+
+    /**
+	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L331-L361
+	 *
+     * Modifies given regular expression pattern to be able to recognize signed directives.
+     *
+     * @param string $pattern
+     *
+     * @return string
+     *
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    private function embedSignatureIntoPattern(string $pattern): string
+    {
+        $signature = $this->signatureProvider->get();
+
+        $closingDelimiters = [
+            '(' => ')',
+            '{' => '}',
+            '[' => ']',
+            '<' => '>'
+        ];
+
+        $closingDelimiter = $openingDelimiter = substr(trim($pattern), 0, 1);
+
+        if (array_key_exists($openingDelimiter, $closingDelimiters)) {
+            $closingDelimiter = $closingDelimiters[$openingDelimiter];
+        }
+
+        $pattern = substr_replace($pattern, $signature, strpos($pattern, $openingDelimiter) + 1, 0);
+        $pattern = substr_replace($pattern, $signature, strrpos($pattern, $closingDelimiter), 0);
+
+        return $pattern;
+    }
+
+    /**
      * Runs callbacks that have been added to filter content after directive processing is finished.
      *
      * @param string $value
