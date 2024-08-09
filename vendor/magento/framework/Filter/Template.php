@@ -137,6 +137,11 @@ class Template implements \Zend_Filter_Interface
         $variables = [],
         $directiveProcessors = [],
         VariableResolverInterface $variableResolver = null
+		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
+		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L126-L127
+        ,SignatureProvider $signatureProvider = null
+        ,FilteringDepthMeter $filteringDepthMeter = null
     ) {
         $this->string = $string;
         $this->setVariables($variables);
