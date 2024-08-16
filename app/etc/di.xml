@@ -1853,7 +1853,13 @@
             <argument name="supportedVersionPatterns" xsi:type="array">
                 <item name="MySQL-8" xsi:type="string">^8\.0\.</item>
                 <item name="MySQL-5.7" xsi:type="string">^5\.7\.</item>
-                <item name="MariaDB-(10.2-10.4)" xsi:type="string">^10\.[2-4]\.</item>
+<!-- 2024-08-16 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+1) "Suppress the «Current version of RDBMS is not supported» error": https://github.com/cabinetsbay/site/issues/160
+2) "Cloudways has stopped to provide a MySQL / MariaDB version compatible with Magento 2.4.4":
+# https://github.com/cabinetsbay/192.241.144.149/issues/5
+3) «Current version of RDBMS is not supported. Used Version: 10.5.25-MariaDB-deb11-log.
+Supported versions: MySQL-8, MySQL-5.7, MariaDB-(10.2-10.4): https://github.com/cabinetsbay/site/issues/159 -->
+                <item name="MariaDB-(10.2-10.6)" xsi:type="string">^10\.[2-6]\.</item>
             </argument>
         </arguments>
     </type>
