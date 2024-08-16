@@ -11,6 +11,13 @@
 !/app/code/**/*
 !/app/design/frontend/Cabinetsbay/**/*
 !/app/etc/config.php
+# 2024-08-16 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 1) "Suppress the «Current version of RDBMS is not supported» error": https://github.com/cabinetsbay/site/issues/160
+# 2) "Cloudways has stopped to provide a MySQL / MariaDB version compatible with Magento 2.4.4":
+# https://github.com/cabinetsbay/192.241.144.149/issues/5
+# 1) «Current version of RDBMS is not supported. Used Version: 10.5.25-MariaDB-deb11-log.
+# Supported versions: MySQL-8, MySQL-5.7, MariaDB-(10.2-10.4): https://github.com/cabinetsbay/site/issues/159
+!/app/etc/di.xml
 /dev
 # 2024-04-05
 # '«Mismatched anonymous define() module» on loading `cdn1.affirm.com/products/affirmjs/master/dist/ldclient.min.js`'
