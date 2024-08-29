@@ -4,12 +4,10 @@
  * See COPYING.txt for license details.
  */
 
-/**
- * Template constructions filter
- */
 namespace Magento\Framework\Filter;
 
 use InvalidArgumentException;
+use Laminas\Filter\FilterInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Filter\DirectiveProcessor\DependDirective;
 use Magento\Framework\Filter\DirectiveProcessor\ForDirective;
@@ -18,20 +16,17 @@ use Magento\Framework\Filter\DirectiveProcessor\LegacyDirective;
 use Magento\Framework\Filter\DirectiveProcessor\TemplateDirective;
 use Magento\Framework\Filter\DirectiveProcessor\VarDirective;
 use Magento\Framework\Stdlib\StringUtils;
-# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L19-L20
 use Magento\Framework\Filter\Template\SignatureProvider;
 use Magento\Framework\Filter\Template\FilteringDepthMeter;
 
 /**
- * Template filter
+ * Template constructions filter
  *
  * @api
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @since 100.0.2
  */
-class Template implements \Zend_Filter_Interface
+class Template implements FilterInterface
 {
     /**
      * Construction regular expression
@@ -106,17 +101,11 @@ class Template implements \Zend_Filter_Interface
     private $variableResolver;
 
     /**
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L103-L106
      * @var SignatureProvider|null
      */
     private $signatureProvider;
 
     /**
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L108-L111
      * @var FilteringDepthMeter|null
      */
     private $filteringDepthMeter;
@@ -126,9 +115,6 @@ class Template implements \Zend_Filter_Interface
      * @param array $variables
      * @param DirectiveProcessorInterface[] $directiveProcessors
      * @param VariableResolverInterface|null $variableResolver
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L118-L119
      * @param SignatureProvider|null $signatureProvider
      * @param FilteringDepthMeter|null $filteringDepthMeter
      */
@@ -136,21 +122,16 @@ class Template implements \Zend_Filter_Interface
         StringUtils $string,
         $variables = [],
         $directiveProcessors = [],
-        VariableResolverInterface $variableResolver = null
-		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L126-L127
-        ,SignatureProvider $signatureProvider = null
-        ,FilteringDepthMeter $filteringDepthMeter = null
+        VariableResolverInterface $variableResolver = null,
+        SignatureProvider $signatureProvider = null,
+        FilteringDepthMeter $filteringDepthMeter = null
     ) {
         $this->string = $string;
         $this->setVariables($variables);
         $this->directiveProcessors = $directiveProcessors;
         $this->variableResolver = $variableResolver ?? ObjectManager::getInstance()
                 ->get(VariableResolverInterface::class);
-		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L135-L139
+
         $this->signatureProvider = $signatureProvider ?? ObjectManager::getInstance()
                 ->get(SignatureProvider::class);
 
@@ -208,6 +189,7 @@ class Template implements \Zend_Filter_Interface
      *
      * @param string $value
      * @return string
+     *
      * @throws \Exception
      */
     public function filter($value)
@@ -219,9 +201,6 @@ class Template implements \Zend_Filter_Interface
             )->render());
         }
 
-		# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-		# 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L204-L242
         $this->filteringDepthMeter->descend();
 
         // Processing of template directives.
@@ -264,10 +243,6 @@ class Template implements \Zend_Filter_Interface
     }
 
     /**
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L245-L294
-	 *
      * Processes template directives and returns an array that contains results produced by each directive.
      *
      * @param string $value
@@ -319,10 +294,6 @@ class Template implements \Zend_Filter_Interface
     }
 
     /**
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L296-L329
-	 *
      * Applies results produced by directives.
      *
      * @param string $value
@@ -358,10 +329,6 @@ class Template implements \Zend_Filter_Interface
     }
 
     /**
-	 * 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-	 * 1) "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
-	 * 2) https://github.com/magento/magento2/blob/2.4.7-p1/lib/internal/Magento/Framework/Filter/Template.php#L331-L361
-	 *
      * Modifies given regular expression pattern to be able to recognize signed directives.
      *
      * @param string $pattern
@@ -446,6 +413,7 @@ class Template implements \Zend_Filter_Interface
      * @param string[] $construction
      * @return string
      * @deprecated 102.0.4 Use the directive interfaces instead
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     public function varDirective($construction)
     {
@@ -461,14 +429,14 @@ class Template implements \Zend_Filter_Interface
      * @param string[] $construction
      * @return string
      * @deprecated 102.0.4 Use the directive interfaces instead
-     * @since 102.0.4
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     public function forDirective($construction)
     {
         $directive = $this->directiveProcessors['for'] ?? ObjectManager::getInstance()
             ->get(ForDirective::class);
 
-        preg_match($directive->getRegularExpression(), $construction[0], $specificConstruction);
+        preg_match($directive->getRegularExpression(), $construction[0] ?? '', $specificConstruction);
 
         return $directive->process($specificConstruction, $this, $this->templateVars);
     }
@@ -486,6 +454,7 @@ class Template implements \Zend_Filter_Interface
      * @param string[] $construction
      * @return mixed
      * @deprecated 102.0.4 Use the directive interfaces instead
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     public function templateDirective($construction)
     {
@@ -501,13 +470,14 @@ class Template implements \Zend_Filter_Interface
      * @param string[] $construction
      * @return string
      * @deprecated 102.0.4 Use the directive interfaces instead
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     public function dependDirective($construction)
     {
         $directive = $this->directiveProcessors['depend'] ?? ObjectManager::getInstance()
             ->get(DependDirective::class);
 
-        preg_match($directive->getRegularExpression(), $construction[0], $specificConstruction);
+        preg_match($directive->getRegularExpression(), $construction[0] ?? '', $specificConstruction);
 
         return $directive->process($specificConstruction, $this, $this->templateVars);
     }
@@ -518,13 +488,14 @@ class Template implements \Zend_Filter_Interface
      * @param string[] $construction
      * @return string
      * @deprecated 102.0.4 Use the directive interfaces instead
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     public function ifDirective($construction)
     {
         $directive = $this->directiveProcessors['if'] ?? ObjectManager::getInstance()
             ->get(IfDirective::class);
 
-        preg_match($directive->getRegularExpression(), $construction[0], $specificConstruction);
+        preg_match($directive->getRegularExpression(), $construction[0] ?? '', $specificConstruction);
 
         return $directive->process($specificConstruction, $this, $this->templateVars);
     }
@@ -535,6 +506,7 @@ class Template implements \Zend_Filter_Interface
      * @param string $value raw parameters
      * @return array
      * @deprecated 102.0.4 Use the directive interfaces instead
+     * @see \Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Directive\DirectiveInterface
      */
     protected function getParameters($value)
     {
@@ -542,7 +514,7 @@ class Template implements \Zend_Filter_Interface
         $tokenizer->setString($value);
         $params = $tokenizer->tokenize();
         foreach ($params as $key => $value) {
-            if (substr($value, 0, 1) === '$') {
+            if ($value !== null && substr($value, 0, 1) === '$') {
                 $params[$key] = $this->getVariable(substr($value, 1), null);
             }
         }
@@ -556,6 +528,7 @@ class Template implements \Zend_Filter_Interface
      * @param string $default default value
      * @return string
      * @deprecated 102.0.4 Use \Magento\Framework\Filter\VariableResolverInterface instead
+     * @see \Magento\Framework\Filter\VariableResolverInterface
      */
     protected function getVariable($value, $default = '{no_value_defined}')
     {
@@ -572,13 +545,14 @@ class Template implements \Zend_Filter_Interface
      * @param array $stack
      * @return array
      * @deprecated 102.0.4 Use new directive processor interfaces
+     * @see \Magento\Framework\Filter\DirectiveProcessorInterface
      */
     protected function getStackArgs($stack)
     {
         foreach ($stack as $i => $value) {
             if (is_array($value)) {
                 $stack[$i] = $this->getStackArgs($value);
-            } elseif (substr($value, 0, 1) === '$') {
+            } elseif ($value !== null && substr($value, 0, 1) === '$') {
                 $stack[$i] = $this->getVariable(substr($value, 1), null);
             }
         }
@@ -600,6 +574,7 @@ class Template implements \Zend_Filter_Interface
      * @return bool The previous mode from before the change
      * @since 102.0.4
      * @deprecated The method is not in use anymore.
+     * @see no alternatives
      */
     public function setStrictMode(bool $strictMode): bool
     {
@@ -614,7 +589,8 @@ class Template implements \Zend_Filter_Interface
      *
      * @return bool
      * @since 102.0.4
-     * @deprecated The method is not in use anymore.
+     * @deprecated
+     * @see no alternatives
      */
     public function isStrictMode(): bool
     {
