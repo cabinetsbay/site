@@ -40,8 +40,6 @@ class PluginListGenerator implements ConfigWriterInterface, ConfigLoaderInterfac
     private $cacheId = 'plugin-list';
 
     /**
-     * Loaded scopes
-     *
      * @var array
      */
     private $loadedScopes = [];
@@ -155,12 +153,7 @@ class PluginListGenerator implements ConfigWriterInterface, ConfigLoaderInterfac
                 if (false === in_array($scope, $this->scopePriorityScheme, true)) {
                     $this->scopePriorityScheme[] = $scope;
                 }
-				# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-				# "How to fix «file_put_contents(generated/metadata/primary|global|plugin-list.php):
-				# failed to open stream: No such file or directory
-				# in lib\internal\Magento\Framework\Interception\PluginListGenerator.php on line 414»
-				# in Magento 2.4-develop in Windows?" https://mage2.pro/t/6178
-                $cacheId = implode('-', $this->scopePriorityScheme) . "-" . $this->cacheId;
+                $cacheId = implode('|', $this->scopePriorityScheme) . "|" . $this->cacheId;
                 [
                     $virtualTypes,
                     $this->scopePriorityScheme,
@@ -284,7 +277,7 @@ class PluginListGenerator implements ConfigWriterInterface, ConfigLoaderInterfac
      */
     public function inheritPlugins($type, &$pluginData, &$inherited, &$processed)
     {
-        $type = ltrim($type, '\\');
+        $type = $type !== null ? ltrim($type, '\\') : '';
         if (!isset($inherited[$type])) {
             $realType = $this->omConfig->getOriginalInstanceType($type);
 
@@ -360,7 +353,7 @@ class PluginListGenerator implements ConfigWriterInterface, ConfigLoaderInterfac
     public function trimInstanceStartingBackslash(&$plugins)
     {
         foreach ($plugins as &$plugin) {
-            $plugin['instance'] = ltrim($plugin['instance'], '\\');
+            $plugin['instance'] = ltrim($plugin['instance'] ?? '', '\\');
         }
     }
 
