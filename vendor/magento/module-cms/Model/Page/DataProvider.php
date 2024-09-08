@@ -214,17 +214,21 @@ class DataProvider extends ModifierPoolDataProvider
         $options = [['label' => 'No update', 'value' => '_no_update_']];
 
         $page = null;
-        try {
-            $page = $this->pageRepository->getById($this->getPageId());
-            if ($page->getCustomLayoutUpdateXml() || $page->getLayoutUpdateXml()) {
-                $options[] = ['label' => 'Use existing layout update XML', 'value' => '_existing_'];
-            }
-            foreach ($this->customLayoutManager->fetchAvailableFiles($page) as $layoutFile) {
-                $options[] = ['label' => $layoutFile, 'value' => $layoutFile];
-            }
-        } catch (LocalizedException $e) {
-            $this->logger->error($e->getMessage());
-        }
+		# 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
+		if ($this->getPageId()) {
+			try {
+				$page = $this->pageRepository->getById($this->getPageId());
+				if ($page->getCustomLayoutUpdateXml() || $page->getLayoutUpdateXml()) {
+					$options[] = ['label' => 'Use existing layout update XML', 'value' => '_existing_'];
+				}
+				foreach ($this->customLayoutManager->fetchAvailableFiles($page) as $layoutFile) {
+					$options[] = ['label' => $layoutFile, 'value' => $layoutFile];
+				}
+			} catch (LocalizedException $e) {
+				$this->logger->error($e->getMessage());
+			}
+		}
 
         $customLayoutMeta = [
             'design' => [
