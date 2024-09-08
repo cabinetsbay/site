@@ -9,15 +9,12 @@ use \Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
 use \Magento\Framework\Filesystem\Driver\File as FileDriver;
 
-/**
- * Class Validator
- */
 class Validator
 {
     /**
      * Config path to 'Allow Symlinks' template settings
      */
-    const XML_PATH_TEMPLATE_ALLOW_SYMLINK = 'dev/template/allow_symlink';
+    public const XML_PATH_TEMPLATE_ALLOW_SYMLINK = 'dev/template/allow_symlink';
 
     /**
      * Template files map
@@ -142,9 +139,17 @@ class Validator
 		# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 		# "How to fix the «Invalid template file» / «require_js.phtml» failure for 2.3 ≤ Magento < 2.4.5 in Windows?"
 		# https://mage2.pro/t/5774
+		# 2024-09-08
+		# 1) "Port the modification of `vendor/magento/framework/View/Element/Template/File/Validator.php`
+		# from Magento 2.4.4 to 2.4.7-p2": https://github.com/cabinetsbay/site/issues/169
+		# 2) "How to fix the «Invalid template file» / «require_js.phtml» failure for Magento ≥ 2.4.5 in Windows?":
+		# https://mage2.pro/t/6339
 		$isWin = 'WIN' === strtoupper(substr(PHP_OS, 0, 3)); /** @var bool $isWin */
 		foreach ($directories as $directory) {
-			if (0 === strpos($realPath, !$isWin ? $directory : str_replace('/', DIRECTORY_SEPARATOR, $directory))) {
+			if (
+				$directory !== null
+				&& 0 === strpos($realPath, !$isWin ? $directory : str_replace('/', DIRECTORY_SEPARATOR, $directory))
+			) {
                 return true;
             }
         }
