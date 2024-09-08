@@ -6,15 +6,16 @@
 
 namespace Magento\Catalog\Model\View\Asset;
 
+use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Model\Config\CatalogMediaConfig;
+use Magento\Catalog\Model\Product\Image\ConvertImageMiscParamsToReadableFormat;
 use Magento\Catalog\Model\Product\Media\ConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\LocalInterface;
-use Magento\Catalog\Helper\Image as ImageHelper;
-use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -79,6 +80,11 @@ class Image implements LocalInterface
     private $mediaFormatUrl;
 
     /**
+     * @var ConvertImageMiscParamsToReadableFormat
+     */
+    private $convertImageMiscParamsToReadableFormat;
+
+    /**
      * Image constructor.
      *
      * @param ConfigInterface $mediaConfig
@@ -89,6 +95,7 @@ class Image implements LocalInterface
      * @param ImageHelper $imageHelper
      * @param CatalogMediaConfig $catalogMediaConfig
      * @param StoreManagerInterface $storeManager
+     * @param ConvertImageMiscParamsToReadableFormat $convertImageMiscParamsToReadableFormat
      */
     public function __construct(
         ConfigInterface $mediaConfig,
@@ -98,7 +105,8 @@ class Image implements LocalInterface
         array $miscParams,
         ImageHelper $imageHelper = null,
         CatalogMediaConfig $catalogMediaConfig = null,
-        StoreManagerInterface $storeManager = null
+        StoreManagerInterface $storeManager = null,
+        ?ConvertImageMiscParamsToReadableFormat $convertImageMiscParamsToReadableFormat = null
     ) {
         if (isset($miscParams['image_type'])) {
             $this->sourceContentType = $miscParams['image_type'];
@@ -116,6 +124,8 @@ class Image implements LocalInterface
 
         $catalogMediaConfig =  $catalogMediaConfig ?: ObjectManager::getInstance()->get(CatalogMediaConfig::class);
         $this->mediaFormatUrl = $catalogMediaConfig->getMediaUrlFormat();
+        $this->convertImageMiscParamsToReadableFormat = $convertImageMiscParamsToReadableFormat ?:
+            ObjectManager::getInstance()->get(ConvertImageMiscParamsToReadableFormat::class);
     }
 
     /**
@@ -130,15 +140,7 @@ class Image implements LocalInterface
             case CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS:
                 return $this->getUrlWithTransformationParameters();
             case CatalogMediaConfig::HASH:
-				# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-				# 1) "Product images are not shown on the frontend on my workstation":
-				# https://github.com/cabinetsbay/catalog/issues/12
-				# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
-				# https://mage2.pro/t/6411
-				# 3) I replaced `DIRECTORY_SEPARATOR` with '/'.
-				# 4) The original code:
-				# https://github.com/magento/magento2/blob/2.4.6/app/code/Magento/Catalog/Model/View/Asset/Image.php#L133
-                return $this->context->getBaseUrl() . '/' . $this->getImageInfo();
+                return $this->context->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getImageInfo();
             default:
                 throw new LocalizedException(
                     __("The specified Catalog media URL format '$this->mediaFormatUrl' is not supported.")
@@ -277,14 +279,10 @@ class Image implements LocalInterface
      */
     private function getImageInfo()
     {
-		# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-		# 1) "Product images are not shown on the frontend on my workstation":
-		# https://github.com/cabinetsbay/catalog/issues/12
-		# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
-		# https://mage2.pro/t/6411
-		# 3) The original code:
-		# https://github.com/magento/magento2/blob/2.4.6/app/code/Magento/Catalog/Model/View/Asset/Image.php#L272-L275
-        return "{$this->getModule()}/{$this->getMiscPath()}" . $this->getFilePath();
+        $path = $this->getModule()
+            . DIRECTORY_SEPARATOR . $this->getMiscPath()
+            . DIRECTORY_SEPARATOR . $this->getFilePath();
+        return preg_replace('|\Q'. DIRECTORY_SEPARATOR . '\E+|', DIRECTORY_SEPARATOR, $path);
     }
 
     /**
@@ -295,17 +293,6 @@ class Image implements LocalInterface
      */
     private function convertToReadableFormat(array $miscParams)
     {
-        $miscParams['image_height'] = 'h:' . ($miscParams['image_height'] ?? 'empty');
-        $miscParams['image_width'] = 'w:' . ($miscParams['image_width'] ?? 'empty');
-        $miscParams['quality'] = 'q:' . ($miscParams['quality'] ?? 'empty');
-        $miscParams['angle'] = 'r:' . ($miscParams['angle'] ?? 'empty');
-        $miscParams['keep_aspect_ratio'] = (!empty($miscParams['keep_aspect_ratio']) ? '' : 'non') . 'proportional';
-        $miscParams['keep_frame'] = (!empty($miscParams['keep_frame']) ? '' : 'no') . 'frame';
-        $miscParams['keep_transparency'] = (!empty($miscParams['keep_transparency']) ? '' : 'no') . 'transparency';
-        $miscParams['constrain_only'] = (!empty($miscParams['constrain_only']) ? 'do' : 'not') . 'constrainonly';
-        $miscParams['background'] = !empty($miscParams['background'])
-            ? 'rgb' . implode(',', $miscParams['background'])
-            : 'nobackground';
-        return $miscParams;
+        return $this->convertImageMiscParamsToReadableFormat->convertImageMiscParamsToReadableFormat($miscParams);
     }
 }
