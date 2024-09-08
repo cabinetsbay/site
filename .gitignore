@@ -59,11 +59,6 @@
 # 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
 !/vendor/magento/module-cms/Model/Page/DataProvider.php
-# 2024-01-01 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# 1) "«Environment emulation nesting is not allowed» on `/affirm/payment/confirm/`": https://github.com/cabinetsbay/site/issues/12
-# 2) "How did I fix «Environment emulation nesting is not allowed»
-# on sending invoice / shipment / creditmemo emails in 2.4.4 ≤ Magento < 2.4.7-beta2?": https://mage2.pro/t/6392
-!/vendor/magento/module-sales/Model/Order/Email/Sender/ShipmentSender.php
 # 2023-12-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # 1) «strtotime() expects parameter 1 to be string, null given
 # in vendor/magento/module-security/Model/AdminSessionInfo.php:136»: https://github.com/cabinetsbay/site/issues/27
