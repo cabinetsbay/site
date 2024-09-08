@@ -140,7 +140,18 @@ class Image implements LocalInterface
             case CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS:
                 return $this->getUrlWithTransformationParameters();
             case CatalogMediaConfig::HASH:
-                return $this->context->getBaseUrl() . DIRECTORY_SEPARATOR . $this->getImageInfo();
+				# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+				# 1) "Product images are not shown on the frontend on my workstation":
+				# https://github.com/cabinetsbay/catalog/issues/12
+				# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
+				# https://mage2.pro/t/6411
+				# 3) I replaced `DIRECTORY_SEPARATOR` with '/'.
+				# 4) The original code:
+				# https://github.com/magento/magento2/blob/2.4.6/app/code/Magento/Catalog/Model/View/Asset/Image.php#L133
+				# 2024-09-08
+				# "Port the modification of `vendor/magento/module-catalog/Model/View/Asset/Image.php` from Magento 2.4.4 to 2.4.7-p2":
+				# https://github.com/cabinetsbay/site/issues/170
+                return $this->context->getBaseUrl() . '/' . $this->getImageInfo();
             default:
                 throw new LocalizedException(
                     __("The specified Catalog media URL format '$this->mediaFormatUrl' is not supported.")
@@ -279,10 +290,17 @@ class Image implements LocalInterface
      */
     private function getImageInfo()
     {
-        $path = $this->getModule()
-            . DIRECTORY_SEPARATOR . $this->getMiscPath()
-            . DIRECTORY_SEPARATOR . $this->getFilePath();
-        return preg_replace('|\Q'. DIRECTORY_SEPARATOR . '\E+|', DIRECTORY_SEPARATOR, $path);
+		# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 1) "Product images are not shown on the frontend on my workstation":
+		# https://github.com/cabinetsbay/catalog/issues/12
+		# 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?":
+		# https://mage2.pro/t/6411
+		# 3) The original code:
+		# https://github.com/magento/magento2/blob/2.4.6/app/code/Magento/Catalog/Model/View/Asset/Image.php#L272-L275
+		# 2024-09-08
+		# "Port the modification of `vendor/magento/module-catalog/Model/View/Asset/Image.php` from Magento 2.4.4 to 2.4.7-p2":
+		# https://github.com/cabinetsbay/site/issues/170
+        return "{$this->getModule()}/{$this->getMiscPath()}" . $this->getFilePath();
     }
 
     /**
