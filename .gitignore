@@ -59,12 +59,6 @@
 # 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
 # «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
 !/vendor/magento/module-cms/Model/Page/DataProvider.php
-# 2023-12-10 Dmitrii Fediuk https://upwork.com/fl/mage2pro
-# 1) «strtotime() expects parameter 1 to be string, null given
-# in vendor/magento/module-security/Model/AdminSessionInfo.php:136»: https://github.com/cabinetsbay/site/issues/27
-# 2) "How did I fix «strtotime() expects parameter 1 to be string, null given
-# in vendor/magento/module-security/Model/AdminSessionInfo.php:136»?": https://mage2.pro/t/6387
-!/vendor/magento/module-security/Model/AdminSessionInfo.php
 /vendor/magento/magento2-base
 /vendor/magento/magento2-functional-testing-framework
 /vendor/tubalmartin
