@@ -1,11 +1,11 @@
 <?xml version='1.0'?>
-<!-- 2024-06-17 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+<!-- 2024-06-17 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 "Refactor the `Cabinetsbay/cabinetsbay_default` design theme": https://github.com/cabinetsbay/site/issues/130 -->
 <page xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' layout='2columns-left' xsi:noNamespaceSchemaLocation='urn:magento:framework:View/Layout/etc/page_configuration.xsd'>
 	<body>
 		<referenceContainer name='columns.top'>
 			<container name='category.view.container' htmlTag='div' htmlClass='category-view' htmlId='categoryTabs'>
-<!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+<!-- 2024-05-07 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 "Move the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/catalog/issues/2 -->
 				<block
 					class='CabinetsBay\Catalog\B\Category'
@@ -15,7 +15,7 @@
 			</container>
 		</referenceContainer>
 		<referenceContainer name='content'>
-<!-- 2024-05-07 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+<!-- 2024-05-07 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 "Move the catalog-related code to the `CabinetsBay_Catalog` module": https://github.com/cabinetsbay/catalog/issues/2 -->
 			<block
 				class='CabinetsBay\Catalog\B\Category'

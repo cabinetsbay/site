@@ -1,4 +1,4 @@
-# 2023-11-21 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-11-21 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # http://stackoverflow.com/questions/987142
 # http://stackoverflow.com/questions/9162919
 # http://stackoverflow.com/questions/8024924#comment15884195_8025106
@@ -16,31 +16,31 @@
 # '«Mismatched anonymous define() module» on loading `cdn1.affirm.com/products/affirmjs/master/dist/ldclient.min.js`'
 # https://github.com/cabinetsbay/site/issues/128
 !/lib/web/requirejs/require.js
-# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2024-03-24 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # 1) "Product images are not shown on the frontend on my workstation":
 # https://github.com/cabinetsbay/catalog/issues/12
 # 2) "How to adapt `pub/get.php` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6415
 !/pub/get.php
-# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-11-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # "How to fix intereceptors generation on `bin/magento setup:di:compile` in Magento ≥ 2.2 in Windows?":
 # https://mage2.pro/t/4702
 !/setup/src/Magento/Setup/Module/Di/Code/Reader/ClassesScanner.php
 /update/
 /vendor/aws/aws-crt-php
 /vendor/magento/framework/Test
-# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-11-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # "How to fix catalog images in Magento ≥ 2.3.5 in Windows?" https://mage2.pro/t/6177
 !/vendor/magento/framework/Image/Adapter/Gd2.php
-# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-11-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # "How to fix «file_put_contents(generated/metadata/primary|global|plugin-list.php):
 # failed to open stream: No such file or directory
 # in lib\internal\Magento\Framework\Interception\PluginListGenerator.php on line 414» in Magento 2.4-develop in Windows?"
 # https://mage2.pro/t/6178
 !/vendor/magento/framework/Interception/PluginListGenerator.php
-# 2024-08-09 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2024-08-09 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # "Install the «ACSD-47578» security patch" https://github.com/cabinetsbay/site/issues/154
 !/vendor/magento/framework/Filter/Template/FilteringDepthMeter.php
-# 2023-11-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-11-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # "How to fix the «Invalid template file» / «require_js.phtml» failure for 2.3 ≤ Magento < 2.4.5 in Windows?"
 # https://mage2.pro/t/5774
 # 2024-09-08
@@ -49,14 +49,14 @@
 # 2) "How to fix the «Invalid template file» / «require_js.phtml» failure for Magento ≥ 2.4.5 in Windows?":
 # https://mage2.pro/t/6339
 !/vendor/magento/framework/View/Element/Template/File/Validator.php
-# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2024-03-24 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # 1) "Product images are not shown on the frontend on my workstation": https://github.com/cabinetsbay/catalog/issues/12
 # 2) "How to adapt `Magento\Catalog\Model\View\Asset\Image::getUrl()` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6411
 # 2024-09-08
 # "Port the modification of `vendor/magento/module-catalog/Model/View/Asset/Image.php` from Magento 2.4.4 to 2.4.7-p2":
 # https://github.com/cabinetsbay/site/issues/170
 !/vendor/magento/module-catalog/Model/View/Asset/Image.php
-# 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+# 2023-12-31 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 # «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
 !/vendor/magento/module-cms/Model/Page/DataProvider.php
 /vendor/magento/magento2-base

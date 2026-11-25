@@ -21,7 +21,7 @@ class Renderer
     }
 
     /**
-	 * 2024-04-26 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 2024-04-26 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 	 * "Disable the unused `Magento_Weee` module": https://github.com/cabinetsbay/site/issues/144
      * @param \Magento\Checkout\CustomerData\Cart $subject
      * @param string $template

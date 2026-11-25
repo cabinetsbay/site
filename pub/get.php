@@ -58,7 +58,7 @@ if (file_exists($configCacheFile) && is_readable($configCacheFile)) {
 
         // Serve file if it's materialized
         if ($mediaDirectory) {
-			# 2024-03-24 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# 2024-03-24 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 			# 1) "Product images are not shown on the frontend on my workstation":
 			# https://github.com/cabinetsbay/catalog/issues/12
 			# 2) "How to adapt `pub/get.php` to Windows in Magento ≥ 2.4.2?": https://mage2.pro/t/6415

@@ -1,4 +1,4 @@
-// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 // "Refactor `app/design/frontend/Cabinetsbay/cabinetsbay_default/web/js/cabinetsbay.js`":
 // https://github.com/cabinetsbay/site/issues/121
 require([
@@ -17,11 +17,11 @@ require([
 ], function($) {
 	$('#search').on('click', () => $('.block-search').addClass('block-search-focused'));
 	(() => {
-		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 		// https://jsfiddle.net/dfediuk/rb0e7q82
 		const f = n => $(n).on('click', e => {
 			e.preventDefault();
-			// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 			// 1) https://caniuse.com/mdn-api_element_getattribute
 			// 2.1) `e.currentTarget.href` =>
 			// 		«https://localhost.com:2255/pre-assembled-cabinets/moonlight-shaker.html#maincontent»
@@ -43,7 +43,7 @@ require([
 		f($('li._hasSubmenu').find('.link-wrapper'), $e => $e.parents('._hasSubmenu'));
 		f($('.mobile-navigation-opener'), $e => $e.closest('#mobile-navigation'));
 		f($('.customlinks > div > p'), $e => $e.closest('div'));
-		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
 		// should be always visible": https://github.com/cabinetsbay/catalog/issues/11
 		// 2) The previous code:
@@ -52,7 +52,7 @@ require([
 		//
 	})();
 	if (typeof $.ui.tabs != 'undefined' && $('#categoryTabs').length) {
-		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 		// 1) "The contents of the tabs «Product Overview», «Specifications», «Cabinet Assembly», «Matching Styles»
 		// should be always visible": https://github.com/cabinetsbay/catalog/issues/11
 		// 2) The previous code:
@@ -151,7 +151,7 @@ require([
 	$(document).scroll(function() {
 		const y = $(this).scrollTop();
 		$('.page-header').toggleClass('sticky', y > 30);
-		// 2024-03-25 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		// 2024-03-25 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 		// 1) "How to apply a jQuery function conditionally?": https://df.tips/t/2174
 		// 2) https://jsfiddle.net/dfediuk/c6epnqor
 		$.fn[y > 800 ? 'fadeIn' : 'fadeOut'].apply($('#backTop'));

@@ -214,7 +214,7 @@ class DataProvider extends ModifierPoolDataProvider
         $options = [['label' => 'No update', 'value' => '_no_update_']];
 
         $page = null;
-		# 2023-12-31 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+		# 2023-12-31 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 		# «The CMS page with the "0" ID doesn't exist»: https://github.com/cabinetsbay/site/issues/49
 		if ($this->getPageId()) {
 			try {

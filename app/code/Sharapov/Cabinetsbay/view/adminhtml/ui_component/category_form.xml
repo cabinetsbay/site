@@ -144,7 +144,7 @@
 				</item>
 			</argument>
 		</field>
-<!-- 2024-05-23 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+<!-- 2024-05-23 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 https://github.com/cabinetsbay/catalog/labels/matching-products -->
 		<field name="cb_matching_products">
 			<argument name="data" xsi:type="array">

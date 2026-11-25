@@ -358,7 +358,7 @@
                         }
                         var thumb = $children.eq(i * settings.slideMove).attr('data-thumb');
                         if (settings.gallery === true) {
-							// 2024-01-02 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+							// 2024-01-02 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 							// "Provide an ability to specify the `ALT` HTML attribute's value for category images":
 							// https://github.com/cabinetsbay/catalog/issues/2
 							let $li = $('<li>').attr({

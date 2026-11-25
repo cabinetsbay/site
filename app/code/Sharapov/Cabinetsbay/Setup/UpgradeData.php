@@ -4,13 +4,13 @@ use CabinetsBay\Catalog\Category\Attribute as A;
 use Magento\Catalog\Model\Category as C;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface as IScopedAttribute;
 /**
- * 22024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+ * 22024-05-19 Dmitrii Fediuk https://github.com/dmitrii-fediuk
  * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  */
 class UpgradeData extends \Df\Framework\Upgrade\Data {
 	/**
-	 * 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 2024-05-19 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @override
 	 * @see \Df\Framework\Upgrade::_process()
@@ -26,7 +26,7 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 	}
 
 	/**
-	 * 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 2024-05-19 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by self::_process()
 	 */
@@ -53,7 +53,7 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 			,A::KITCHEN_STYLE => [210, 'Style']
 			,A::KITCHEN_TYPE => [225, 'Construction Type']
 			,A::DOOR_SAMPLE_LINK => [220, 'Door sample link']
-			# 2024-05-23 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+			# 2024-05-23 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 			# https://github.com/cabinetsbay/catalog/labels/matching-products
 			,A::MATCHING_PRODUCTS => [50, 'Matching Products IDs (comma-separated)']
 		], function(string $k, array $v) use($a):void {$a($k, [
@@ -62,7 +62,7 @@ class UpgradeData extends \Df\Framework\Upgrade\Data {
 	}
 
 	/**
-	 * 2024-05-19 Dmitrii Fediuk https://upwork.com/fl/mage2pro
+	 * 2024-05-19 Dmitrii Fediuk https://github.com/dmitrii-fediuk
 	 * "Refactor the `Sharapov_Cabinetsbay` module": https://github.com/cabinetsbay/site/issues/98
 	 * @used-by self::_process()
 	 */
